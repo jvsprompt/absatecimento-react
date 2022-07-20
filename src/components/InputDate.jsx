@@ -8,7 +8,6 @@ function InputDate({ name, entry, value, change, localStore }) {
     if (localStore === true) {
       change(localStorage.getItem(labelName));
       console.log('local storage loaded [ OK! ]');
-      console.log('local storage loaded [ OK! ]');
     }
   }, []);
 

@@ -8,7 +8,6 @@ function InputDropdown({ name, entry, value, change, items, localStore = false }
     if (localStore === true) {
       change(localStorage.getItem(labelName));
       console.log('local storage loaded [ OK! ]');
-      console.log('local storage loaded [ OK! ]');
     }
   }, []);
 
