@@ -6,7 +6,9 @@ function InputDropdown({ name, entry, value, change, items, localStore = false }
 
   useEffect(() => {
     if (localStore === true) {
-      localStorage.getItem(labelName)
+      change(localStorage.getItem(labelName));
+      console.log('local storage loaded [ OK! ]');
+      console.log('local storage loaded [ OK! ]');
     }
   }, []);
 
@@ -16,13 +18,20 @@ function InputDropdown({ name, entry, value, change, items, localStore = false }
 
     if (localStore === true) {
       localStorage.setItem(labelName, v);
+      console.log('local storage saved [ OK! ]');
     }
   }
 
   return (
     <label htmlFor={labelName} className='block'>
       <span>{name}</span>
-      <select name={entry} id={labelName} className='form-control input'>
+      <select
+        name={entry}
+        id={labelName}
+        className='form-control input'
+        onChange={(e) => updateValue(e)}
+        value={value}
+      >
         {items.map((it, i) => {
           return (
             <option value={it} key={i}>{it}</option>

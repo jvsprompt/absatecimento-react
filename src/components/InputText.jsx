@@ -6,7 +6,7 @@ function InputText({ name, entry, value, change, localStore }) {
 
   useEffect(() => {
     if (localStore === true) {
-      localStorage.getItem(labelName);
+      change(localStorage.getItem(labelName));
       console.log('local storage loaded [ OK! ]');
     }
   }, []);
@@ -17,6 +17,7 @@ function InputText({ name, entry, value, change, localStore }) {
 
     if (localStore === true) {
       localStorage.setItem(labelName, v);
+      console.log('local storage saved [ OK! ]');
     }
   }
 
