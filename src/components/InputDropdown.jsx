@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import removeSpaces from '../utils/removeSpaces';
 
-function InputDropdown({ name, entry, value, onChange, items, localStore }) {
+function InputDropdown({ name, entry, value, change, items, localStore = false }) {
   const labelName = removeSpaces(name);
 
   useEffect(() => {
@@ -11,20 +11,21 @@ function InputDropdown({ name, entry, value, onChange, items, localStore }) {
   }, []);
 
   function updateValue(e) {
+    const v = e.currentTarget.value;
+    change(v);
+
     if (localStore === true) {
-      const v = e.currentTarget.value.toUpperCase();
-      onChange(v);
       localStorage.setItem(labelName, v);
     }
   }
 
   return (
-    <label htmlFor={labelName}>
+    <label htmlFor={labelName} className='block'>
       <span>{name}</span>
-      <select name={entry} id={labelName}>
-        {items.map((i) => {
+      <select name={entry} id={labelName} className='form-control input'>
+        {items.map((it, i) => {
           return (
-            <option value={i}>{i}</option>
+            <option value={it} key={i}>{it}</option>
           );
         })}
       </select>

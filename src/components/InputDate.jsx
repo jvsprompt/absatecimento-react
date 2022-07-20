@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import removeSpaces from '../utils/removeSpaces';
 
-function InputDate({ name, entry, value, onChange, localStore }) {
+function InputDate({ name, entry, value, change, localStore }) {
   const labelName = removeSpaces(name);
 
   useEffect(() => {
@@ -11,22 +11,24 @@ function InputDate({ name, entry, value, onChange, localStore }) {
   }, []);
 
   function updateValue(e) {
+    const v = e.currentTarget.value;
+    change(v);
+
     if (localStore === true) {
-      const v = e.currentTarget.value.toUpperCase();
-      onChange(v);
       localStorage.setItem(labelName, v);
     }
   }
 
   return (
-    <label htmlFor={labelName}>
+    <label htmlFor={labelName} className='block'>
       <span>{name}</span>
       <input
-        type="date"
+        type='date'
         name={entry}
         id={labelName}
         value={value}
         onChange={(e) => updateValue(e)}
+        className='form-control input'
       />
     </label>
   );

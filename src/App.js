@@ -3,6 +3,9 @@ import AppProvider from './context/AppProvider';
 
 import Form from './pages/Form';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/Form.css'
+
 function App() {
   return (
     <AppProvider>
