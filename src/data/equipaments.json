@@ -1,0 +1,706 @@
+[
+  {
+    "id": "1",
+    "name": "525",
+    "equipamento": "BISELADORA BISELADORA VERTICAL 810 - BOTTERO",
+    "setor": "LINHA VITRALUX",
+    "tag": "BSL-0002",
+    "image": "./images/525.jpg"
+  },
+  {
+    "id": "2",
+    "name": "526",
+    "equipamento": "BISELADORA VERTICAL - Z.BAVELLONI",
+    "setor": "LINHA VITRALUX",
+    "tag": "BSL-0001",
+    "image": "./images/526.jpg"
+  },
+  {
+    "id": "3",
+    "name": "475",
+    "equipamento": "BOMBA DE COMBATE A INCENDIO KSB - FIREBLOC",
+    "setor": "CASA DE MAQUINA DE INCENDIO",
+    "tag": "BCI-0001",
+    "image": "./images/475.jpg"
+  },
+  {
+    "id": "4",
+    "name": "476",
+    "equipamento": "BOMBA DE COMBATE A INCENDIO KSB - FIREBLOC",
+    "setor": "CASA DE MAQUINA DE INCENDIO",
+    "tag": "BCI-0002",
+    "image": "./images/476.jpg"
+  },
+  {
+    "id": "5",
+    "name": "453",
+    "equipamento": "CAIXA DE AGUA 50.000 LTS - PINTRA MARITIMA",
+    "setor": "PATIO - FROTA",
+    "tag": "CXA-0001",
+    "image": "./images/453.jpg"
+  },
+  {
+    "id": "6",
+    "name": "535",
+    "equipamento": "COMPRESSOR E SECADOR - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "CES-0003",
+    "image": "./images/535.jpg"
+  },
+  {
+    "id": "7",
+    "name": "542",
+    "equipamento": "COMPRESSOR INDUSTRIAL 20 HP - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "CPI-0001",
+    "image": "./images/542.jpg"
+  },
+  {
+    "id": "8",
+    "name": "543",
+    "equipamento": "COMPRESSOR INDUSTRIAL 20 HP - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "CPI-0002",
+    "image": "./images/543.jpg"
+  },
+  {
+    "id": "9",
+    "name": "592",
+    "equipamento": "CONJUNTO FIXACAO ESTACAO DE TRATAMENTO - PUTILIZ",
+    "setor": "PATIO - FROTA",
+    "tag": "CFE-0001",
+    "image": "./images/592.jpg"
+  },
+  {
+    "id": "10",
+    "name": "461",
+    "equipamento": "ESCADA EXTENDER DE FIBRA - COGUMELO",
+    "setor": "OFICINA MECANICA ELETRICA",
+    "tag": "ESC-0001",
+    "image": "./images/461.jpg"
+  },
+  {
+    "id": "11",
+    "name": "454",
+    "equipamento": "FILTRO DA ESTACAO DE TRATAMENTO DE AGUA - PUTILIZ",
+    "setor": "PATIO - FROTA",
+    "tag": "FET-0001",
+    "image": "./images/454.jpg"
+  },
+  {
+    "id": "12",
+    "name": "455",
+    "equipamento": "FORNO ESTATICO PARA LAMINACAO - KERAGLASS",
+    "setor": "LAMINACAO EVA",
+    "tag": "FEL-0001",
+    "image": "./images/455.jpg"
+  },
+  {
+    "id": "13",
+    "name": "541",
+    "equipamento": "FORNO KFO DOUBLE STAR TKNO MOD: KFO 321/680 DN - KERAGLASS",
+    "setor": "FORNO DE TEMPERA",
+    "tag": "FDT-0001",
+    "image": "./images/541.jpg"
+  },
+  {
+    "id": "14",
+    "name": "513",
+    "equipamento": "FURADEIRA - BOTTERO",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "FRD-0001",
+    "image": "./images/513.jpg"
+  },
+  {
+    "id": "15",
+    "name": "514",
+    "equipamento": "FURADEIRA - BOTTERO",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "FRD-0002",
+    "image": "./images/514.jpg"
+  },
+  {
+    "id": "16",
+    "name": "519",
+    "equipamento": "FURADEIRA - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 02",
+    "tag": "FRD-0003",
+    "image": "./images/519.jpg"
+  },
+  {
+    "id": "17",
+    "name": "520",
+    "equipamento": "FURADEIRA - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 02",
+    "tag": "FRD-0004",
+    "image": "./images/520.jpg"
+  },
+  {
+    "id": "18",
+    "name": "521",
+    "equipamento": "FURADEIRA - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 02",
+    "tag": "FRD-0005",
+    "image": "./images/521.jpg"
+  },
+  {
+    "id": "19",
+    "name": "522",
+    "equipamento": "FURADEIRA - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 02",
+    "tag": "FRD-0006",
+    "image": "./images/522.jpg"
+  },
+  {
+    "id": "20",
+    "name": "539",
+    "equipamento": "FURADEIRA - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "FRD-0007",
+    "image": "./images/539.jpg"
+  },
+  {
+    "id": "21",
+    "name": "540",
+    "equipamento": "FURADEIRA - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "FRD-0008",
+    "image": "./images/540.jpg"
+  },
+  {
+    "id": "22",
+    "name": "300",
+    "equipamento": "GERADOR QUIT SITE III A DIESEL",
+    "setor": "PATIO - FROTA",
+    "tag": "GRD-0001",
+    "image": "./images/300.jpg"
+  },
+  {
+    "id": "23",
+    "name": "528",
+    "equipamento": "LAPIDADORA BILATERAL COPO CANTO PLANO 220 - BOTTERO",
+    "setor": "LINHA BILATERAL",
+    "tag": "LPB-0001",
+    "image": "./images/528.jpg"
+  },
+  {
+    "id": "24",
+    "name": "530",
+    "equipamento": "LAPIDADORA BILATERAL COPO CANTO PLANO 220 - BOTTERO",
+    "setor": "LINHA BILATERAL",
+    "tag": "LPB-0002",
+    "image": "./images/530.jpg"
+  },
+  {
+    "id": "25",
+    "name": "505",
+    "equipamento": "LAPIDADORA PERIFERICA MAK 66 - Z.BAVELLONI",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPP-0001",
+    "image": "./images/505.jpg"
+  },
+  {
+    "id": "26",
+    "name": "507",
+    "equipamento": "LAPIDADORA PERIFERICA MAK 66 - Z.BAVELLONI",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPP-0002",
+    "image": "./images/507.jpg"
+  },
+  {
+    "id": "27",
+    "name": "509",
+    "equipamento": "LAPIDADORA PERIFERICA MAK 66 - Z.BAVELLONI",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPP-0003",
+    "image": "./images/509.jpg"
+  },
+  {
+    "id": "28",
+    "name": "511",
+    "equipamento": "LAPIDADORA PERIFERICA MAK 66 - Z.BAVELLONI",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPP-0004",
+    "image": "./images/511.jpg"
+  },
+  {
+    "id": "29",
+    "name": "490",
+    "equipamento": "LAPIDADORA VERTICAL COPO VICTRALUX 110FC - BOTTERO",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPV-0001",
+    "image": "./images/490.jpg"
+  },
+  {
+    "id": "30",
+    "name": "501",
+    "equipamento": "LAPIDADORA VERTICAL COPO VICTRALUX 110FC - BOTTERO",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPV-0002",
+    "image": "./images/501.jpg"
+  },
+  {
+    "id": "31",
+    "name": "502",
+    "equipamento": "LAPIDADORA VERTICAL COPO VICTRALUX 110FC - BOTTERO",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPV-0003",
+    "image": "./images/502.jpg"
+  },
+  {
+    "id": "32",
+    "name": "503",
+    "equipamento": "LAPIDADORA VERTICAL COPO VICTRALUX 110FC - BOTTERO",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "LPV-0004",
+    "image": "./images/503.jpg"
+  },
+  {
+    "id": "33",
+    "name": "524",
+    "equipamento": "LAPIDADORA VERTICAL COPO VICTRALUX 110FX - BOTTERO",
+    "setor": "LINHA VITRALUX",
+    "tag": "LPV-0005",
+    "image": "./images/524.jpg"
+  },
+  {
+    "id": "34",
+    "name": "518",
+    "equipamento": "LAVADORA HORIZONTAL - AGNAQ",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "LVH-0001",
+    "image": "./images/518.jpg"
+  },
+  {
+    "id": "35",
+    "name": "523",
+    "equipamento": "LAVADORA HORIZONTAL - LEADER GLASS",
+    "setor": "FURADEIRA LINHA 02",
+    "tag": "LVH-0002",
+    "image": "./images/523.jpg"
+  },
+  {
+    "id": "36",
+    "name": "534",
+    "equipamento": "LAVADORA HORIZONTAL - LEADER GLASS",
+    "setor": "LAVADORA LEADER GLASS",
+    "tag": "LVH-0003",
+    "image": "./images/534.jpg"
+  },
+  {
+    "id": "37",
+    "name": "532",
+    "equipamento": "LAVADORA HORIZONTAL 6005 - BOTTERO*",
+    "setor": "LINHA BILATERAL",
+    "tag": "LVH-0004",
+    "image": "./images/532.jpg"
+  },
+  {
+    "id": "38",
+    "name": "512",
+    "equipamento": "LAVADORA VERTICAL SP3525 - TRIULZI",
+    "setor": "LAVADORA VERTICAL",
+    "tag": "LVV-0001",
+    "image": "./images/512.jpg"
+  },
+  {
+    "id": "39",
+    "name": "506",
+    "equipamento": "MANIPULADOR AUTOMATICO - SOCABELEC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MPA-0001",
+    "image": "./images/506.jpg"
+  },
+  {
+    "id": "40",
+    "name": "508",
+    "equipamento": "MANIPULADOR AUTOMATICO - SOCABELEC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MPA-0002",
+    "image": "./images/508.jpg"
+  },
+  {
+    "id": "41",
+    "name": "510",
+    "equipamento": "MANIPULADOR AUTOMATICO - SOCABELEC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MPA-0003",
+    "image": "./images/510.jpg"
+  },
+  {
+    "id": "42",
+    "name": "484",
+    "equipamento": "MANIPULADOR EASY LIFT - BYSTRONIC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MEL-0001",
+    "image": "./images/484.jpg"
+  },
+  {
+    "id": "43",
+    "name": "485",
+    "equipamento": "MANIPULADOR EASY LIFT - BYSTRONIC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MEL-0002",
+    "image": "./images/485.jpg"
+  },
+  {
+    "id": "44",
+    "name": "487",
+    "equipamento": "MANIPULADOR EASY LIFT - BYSTRONIC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MEL-0003",
+    "image": "./images/487.jpg"
+  },
+  {
+    "id": "45",
+    "name": "488",
+    "equipamento": "MANIPULADOR EASY LIFT - BYSTRONIC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MEL-0004",
+    "image": "./images/488.jpg"
+  },
+  {
+    "id": "46",
+    "name": "489",
+    "equipamento": "MANIPULADOR EASY LIFT - BYSTRONIC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "MEL-0005",
+    "image": "./images/489.jpg"
+  },
+  {
+    "id": "47",
+    "name": "515",
+    "equipamento": "MAQUINA PNEUMATICA DE ESCARIAR - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MPE-0001",
+    "image": "./images/515.jpg"
+  },
+  {
+    "id": "48",
+    "name": "516",
+    "equipamento": "MAQUINA PNEUMATICA DE ESCARIAR - PERSON BOUQUET",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MPE-0002",
+    "image": "./images/516.jpg"
+  },
+  {
+    "id": "49",
+    "name": "529",
+    "equipamento": "MESA CARREGADORA 610LRF / ESTACAO DE CARREGAMENTO MOVEL DE DOIS LADOS 3+3 - BOTTERO",
+    "setor": "LINHA BILATERAL",
+    "tag": "MSC-0001",
+    "image": "./images/529.jpg"
+  },
+  {
+    "id": "50",
+    "name": "498",
+    "equipamento": "MESA CARREGADORA 630 CBM-J / ESTACAO DE CARREGAMENTO MOVEL DE DOIS LADOS 3+3 - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 01",
+    "tag": "MSC-0004",
+    "image": "./images/498.jpg"
+  },
+  {
+    "id": "51",
+    "name": "500",
+    "equipamento": "MESA CARREGADORA 630 CBM-J / ESTACAO DE CARREGAMENTO MOVEL DE DOIS LADOS 3+3 - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 02",
+    "tag": "MSC-0003",
+    "image": "./images/500.jpg"
+  },
+  {
+    "id": "52",
+    "name": "482",
+    "equipamento": "MESA CARREGADORA LAMINADO / ESTACAO - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 03",
+    "tag": "MCL-0001",
+    "image": "./images/482.jpg"
+  },
+  {
+    "id": "53",
+    "name": "497",
+    "equipamento": "MESA DE CORTE  340 BCS-J EVO SHAPE COM RODA DE REMOCAO LOW-E - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 01",
+    "tag": "MCA-0002",
+    "image": "./images/497.jpg"
+  },
+  {
+    "id": "54",
+    "name": "499",
+    "equipamento": "MESA DE CORTE  340 BCS-J EVO SHAPE COM RODA DE REMOCAO LOW-E - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 02",
+    "tag": "MCA-0003",
+    "image": "./images/499.jpg"
+  },
+  {
+    "id": "55",
+    "name": "481",
+    "equipamento": "MESA DE CORTE AUTOMATICA - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 03",
+    "tag": "MCA-0001",
+    "image": "./images/481.jpg"
+  },
+  {
+    "id": "56",
+    "name": "472",
+    "equipamento": "MESA DE CORTE MANUAL - AGMAQ",
+    "setor": "CORTE MANUAL",
+    "tag": "MCM-0001",
+    "image": "./images/472.jpg"
+  },
+  {
+    "id": "57",
+    "name": "473",
+    "equipamento": "MESA DE CORTE MANUAL - NMZ",
+    "setor": "CORTE MANUAL",
+    "tag": "MCM-0002",
+    "image": "./images/473.jpg"
+  },
+  {
+    "id": "58",
+    "name": "491",
+    "equipamento": "MESA DE DESTAQUE - BOTTERO 101C BBM",
+    "setor": "CORTE AUTOMATICO LINHA 02",
+    "tag": "MDD-0001",
+    "image": "./images/491.jpg"
+  },
+  {
+    "id": "59",
+    "name": "495",
+    "equipamento": "MESA DE DESTAQUE - BOTTERO 101C BBM-R",
+    "setor": "CORTE AUTOMATICO LINHA 01",
+    "tag": "MDD-0002",
+    "image": "./images/495.jpg"
+  },
+  {
+    "id": "60",
+    "name": "483",
+    "equipamento": "MESA DE DESTAQUE LAMINADO - BOTTERO",
+    "setor": "CORTE AUTOMATICO LINHA 03",
+    "tag": "MDL-0001",
+    "image": "./images/483.jpg"
+  },
+  {
+    "id": "61",
+    "name": "517",
+    "equipamento": "MESA DE RODIZIO C/ ESFERAS GIRATORIAS",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MRE-0001",
+    "image": "./images/517.jpg"
+  },
+  {
+    "id": "62",
+    "name": "531",
+    "equipamento": "MESA DE ROLOS EMBORRACHADOS 600N - BOTTERO",
+    "setor": "LINHA BILATERAL",
+    "tag": "MRE-0002",
+    "image": "./images/531.jpg"
+  },
+  {
+    "id": "63",
+    "name": "533",
+    "equipamento": "MESA PNEUMATICA",
+    "setor": "LAVADORA LEADER GLASS",
+    "tag": "MPN-0002",
+    "image": "./images/533.jpg"
+  },
+  {
+    "id": "64",
+    "name": "999",
+    "equipamento": "MESA PNEUMATICA*",
+    "setor": "LAMINACAO EVA",
+    "tag": "MPN-0001",
+    "image": "./images/999.jpg"
+  },
+  {
+    "id": "65",
+    "name": "606",
+    "equipamento": "MESA POSICIONADORA PNEUMATICA P/ FURACAO MPP230 - AGNAQ",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MPF-0001",
+    "image": "./images/606.jpg"
+  },
+  {
+    "id": "66",
+    "name": "605",
+    "equipamento": "MESA POSICIONADORA PNEUMATICA P/ FURACAO MPP230R - AGNAQ",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MPF-0002",
+    "image": "./images/605.jpg"
+  },
+  {
+    "id": "67",
+    "name": "607",
+    "equipamento": "MESA POSICIONADORA PNEUMATICA P/ FURACAO MPP230R - AGNAQ",
+    "setor": "FURADEIRA LINHA 01",
+    "tag": "MPF-0003",
+    "image": "./images/607.jpg"
+  },
+  {
+    "id": "68",
+    "name": "548",
+    "equipamento": "MODELADORA - MARKIVETRO",
+    "setor": "LINHA MODELADORA",
+    "tag": "MDL-0002",
+    "image": "./images/548.jpg"
+  },
+  {
+    "id": "69",
+    "name": "589",
+    "equipamento": "PAINEL DE CONTROLE P/ ROBOS - SOCABELEC",
+    "setor": "LINHA DE BOX - LAPIDACAO",
+    "tag": "PCR-0001",
+    "image": "./images/589.jpg"
+  },
+  {
+    "id": "70",
+    "name": "593",
+    "equipamento": "PONTE ROLANTE RECEPCAO - DEMAG",
+    "setor": "PONTE DE RECEPCAO DE MATERIA PRIMA - GALPAO 2",
+    "tag": "PRR-0004",
+    "image": "./images/593.jpg"
+  },
+  {
+    "id": "71",
+    "name": "549",
+    "equipamento": "PONTE ROLANTE RECEPCAO - DJM",
+    "setor": "PONTE DE RECEPCAO DE MATERIA PRIMA - GALPAO 2",
+    "tag": "PRR-0001",
+    "image": "./images/549.jpg"
+  },
+  {
+    "id": "72",
+    "name": "551",
+    "equipamento": "PONTE ROLANTE RECEPCAO - DJM",
+    "setor": "PONTE DE RECEPCAO DE MATERIA PRIMA - GALPAO 2",
+    "tag": "PRR-0002",
+    "image": "./images/551.jpg"
+  },
+  {
+    "id": "73",
+    "name": "552",
+    "equipamento": "PONTE ROLANTE RECEPCAO - DJM",
+    "setor": "PONTE DE RECEPCAO DE MATERIA PRIMA - GALPAO 2",
+    "tag": "PRR-0003",
+    "image": "./images/552X.jpg"
+  },
+  {
+    "id": "74",
+    "name": "527",
+    "equipamento": "PORTICO DE COLUNA - DEMAG",
+    "setor": "LINHA BILATERAL",
+    "tag": "PDC-0001",
+    "image": "./images/527.jpg"
+  },
+  {
+    "id": "75",
+    "name": "547",
+    "equipamento": "PORTICO ROLANTE - DEMAG",
+    "setor": "LINHA MODELADORA",
+    "tag": "PTR-0001",
+    "image": "./images/547.jpg"
+  },
+  {
+    "id": "76",
+    "name": "538",
+    "equipamento": "PRENSA HIDRAULICA - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "PSH-0001",
+    "image": "./images/538.jpg"
+  },
+  {
+    "id": "77",
+    "name": "459",
+    "equipamento": "PRENSA HIDRAULICA ENFARDADEIRA - PHV STANDER",
+    "setor": "OFICINA MECANICA ELETRICA",
+    "tag": "PHE-0001",
+    "image": "./images/459.jpg"
+  },
+  {
+    "id": "78",
+    "name": "544",
+    "equipamento": "SECADOR DE AR COMPRIMIDO - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "COM-0001",
+    "image": "./images/544.jpg"
+  },
+  {
+    "id": "79",
+    "name": "536",
+    "equipamento": "SEPARADOR DE AR CONDENSADO - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "CON-0001",
+    "image": "./images/536.jpg"
+  },
+  {
+    "id": "80",
+    "name": "537",
+    "equipamento": "SEPARADOR DE AR CONDENSADO - SCHULZ",
+    "setor": "COMPRESSOR MANUTENCAO - SALA 02",
+    "tag": "CON-0002",
+    "image": "./images/537.jpg"
+  },
+  {
+    "id": "81",
+    "name": "545",
+    "equipamento": "SEPARADOR DE AR CONDENSADO - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "CON-0003",
+    "image": "./images/545.jpg"
+  },
+  {
+    "id": "82",
+    "name": "546",
+    "equipamento": "SEPARADOR DE AR CONDENSADO - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "CON-0004",
+    "image": "./images/546.jpg"
+  },
+  {
+    "id": "83",
+    "name": "474",
+    "equipamento": "SERIGRAFIA E ESMALTERIA P/ VIDRO - KERAGLASS",
+    "setor": "SERIGRAFIA",
+    "tag": "SRG-0001",
+    "image": "./images/474.jpg"
+  },
+  {
+    "id": "84",
+    "name": "602",
+    "equipamento": "SOCADOR DE AR - SCHULZ",
+    "setor": "COMPRESSOR - ENTRADA LAPIDACAO - SALA 01",
+    "tag": "SAR-0001",
+    "image": "./images/602.jpg"
+  },
+  {
+    "id": "85",
+    "name": "584",
+    "equipamento": "TALHA ELETRICA - DEMAG",
+    "setor": "LINHA BILATERAL",
+    "tag": "TLE-0001",
+    "image": "./images/584.jpg"
+  },
+  {
+    "id": "86",
+    "name": "451",
+    "equipamento": "TANQUE DE OLEO GERADOR - CRUZ OLEO",
+    "setor": "PATIO - FROTA",
+    "tag": "TOG-0001",
+    "image": "./images/451.jpg"
+  },
+  {
+    "id": "87",
+    "name": "452",
+    "equipamento": "UNIDADE DE TRATAMENTO DE AGUA - PUTILIZ",
+    "setor": "PATIO - FROTA",
+    "tag": "UTA-0001",
+    "image": "./images/452.jpg"
+  },
+  {
+    "id": "88",
+    "name": "567",
+    "equipamento": "UPS DELTA NH PLUS 80KVA C/ STS - ENERGYMASTER",
+    "setor": "FORNO DE TEMPERA",
+    "tag": "UPS-0001",
+    "image": "./images/567.jpg"
+  }
+]
