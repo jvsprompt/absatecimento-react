@@ -9,7 +9,7 @@ function InputDropdown({ name, entry, value, change, items, localStore = false }
       change(localStorage.getItem(labelName));
       console.log('local storage loaded [ OK! ]');
     }
-  }, []);
+  }, [ change, labelName, localStore ]);
 
   function updateValue(e) {
     const v = e.currentTarget.value;
