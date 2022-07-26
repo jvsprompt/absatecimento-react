@@ -1,9 +1,11 @@
 // import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import '../css/EquipCard.css';
+
 function EquipCard({ id, name, tag, equipament, local, image }) {
   return (
-    <Card style={{ width: '18rem' }} key={ id }>
+    <Card className='equip-card' key={ id }>
       <Card.Img variant="top" src={ image } />
       <Card.Body>
         <Card.Title>{ name }</Card.Title>

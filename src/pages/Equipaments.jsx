@@ -18,8 +18,8 @@ function Equipaments() {
   }, [])
 
   return isLoading ? <Loading/> : (
-    <div className="container">
-      <div className="lista-filmes" charset="utf-8">
+    <div className=''>
+      <div className='equip-list'>
         {equips.map((eq) => {
           return (
             <EquipCard
