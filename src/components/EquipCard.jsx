@@ -1,17 +1,20 @@
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function EquipCard() {
+function EquipCard({ id, name, tag, equipament, local, image }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '18rem' }} key={ id }>
+      <Card.Img variant="top" src={ image } />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
+        <Card.Title>{ name }</Card.Title>
+        {/* <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        </Card.Text> */}
+        <Card.Text>{`TAG: ${ tag }`}</Card.Text>
+        <Card.Text>{`Equipamento: ${equipament}`}</Card.Text>
+        <Card.Text>{`Setor: ${local}`}</Card.Text>
+        {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>
     </Card>
   );

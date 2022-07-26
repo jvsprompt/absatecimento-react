@@ -1,44 +1,35 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import EquipCard from '../components/EquipCard';
+import Loading from '../components/Loading';
 
 import EquipamentsFile from '../data/equipaments.json';
 
-// URL DA API: /movie/now_playing?api_key=28fc232cc001c31e8a031f419d0a14ca&language=pt-BR
-
 function Equipaments() {
   const [equips, setEquips] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function loadEquips() {
-
+    const loadEquips = async () => {
       setEquips(EquipamentsFile)
-      setLoading(false);
+      setIsLoading(false);
     }
     loadEquips();
   }, [])
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <h2>Carregando...</h2>
-      </div>
-    )
-  }
-
-  return (
+  return isLoading ? <Loading/> : (
     <div className="container">
       <div className="lista-filmes" charset="utf-8">
-        {equips.map((filme) => {
+        {equips.map((eq) => {
           return (
-            <article key={filme.id}>
-              <strong>{`000${filme.name}`}</strong>
-              <strong>{`TAG: ${filme.tag}`}</strong>
-              <strong>{`Equipamento: ${filme.equipamento}`}</strong>
-              <strong>{`Setor: ${filme.setor}`}</strong>
-              <img src={filme.image} alt={filme.name} />
-              <Link to="/public/"></Link>
-            </article>
+            <EquipCard
+              id={eq.id}
+              name={eq.name}
+              tag={eq.tag}
+              equipament={eq.equipamento}
+              local={eq.setor}
+              image={eq.image}
+            />
           )
         })}
       </div>
