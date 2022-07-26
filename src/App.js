@@ -13,7 +13,7 @@ function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Form />} />
+          <Route path="/formulario" element={<Form />} />
           <Route path="/equipamentos" element={<Equipaments />} />
         </Routes>
       </BrowserRouter>
