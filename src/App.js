@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppProvider from './context/AppProvider';
 
+import Home from './pages/Home';
 import Form from './pages/Form';
 import Equipaments from './pages/Equipaments';
 
@@ -13,6 +14,7 @@ function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/formulario" element={<Form />} />
           <Route path="/equipamentos" element={<Equipaments />} />
         </Routes>
