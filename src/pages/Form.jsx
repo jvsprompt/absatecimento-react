@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
 import InputText from '../components/InputText';
+import submitForm from '../utils/submitForm';
+
 
 function Form() {
   const [encarregadoValue, setEncarregadoValue] = useState('');
@@ -15,11 +17,32 @@ function Form() {
   const [osValue, setOsValue] = useState('');
   const [materiaisValue, setMateriaisValue] = useState('');
 
+  const entry = {
+    ecarregado: 'entry.848539894',
+    servico: 'entry.1136451657',
+    unidade: 'entry.275485717',
+    
+  }
+
+  const sendData = () => {
+    const url = 'fwsfwef';
+    const dataToPost = new FormData();
+
+    dataToPost.append(entry.ecarregado, encarregadoValue);
+    dataToPost.append('', servicosValue);
+    dataToPost.append('', dataLevantValue);
+    dataToPost.append('', unidadesValue);
+    dataToPost.append('', setorValue);
+    dataToPost.append('', osValue);
+    dataToPost.append('', materiaisValue);
+
+    submitForm(url, dataToPost);
+  };
+
   return (
     <div className='main-div'>
       <InputDropdown
         name='ENCARREGADO'
-        entry=''
         value={encarregadoValue}
         change={setEncarregadoValue}
         items={['ENCARREGADO 1', 'ENCARREGADO 2', 'ENCARREGADO 3']}
@@ -27,7 +50,6 @@ function Form() {
       />
       <InputDropdown
         name='SERVIÇO'
-        entry=''
         value={servicosValue}
         change={setServicosValue}
         items={['SERVIÇO 1', 'SERVIÇO 2', 'SERVIÇO 3']}
@@ -35,28 +57,24 @@ function Form() {
       />
       <InputDate
         name='DATA DE LEVANTAMENTO'
-        entry=''
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
       />
       {/* <InputDate
         name='1ª DATA DE EXECUÇÃO'
-        entry=''
         value={data1ExValue}
         change={setData1ExValue}
         localStore={false}
       />
       <InputDate
         name='2ª DATA DE EXECUÇÃO'
-        entry=''
         value={data2ExValue}
         change={setData2ExValue}
         localStore={false}
       /> */}
       <InputDropdown
         name='UNIDADE'
-        entry=''
         value={unidadesValue}
         change={setUnidadesValue}
         items={['UNIDADE 1', 'UNIDADE 2', 'UNIDADE 3']}
@@ -64,25 +82,23 @@ function Form() {
       />
       <InputText
         name='SETOR'
-        entry=''
         value={setorValue}
         change={setSetorValue}
         localStore={false}
       />
       <InputText
         name='OS'
-        entry=''
         value={osValue}
         change={setOsValue}
         localStore={false}
       />
       <InputText
         name='MATERIAIS'
-        entry=''
         value={materiaisValue}
         change={setMateriaisValue}
         localStore={false}
       />
+      <button type="submit" onClick={sendData}>Enviar</button>
     </div>
   );
 }
