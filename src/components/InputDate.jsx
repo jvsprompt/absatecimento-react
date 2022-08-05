@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import removeSpaces from '../utils/removeSpaces';
 
-function InputDate({ name, entry, value, change, localStore }) {
+function InputDate({ name, entry, value, change, localStore, classN }) {
   const labelName = removeSpaces(name);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function InputDate({ name, entry, value, change, localStore }) {
         id={labelName}
         value={value}
         onChange={(e) => updateValue(e)}
-        className='form-control input'
+        className={`form-control input ${classN}`}
       />
     </label>
   );

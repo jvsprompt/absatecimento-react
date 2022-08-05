@@ -85,6 +85,7 @@ function Form() {
         value={setorValue}
         change={setSetorValue}
         localStore={false}
+        maxLen={9}
       />
       <InputText
         name='OS'
