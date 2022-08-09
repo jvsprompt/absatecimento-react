@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import removeSpaces from '../utils/removeSpaces';
 
-function InputText({ name, entry, value, change, localStore }) {
+function InputText({
+  name, entry, value, change, localStore = false, classN, maxLen = 999
+}) {
   const labelName = removeSpaces(name);
 
   useEffect(() => {
@@ -30,7 +32,10 @@ function InputText({ name, entry, value, change, localStore }) {
         id={labelName}
         value={value}
         onChange={(e) => updateValue(e)}
-        className='form-control input'
+        className={`form-control input ${classN}`}
+        maxLength={maxLen}
+        placeholder='DIGITE O SETOR'
+        // minLength={minLen}
       />
     </label>
   );

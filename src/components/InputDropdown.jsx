@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import removeSpaces from '../utils/removeSpaces';
 
-function InputDropdown({ name, entry, value, change, items, localStore = false }) {
+function InputDropdown({ name, entry, value, change, items, localStore = false, classN }) {
   const labelName = removeSpaces(name);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function InputDropdown({ name, entry, value, change, items, localStore = false }
       <select
         name={entry}
         id={labelName}
-        className='form-control input'
+        className={`form-control input ${classN}`}
         onChange={(e) => updateValue(e)}
         value={value}
       >
