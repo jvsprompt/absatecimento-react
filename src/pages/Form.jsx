@@ -80,12 +80,12 @@ function Form() {
         items={['UNIDADE 1', 'UNIDADE 2', 'UNIDADE 3']}
         localStore={false}
       />
-      <InputText
+      <InputDropdown
         name='SETOR'
         value={setorValue}
         change={setSetorValue}
         localStore={false}
-        maxLen={9}
+        items={['SETOR 1', 'SETOR 2', 'SETOR 3']}
       />
       <InputText
         name='OS'
