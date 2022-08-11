@@ -81,12 +81,16 @@ function Form() {
         items={['UPA-BOTAFOGO', 'UPA-COPACABANA', 'UPA-MARÉ', 'UPA-TAQUARA', 'UPA-TIJUCA']}
         localStore={false}
       />
-      <InputText
+      <InputDropdown
         name='SETOR'
         value={setorValue}
         change={setSetorValue}
         localStore={false}
+<<<<<<< HEAD
         maxLen={9}
+=======
+        items={['SETOR 1', 'SETOR 2', 'SETOR 3']}
+>>>>>>> c2b4f09549d3b289d51e40689f03f86ab8b08922
       />
       {/* <InputText
         name='OS'
