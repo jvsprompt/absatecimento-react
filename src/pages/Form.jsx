@@ -24,7 +24,16 @@ function Form() {
     servico: 'entry.1136451657',
     unidade: 'entry.275485717',
     
-  }
+  };
+
+  const getDate = (date) => {
+    const d = new Date(date);
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+
+    return { day, month, year };
+  };
 
   const sendData = () => {
     const url = 'fwsfwef';
@@ -43,15 +52,6 @@ function Form() {
     // dataToPost.append('', materiaisValue);
 
     submitForm(url, dataToPost);
-  };
-
-  const getDate = (date) => {
-    const d = new Date(date);
-    const day = d.getDate();
-    const month = d.getMonth() + 1;
-    const year = d.getFullYear();
-
-    return { day, month, year };
   };
 
   const getSetor = (unidade) => {
