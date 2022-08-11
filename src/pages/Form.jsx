@@ -5,7 +5,7 @@ import InputDropdown from '../components/InputDropdown';
 import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
-
+import { unidades } from '../data/unidades';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
@@ -78,7 +78,7 @@ function Form() {
         name='UNIDADE'
         value={unidadesValue}
         change={setUnidadesValue}
-        items={['UPA-BOTAFOGO', 'UPA-COPACABANA', 'UPA-MARÉ', 'UPA-TAQUARA', 'UPA-TIJUCA']}
+        items={ unidades }
         localStore={false}
       />
       <InputDropdown
@@ -86,11 +86,7 @@ function Form() {
         value={setorValue}
         change={setSetorValue}
         localStore={false}
-<<<<<<< HEAD
-        maxLen={9}
-=======
-        items={['SETOR 1', 'SETOR 2', 'SETOR 3']}
->>>>>>> c2b4f09549d3b289d51e40689f03f86ab8b08922
+        // maxLen={9}
       />
       {/* <InputText
         name='OS'

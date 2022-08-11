@@ -31,10 +31,7 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
         value={value}
         onChange={(e) => updateValue(e)}
         className={`form-control input ${classN}`}
-<<<<<<< HEAD
         placeholder="DD/MM/AAAA"
-=======
->>>>>>> c2b4f09549d3b289d51e40689f03f86ab8b08922
       />
     </label>
   );
