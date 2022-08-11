@@ -13,7 +13,7 @@ function Form() {
   const [dataLevantValue, setDataLevantValue] = useState('');
   // const [data1ExValue, setData1ExValue] = useState('');
   // const [data2ExValue, setData2ExValue] = useState('');
-  const [unidadesValue, setUnidadesValue] = useState('');
+  const [unidadesValue, setUnidadesValue] = useState('UPA-BOTAFOGO');
   const [setorValue, setSetorValue] = useState('');
   // const [osValue, setOsValue] = useState('');
   // const [materiaisValue, setMateriaisValue] = useState('');
@@ -38,6 +38,32 @@ function Form() {
     // dataToPost.append('', materiaisValue);
 
     submitForm(url, dataToPost);
+  };
+
+  const getSetor = () => {
+    if (unidadesValue === '') {
+      return ['Selecione a unidade primeiro'];
+    }
+
+    if (unidadesValue === 'UPA-BOTAFOGO') {
+      return ['Setor de Botafogo 1', 'Setor de Botafogo 2'];
+    }
+
+    if (unidadesValue === 'UPA-COPACABANA') {
+      return ['Setor de Copacabana'];
+    }
+
+    if (unidadesValue === 'UPA-MARÉ') {
+      return ['Setor de Maré'];
+    }
+
+    if (unidadesValue === 'UPA-TAQUARA') {
+      return ['Setor de Taquara'];
+    }
+
+    if (unidadesValue === 'UPA-TIJUCA') {
+      return ['Setor de Tijuca'];
+    }
   };
 
   return (
@@ -85,8 +111,8 @@ function Form() {
         name='SETOR'
         value={setorValue}
         change={setSetorValue}
+        items={getSetor()}
         localStore={false}
-        // maxLen={9}
       />
       {/* <InputText
         name='OS'
