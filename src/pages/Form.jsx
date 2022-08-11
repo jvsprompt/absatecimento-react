@@ -6,6 +6,7 @@ import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
 import { unidades } from '../data/unidades';
+import setor from '../data/setores.json';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
@@ -29,9 +30,13 @@ function Form() {
     const url = 'fwsfwef';
     const dataToPost = new FormData();
 
+    const { day, month, year } = getDate(dataLevantValue);
+
     // dataToPost.append(entry.ecarregado, encarregadoValue);
-    dataToPost.append('', servicosValue);
-    dataToPost.append('', dataLevantValue);
+    dataToPost.append(entry.servico, servicosValue);
+    dataToPost.append('', day);
+    dataToPost.append('', month);
+    dataToPost.append('', year);
     dataToPost.append('', unidadesValue);
     dataToPost.append('', setorValue);
     // dataToPost.append('', osValue);
@@ -40,29 +45,38 @@ function Form() {
     submitForm(url, dataToPost);
   };
 
-  const getSetor = () => {
-    if (unidadesValue === '') {
+  const getDate = (date) => {
+    const d = new Date(date);
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+
+    return { day, month, year };
+  };
+
+  const getSetor = (unidade) => {
+    if (unidade === '') {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidadesValue === 'UPA-BOTAFOGO') {
-      return ['Setor de Botafogo 1', 'Setor de Botafogo 2'];
+    if (unidade === 'UPA-BOTAFOGO') {
+      return setor.botafogo;
     }
 
-    if (unidadesValue === 'UPA-COPACABANA') {
+    if (unidade === 'UPA-COPACABANA') {
       return ['Setor de Copacabana'];
     }
 
-    if (unidadesValue === 'UPA-MARÉ') {
+    if (unidade === 'UPA-MARÉ') {
       return ['Setor de Maré'];
     }
 
-    if (unidadesValue === 'UPA-TAQUARA') {
+    if (unidade === 'UPA-TAQUARA') {
       return ['Setor de Taquara'];
     }
 
-    if (unidadesValue === 'UPA-TIJUCA') {
-      return ['Setor de Tijuca'];
+    if (unidade === 'UPA-TIJUCA') {
+      return setor.tijuca;
     }
   };
 
@@ -111,7 +125,7 @@ function Form() {
         name='SETOR'
         value={setorValue}
         change={setSetorValue}
-        items={getSetor()}
+        items={getSetor(unidadesValue)}
         localStore={false}
       />
       {/* <InputText
