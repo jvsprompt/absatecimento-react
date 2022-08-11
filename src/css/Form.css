@@ -21,6 +21,9 @@
 	width: 96%;
 	height: 60px;
 	font-size: 40px;
+	padding: 0px;grid-area: auto;
+	padding-left: 5px;
+	/* text-align: center; */
   }
   
   .text-area{ 

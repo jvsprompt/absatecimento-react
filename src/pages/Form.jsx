@@ -101,6 +101,7 @@ function Form() {
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
+        classN=''
       />
       {/* <InputDate
         name='1ª DATA DE EXECUÇÃO'
