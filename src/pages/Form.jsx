@@ -72,10 +72,6 @@ function Form() {
       return ['Setor de Maré'];
     }
 
-    if (unidade === 'UPA-TAQUARA') {
-      return ['Setor de Taquara'];
-    }
-
     if (unidade === 'UPA-TIJUCA') {
       return setor.tijuca;
     }
