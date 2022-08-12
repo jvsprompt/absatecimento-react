@@ -95,13 +95,14 @@ function Form() {
         change={setServicosValue}
         items={['PLANEJADO', 'EMERGÊNCIA']}
         localStore={false}
+        classN='Input2 '
       />
       <InputDate
         name='DATA DE LEVANTAMENTO'
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
-        classN=''
+        classN='input2 '
       />
       {/* <InputDate
         name='1ª DATA DE EXECUÇÃO'
@@ -144,6 +145,7 @@ function Form() {
         rows='6'
         maxLen={1500}
         // minLen={9}
+        classN='input2 '
       />
 
       <button className="myButton" type="submit" onClick={sendData}>Enviar</button>
