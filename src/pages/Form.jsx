@@ -102,7 +102,7 @@ function Form() {
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
-        classN='input2 '
+        // classN='input2 '
       />
       {/* <InputDate
         name='1ª DATA DE EXECUÇÃO'
@@ -145,7 +145,7 @@ function Form() {
         rows='6'
         maxLen={1500}
         // minLen={9}
-        classN='input2 '
+        // classN='input2 '
       />
 
       <button className="myButton" type="submit" onClick={sendData}>Enviar</button>
