@@ -57,16 +57,20 @@ function Form() {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidade === 'UPA-BOTAFOGO') {
+    if (unidade === 'UPA - BOTAFOGO') {
       return setor.botafogo;
     }
 
-    if (unidade === 'UPA-COPACABANA') {
+    if (unidade === 'UPA - COPACABANA') {
       return setor.copacabana;
     }
 
-    if (unidade === 'UPA-MARÉ') {
+    if (unidade === 'UPA - MARÉ') {
       return setor.mare;
+    }
+
+    if (unidade === '5.2 - ACADEMIA CARIOCA') {
+      return setor.ac52;
     }
   };
 
