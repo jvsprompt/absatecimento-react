@@ -6,6 +6,8 @@ import normalizeString from '../utils/normalizeString';
 
 import EquipamentsFile from '../data/equipaments.json';
 
+import '../css/Equipaments.css';
+
 function Equipaments() {
   const [equips, setEquips] = useState([]);
   const [filteredEquips, setFilteredEquips] = useState([]);

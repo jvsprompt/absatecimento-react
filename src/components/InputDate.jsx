@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+
 import removeSpaces from '../utils/removeSpaces';
+
+import "react-datepicker/dist/react-datepicker.css";
 
 function InputDate({ name, entry, value, change, localStore, classN }) {
   const labelName = removeSpaces(name);
@@ -33,6 +37,16 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
         className={`form-control input ${classN}`}
         placeholder="DD/MM/AAAA"
       />
+      {/* <DatePicker
+        selected={value}
+        onChange={(e) => updateValue(e)}
+        className={`form-control input ${classN}`}
+        type='date'
+        name={entry}
+        id={labelName}
+        dateFormat='dd/MM/yyyy'
+      // locale='pt-BR'
+      /> */}
     </label>
   );
 }

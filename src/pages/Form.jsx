@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
-import InputText from '../components/InputText';
+// import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
 import { unidades } from '../data/unidades';
 import setor from '../data/setores.json';
 
+import '../css/Form.css';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
   const [servicosValue, setServicosValue] = useState('');
-  const [dataLevantValue, setDataLevantValue] = useState('');
+  const [dataLevantValue, setDataLevantValue] = useState(new Date());
   // const [data1ExValue, setData1ExValue] = useState('');
   // const [data2ExValue, setData2ExValue] = useState('');
   const [unidadesValue, setUnidadesValue] = useState('UPA-BOTAFOGO');
