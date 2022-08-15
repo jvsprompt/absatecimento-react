@@ -8,8 +8,6 @@ import FuelRegistration from './pages/FuelRegistration';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
-import './css/Form.css';
-import './css/Equipaments.css';
 
 function App() {
   return (

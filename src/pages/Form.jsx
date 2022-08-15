@@ -8,6 +8,7 @@ import submitForm from '../utils/submitForm';
 import { unidades } from '../data/unidades';
 import setor from '../data/setores.json';
 
+import './css/Form.css';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
