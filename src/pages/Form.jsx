@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
 // import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
-import { unidades } from '../data/unidades';
+import unidades from '../data/unidades.json';
 import setor from '../data/setores.json';
+import servico from '../data/servicos.json';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
-  const [servicosValue, setServicosValue] = useState('');
+  const [servicosValue, setServicosValue] = useState(servico[0]);
   const [dataLevantValue, setDataLevantValue] = useState(new Date());
   // const [data1ExValue, setData1ExValue] = useState('');
   // const [data2ExValue, setData2ExValue] = useState('');
-  const [unidadesValue, setUnidadesValue] = useState('UPA-BOTAFOGO');
+  const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
   const [setorValue, setSetorValue] = useState('');
   // const [osValue, setOsValue] = useState('');
   const [materiaisValue, setMateriaisValue] = useState('');
@@ -68,8 +69,10 @@ function Form() {
     console.log('materiaisValue =>', materiaisValue);
 
     console.log('data =>', dataToPost);
-    
+
     submitForm(url, dataToPost);
+
+    alert('Enviado!');
   };
 
   const getSetor = (unidade) => {
@@ -91,6 +94,11 @@ function Form() {
 
   };
 
+  useEffect(() => {
+    const setor1 = getSetor(unidadesValue)[0];
+    setSetorValue(setor1)
+  }, []);
+
   return (
     <div className='main-div'>
       {/* <InputDropdown
@@ -104,7 +112,7 @@ function Form() {
         name='SERVIÇO'
         value={servicosValue}
         change={setServicosValue}
-        items={['PLANEJADO', 'EMERGÊNCIA']}
+        items={servico}
         localStore={false}
         classN='Input2 '
       />
