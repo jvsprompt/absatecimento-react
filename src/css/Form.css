@@ -8,6 +8,8 @@
 	font-size: 40px;
 	width: 99%;
 	margin: 20px auto auto auto;
+	color: #1788ec;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .block {
@@ -16,14 +18,16 @@
   }
   
   .input {
+	/* text-align: center; */
 	margin-bottom: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 96%;
 	height: 60px;
-	font-size: 40px;
+	font-size: 34px;
 	padding: 0px;
-	padding-left: 5px;
+	padding-left: 30px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	/* text-align: center; */
 	/* display: inline-block; */
   }
@@ -37,6 +41,7 @@
 	font-size: 40px;
 	padding: 0px;
 	padding-left: 5px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	/* text-align: center; */
 	/* display: inline-block; */
   }
@@ -44,6 +49,7 @@
   .text-area{ 
 	display: block;
 	height: auto;
+	
   }
   
   .myButton {

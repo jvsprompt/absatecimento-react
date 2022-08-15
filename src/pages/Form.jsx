@@ -144,7 +144,6 @@ function Form() {
         // minLen={9}
         // classN='input2 '
       />
-
       <button className="myButton" type="submit" onClick={sendData}>Enviar</button>
 <div className='botton'></div>
     </div>
