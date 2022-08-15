@@ -18,13 +18,21 @@ function Form() {
   const [unidadesValue, setUnidadesValue] = useState('UPA-BOTAFOGO');
   const [setorValue, setSetorValue] = useState('');
   // const [osValue, setOsValue] = useState('');
-  // const [materiaisValue, setMateriaisValue] = useState('');
+  const [materiaisValue, setMateriaisValue] = useState('');
 
   const entry = {
-    ecarregado: 'entry.848539894',
+    // ecarregado: 'entry.848539894',
     servico: 'entry.1136451657',
+    date: 'entry.1309448216',
     unidade: 'entry.275485717',
-    
+    setor: 'entry.1073286246',
+    materiais: 'entry.1986892611',
+    os: 'entry.1053084165',
+
+    day: 'entry.1309448216_day',
+    month: 'entry.1309448216_month',
+    year: 'entry.1309448216_year',
+
   };
 
   const getDate = (date) => {
@@ -37,21 +45,31 @@ function Form() {
   };
 
   const sendData = () => {
-    const url = 'fwsfwef';
+    const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdEkBoaxNY5D8JJqKmBwcpcJHVfhJmMvigYJIsvAN5FdKmCoQ/formResponse'
     const dataToPost = new FormData();
 
     const { day, month, year } = getDate(dataLevantValue);
+    const date = `${day}/${month}/${year}`
 
     // dataToPost.append(entry.ecarregado, encarregadoValue);
     dataToPost.append(entry.servico, servicosValue);
-    dataToPost.append('', day);
-    dataToPost.append('', month);
-    dataToPost.append('', year);
-    dataToPost.append('', unidadesValue);
-    dataToPost.append('', setorValue);
-    // dataToPost.append('', osValue);
-    // dataToPost.append('', materiaisValue);
+    // dataToPost.append(entry.date, date);
+    dataToPost.append(entry.os, 'Abrir Chamado');
+    dataToPost.append(entry.day, day);
+    dataToPost.append(entry.month, month);
+    dataToPost.append(entry.year, year);
+    dataToPost.append(entry.unidade, unidadesValue);
+    dataToPost.append(entry.setor, setorValue);
+    dataToPost.append(entry.materiais, materiaisValue);
 
+    console.log('servicosValue =>', servicosValue);
+    console.log('date =>', date);
+    console.log('unidadesValue =>', unidadesValue);
+    console.log('setorValue =>', setorValue);
+    console.log('materiaisValue =>', materiaisValue);
+
+    console.log('data =>', dataToPost);
+    
     submitForm(url, dataToPost);
   };
 
@@ -65,16 +83,13 @@ function Form() {
     }
 
     if (unidade === 'UPA-COPACABANA') {
-      return ['Setor de Copacabana'];
+      return setor.copacabana;
     }
 
     if (unidade === 'UPA-MARÉ') {
-      return ['Setor de Maré'];
+      return setor.mare;
     }
 
-    if (unidade === 'UPA-TIJUCA') {
-      return setor.tijuca;
-    }
   };
 
   return (
@@ -99,7 +114,7 @@ function Form() {
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
-        // classN='input2 '
+      // classN='input2 '
       />
       {/* <InputDate
         name='1ª DATA DE EXECUÇÃO'
@@ -117,7 +132,7 @@ function Form() {
         name='UNIDADE'
         value={unidadesValue}
         change={setUnidadesValue}
-        items={ unidades }
+        items={unidades}
         localStore={false}
       />
       <InputDropdown
@@ -135,17 +150,17 @@ function Form() {
       /> */}
       <InputTextArea
         name='MATERIAIS'
-        // value={materiaisValue}
-        // change={setMateriaisValue}
-        // localStore={false}
+        value={materiaisValue}
+        change={setMateriaisValue}
+        localStore={false}
         cols='30'
         rows='6'
         maxLen={1500}
-        // minLen={9}
-        // classN='input2 '
+      // minLen={9}
+      // classN='input2 '
       />
       <button className="myButton" type="submit" onClick={sendData}>Enviar</button>
-<div className='botton'></div>
+      <div className='botton'></div>
     </div>
 
   );
