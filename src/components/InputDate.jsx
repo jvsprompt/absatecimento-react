@@ -19,7 +19,7 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
     change(e);
 
     if (localStore === true) {
-      localStorage.setItem(labelName, v);
+      localStorage.setItem(labelName, e);
       console.log('local storage saved [ OK! ]');
     }
   }
