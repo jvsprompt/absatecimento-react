@@ -28,7 +28,7 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
   return (
     <label htmlFor={labelName} className='block'>
       <span>{name}</span>
-      {/* <input
+      <input
         type='date'
         name={entry}
         id={labelName}
@@ -36,8 +36,8 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
         onChange={(e) => updateValue(e)}
         className={`form-control input ${classN}`}
         placeholder="DD/MM/AAAA"
-      /> */}
-      <DatePicker
+      />
+      {/* <DatePicker
         selected={value}
         onChange={(e) => updateValue(e)}
         className={`form-control input ${classN}`}
@@ -46,7 +46,7 @@ function InputDate({ name, entry, value, change, localStore, classN }) {
         id={labelName}
         dateFormat='dd/MM/yyyy'
       // locale='pt-BR'
-      />
+      /> */}
     </label>
   );
 }
