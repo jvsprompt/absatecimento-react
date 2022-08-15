@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
-import InputText from '../components/InputText';
+// import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
 import { unidades } from '../data/unidades';
 import setor from '../data/setores.json';
 
-import './css/Form.css';
+import '../css/Form.css';
 
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
