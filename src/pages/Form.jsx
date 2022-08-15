@@ -12,7 +12,7 @@ import setor from '../data/setores.json';
 function Form() {
   // const [encarregadoValue, setEncarregadoValue] = useState('');
   const [servicosValue, setServicosValue] = useState('');
-  const [dataLevantValue, setDataLevantValue] = useState('');
+  const [dataLevantValue, setDataLevantValue] = useState(new Date());
   // const [data1ExValue, setData1ExValue] = useState('');
   // const [data2ExValue, setData2ExValue] = useState('');
   const [unidadesValue, setUnidadesValue] = useState('UPA-BOTAFOGO');
