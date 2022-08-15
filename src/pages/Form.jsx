@@ -52,33 +52,6 @@ function Form() {
     return true;
   };
 
-  const sendData = () => {
-    const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdEkBoaxNY5D8JJqKmBwcpcJHVfhJmMvigYJIsvAN5FdKmCoQ/formResponse'
-    const dataToPost = new FormData();
-
-    const testData = validateData();
-
-    if (testData === true) {
-      const { day, month, year } = getDate(dataLevantValue);
-      // const date = `${day}/${month}/${year}`
-
-      // dataToPost.append(entry.ecarregado, encarregadoValue);
-      dataToPost.append(entry.servico, servicosValue);
-      // dataToPost.append(entry.date, date);
-      dataToPost.append(entry.os, 'Abrir Chamado');
-      dataToPost.append(entry.day, day);
-      dataToPost.append(entry.month, month);
-      dataToPost.append(entry.year, year);
-      dataToPost.append(entry.unidade, unidadesValue);
-      dataToPost.append(entry.setor, setorValue);
-      dataToPost.append(entry.materiais, materiaisValue);
-
-      submitForm(url, dataToPost);
-      return alert('Enviado!');
-    }
-    alert(testData);
-  };
-
   const getSetor = (unidade) => {
     if (unidade === '') {
       return ['Selecione a unidade primeiro'];
@@ -95,12 +68,44 @@ function Form() {
     if (unidade === 'UPA-MARÉ') {
       return setor.mare;
     }
+  };
 
+  const setor1 = getSetor(unidadesValue)[0];
+
+  const sendData = () => {
+    const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdEkBoaxNY5D8JJqKmBwcpcJHVfhJmMvigYJIsvAN5FdKmCoQ/formResponse'
+    const dataToPost = new FormData();
+
+    const testData = validateData();
+
+    if (testData === true) {
+      const { day, month, year } = getDate(dataLevantValue);
+      const materialUpper = materiaisValue.toUpperCase();
+     
+      dataToPost.append(entry.servico, servicosValue);
+      dataToPost.append(entry.os, 'ABRIR CHAMADO');
+      dataToPost.append(entry.day, day);
+      dataToPost.append(entry.month, month);
+      dataToPost.append(entry.year, year);
+      dataToPost.append(entry.unidade, unidadesValue);
+      dataToPost.append(entry.setor, setorValue);
+      dataToPost.append(entry.materiais, materialUpper);
+
+      submitForm(url, dataToPost);
+
+      setServicosValue(servico[0]);
+      setDataLevantValue(new Date());
+      setUnidadesValue(unidades[0]);
+      setSetorValue(setor1)
+      setMateriaisValue('');
+
+      return alert('Enviado!');
+    }
+    alert(testData);
   };
 
   useEffect(() => {
-    const setor1 = getSetor(unidadesValue)[0];
-    setSetorValue(setor1)
+    setSetorValue(setor1);
   }, []);
 
   return (

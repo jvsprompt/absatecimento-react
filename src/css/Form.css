@@ -24,9 +24,9 @@
 	margin-right: auto;
 	width: 96%;
 	height: 60px;
-	font-size: 34px;
+	font-size: 38px;
 	padding: 0px;
-	padding-left: 30px;
+	padding-left: 10px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	/* text-align: center; */
 	/* display: inline-block; */
@@ -61,7 +61,7 @@
 	  display:inline-block;
 	  cursor:pointer;
 	  color:#ffffff;
-	  font-family:Arial;
+	  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	  font-size:15px;
 	  padding:9px 23px;
 	  text-decoration:none;
