@@ -3,10 +3,17 @@
 	padding: 1px;
   }
   
-  /* .test {
-	margin: 8px 0px 0px 28px ; 
-	width: 1416px ;
-  } */
+  .test {
+	/* margin-bottom: 10px; */
+	margin-top: 12px;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto; 
+	width: 96%;
+	height: 80px;
+	vertical-align: middle ;
+	font-size: 30px;
+  }
   .main-div {
 	text-align: center;
 	font-size: 40px;
