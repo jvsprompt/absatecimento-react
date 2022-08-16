@@ -72,6 +72,16 @@ function Form() {
     if (unidade === '5.2 - ACADEMIA CARIOCA') {
       return setor.ac52;
     }
+
+    return ['Não há setores disponíveis'];
+  };
+
+  const restoreDefaultValues = () => {
+    setServicosValue(servico[0]);
+    setDataLevantValue(new Date());
+    setUnidadesValue(unidades[0]);
+    setSetorValue(setor1)
+    setMateriaisValue('');
   };
 
   const setor1 = getSetor(unidadesValue)[0];
@@ -85,7 +95,7 @@ function Form() {
     if (testData === true) {
       const { day, month, year } = getDate(dataLevantValue);
       const materialUpper = materiaisValue.toUpperCase();
-     
+
       dataToPost.append(entry.servico, servicosValue);
       dataToPost.append(entry.os, 'ABRIR CHAMADO');
       dataToPost.append(entry.day, day);
@@ -97,20 +107,29 @@ function Form() {
 
       submitForm(url, dataToPost);
 
-      setServicosValue(servico[0]);
-      setDataLevantValue(new Date());
-      setUnidadesValue(unidades[0]);
-      setSetorValue(setor1)
-      setMateriaisValue('');
+      restoreDefaultValues();
 
       return alert('Enviado!');
     }
     alert(testData);
   };
 
+  // useEffect(() => {
+  //   setSetorValue(setor1);
+  // }, []);
+
   useEffect(() => {
     setSetorValue(setor1);
-  }, []);
+  }, [unidadesValue]);
+
+  useEffect(() => {
+    console.log('servicos =>', servicosValue);
+    console.log('dataLevant =>', dataLevantValue);
+    console.log('unidades =>', unidadesValue);
+    console.log('setor =>', setorValue);
+    console.log('mateirais =>', materiaisValue);
+    console.log('');
+  });
 
   return (
     <div className='main-div'>
@@ -127,7 +146,7 @@ function Form() {
         change={setServicosValue}
         items={servico}
         localStore={false}
-        classN='Input2 '
+      // classN='Input2 '
       />
       <InputDate
         name='DATA DE LEVANTAMENTO'
