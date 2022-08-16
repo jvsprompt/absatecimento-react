@@ -164,13 +164,10 @@ function Form() {
         rows='6'
         maxLen={1500}
       />
-      <div className='test'>
       <div className="d-grid gap-2" >
       <Button variant="primary" size="" active type="submit" value="Submit" onClick={sendData}>Enviar</Button>
       {/* className="myButton" type="submit" onClick={sendData} */}
       </div>
-      </div>
-
       <div className='botton'></div>
     </div>
 
