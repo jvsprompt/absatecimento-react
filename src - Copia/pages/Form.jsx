@@ -8,7 +8,6 @@ import submitForm from '../utils/submitForm';
 import unidades from '../data/unidades.json';
 import setor from '../data/setores.json';
 import servico from '../data/servicos.json';
-import Button from 'react-bootstrap/Button';
 
 function Form() {
   const [servicosValue, setServicosValue] = useState(servico[0]);
@@ -137,7 +136,7 @@ function Form() {
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
-      // classN='input2 '
+      classN='input2 '
       />
             <div></div>
             
@@ -164,13 +163,7 @@ function Form() {
         rows='6'
         maxLen={1500}
       />
-      <div className='test'>
-      <div className="d-grid gap-2" >
-      <Button variant="primary" size="" active type="submit" value="Submit" onClick={sendData}>Enviar</Button>
-      {/* className="myButton" type="submit" onClick={sendData} */}
-      </div>
-      </div>
-
+      <button className="myButton" type="submit" onClick={sendData}>Enviar</button>
       <div className='botton'></div>
     </div>
 

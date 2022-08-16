@@ -3,12 +3,8 @@
 	padding: 1px;
   }
   
-  .test {
-	margin: 8px 0px 0px 28px ; 
-	width: 1416px ;
-  }
   .main-div {
-	text-align: center;
+	/* text-align: center; */
 	font-size: 40px;
 	width: 99%;
 	margin: 20px auto auto auto;
@@ -18,14 +14,15 @@
   
   .block {
 	  display: block;
-	/* display: inline-block; */
+	display: inline-block;
   }
   
   .input {
 	/* text-align: center; */
-	margin-bottom: 10px;
+	margin: 0px 0px 0px 0px ;
+	/* margin-bottom: 10px;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: auto; */
 	width: 96%;
 	height: 60px;
 	font-size: 38px;
@@ -37,10 +34,8 @@
   }
   
   .input2 {
-	margin-bottom: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 9%;
+	margin: 0px 0px 0px 100px ;
+	width: 50%;
 	height: 60px;
 	font-size: 40px;
 	padding: 0px;
