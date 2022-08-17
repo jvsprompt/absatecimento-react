@@ -3,6 +3,7 @@ import AppProvider from './context/AppProvider';
 
 import Home from './pages/Home';
 import Form from './pages/Form';
+import Form2 from './pages/Form2';
 import Equipaments from './pages/Equipaments';
 import FuelRegistration from './pages/FuelRegistration';
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/formulario" element={<Form />} />
+          <Route path="/formulario2" element={<Form2 />} />
           <Route path="/equipamentos" element={<Equipaments />} />
           <Route path="/abastecimento" element={<FuelRegistration />} />
         </Routes>

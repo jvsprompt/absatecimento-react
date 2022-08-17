@@ -52,16 +52,88 @@ function Form() {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidade === 'UPA - BOTAFOGO') {
+    if (unidade === '2.2 - CMS HÉLIO PELLEGRINO') {
+      return setor.heliopellegrino22;
+    }
+
+    if (unidade === '2.2 - CMS NILZA ROSA') {
       return setor.botafogo;
     }
 
-    if (unidade === 'UPA - COPACABANA') {
-      return setor.copacabana;
+    if (unidade === '3.1 - CF ADIB JATENE') {
+      return setor.botafogo;
     }
 
-    if (unidade === 'UPA - MARÉ') {
-      return setor.mare;
+    if (unidade === '3.1 - CF ALOYSIO AUGUSTO NOVIS') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF ASSIS VALENTE') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF AUGUSTO BOAL') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF EIDIMIR THIAGO DE SOUZA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF HEITOR DOS PRAZERES') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF JOAOSINHO TRINTA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF MARIA SEBASTIANA DE OLIVEIRA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF NILDA CAMPOS DE LIMA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF WILMA COSTA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CF ZILDA ARNS') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS JOSÉ BREVES DOS SANTOS') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS NAGIB JORGE FARAH') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS NECKER PINTO') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE') {
+      return setor.botafogo;
+    }
+
+    if (unidade === '3.1 - CMS VILA DO JOÃO') {
+      return setor.botafogo;
+    }
+
+    if (unidade === 'TEIAS - CF VICTOR VALLA') {
+      return setor.botafogo;
+    }
+
+    if (unidade === 'TEIAS - CSE GERMANO SINAL FARIA') {
+      return setor.botafogo;
     }
 
     return ['Não há setores disponíveis'];
@@ -135,8 +207,8 @@ function Form() {
         localStore={false}
       // classN='input2 '
       />
-            <div></div>
-            
+      <div></div>
+
       <InputDropdown
         name='UNIDADE'
         value={unidadesValue}
