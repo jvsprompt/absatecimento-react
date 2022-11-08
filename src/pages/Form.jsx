@@ -30,7 +30,7 @@ function Form() {
     day2: 'entry.72998713_day',
     month2: 'entry.72998713_month',
     year2: 'entry.72998713_year',
-    enc:'entry.848539894',
+    enc: 'entry.848539894',
     serv: 'entry.1136451657'
   };
 
@@ -66,19 +66,75 @@ function Form() {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidade === 'UPA - BOTAFOGO') {
-      return setor.botafogo;
+    if (unidade === '2.2 - CMS HÉLIO PELLEGRINO (0807)') {
+      return setor.hp220807;
     }
 
-    if (unidade === 'UPA - COPACABANA') {
-      return setor.copacabana;
+    if (unidade === '2.2 - CMS NILZA ROSA (FORMIGA) (0807)') {
+      return setor.nr220807;
     }
 
-    if (unidade === 'UPA - MARÉ') {
-      return setor.mare;
+    if (unidade === '3.1 - CF ADIB JATENE (0808)') {
+      return setor.aj310808;
     }
 
-    return ['Não há setores disponíveis'];
+    if (unidade === '3.1 - CF ALOYSIO AUGUSTO NOVIS (0808)') {
+      return setor.aan310808;
+    }
+
+    if (unidade === '3.1 - CF ASSIS VALENTE (0808)') {
+      return setor.av310808;
+    }
+
+    if (unidade === '3.1 - CF AUGUSTO BOAL (0808)') {
+      return setor.ab310808;
+    }
+
+    if (unidade === '3.1 - CF EIDIMIR THIAGO DE SOUZA (0808)') {
+      return setor.ets310808;
+    }
+
+    if (unidade === '3.1 - CF HEITOR DOS PRAZERES (0808)') {
+      return setor.hdp310808;
+    }
+
+    if (unidade === '3.1 - CF JOAOSINHO TRINTA (0808)') {
+      return setor.jt310808;
+    }
+
+    if (unidade === '3.1 - CF MARIA SEBASTIANA DE OLIVEIRA (0808)') {
+      return setor.mso310808;
+    }
+
+    if (unidade === '3.1 - CF NILDA CAMPOS DE LIMA (0808)') {
+      return setor.ncdl310808;
+    }
+
+    if (unidade === '3.1 - CF WILMA COSTA (0808)') {
+      return setor.wc310808;
+    }
+
+    if (unidade === '3.1 - CF ZILDA ARNS (0808)') {
+      return setor.za310808;
+    }
+
+    if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ (0808)') {
+      return setor.mtdc310808;
+    }
+
+    if (unidade === '3.1 - CMS NAGIB JORGE FARAH (0808)') {
+      return setor.njf310808;
+    }
+
+    if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE (0808)') {
+      return setor.pjpf310808;
+    }
+
+    if (unidade === '3.1 - CMS VILA DO JOÃO" (0808)') {
+      return setor.vdj310808;
+    }
+
+    return ['NÃO HÁ SETORES DISPONÍVEIS!'];
   };
 
   const restoreDefaultValues = () => {
@@ -141,14 +197,13 @@ function Form() {
   return (
     <div className='main-div'>
 
-    <InputDate
-        name='DATA DE PEDIDO'
+      <InputDate
+        name='DATA DO PEDIDO'
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
       // classN='input2 '
       />
-
       <InputDate
         name='DATA DE ENTREGA'
         value={servicosValue}
@@ -156,9 +211,7 @@ function Form() {
         localStore={false}
       // classN='input2 '
       />
-
-            <div></div>
-            
+      <div></div>
       <InputDropdown
         name='UNIDADE'
         value={unidadesValue}
