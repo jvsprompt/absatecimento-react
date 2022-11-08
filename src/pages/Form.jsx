@@ -118,6 +118,10 @@ function Form() {
       return setor.za310808;
     }
 
+    if (unidade === '3.1 - CMS JOSÉ BREVES DOS SANTOS (0808)') {
+      return setor.jbds310808;
+    }
+
     if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ (0808)') {
       return setor.mtdc310808;
     }
@@ -126,13 +130,26 @@ function Form() {
       return setor.njf310808;
     }
 
+    if (unidade === '3.1 - CMS NECKER PINTO (0808)') {
+      return setor.np310808;
+    }
+
     if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE (0808)') {
       return setor.pjpf310808;
     }
 
-    if (unidade === '3.1 - CMS VILA DO JOÃO" (0808)') {
+    if (unidade === '3.1 - CMS VILA DO JOÃO (0808)') {
       return setor.vdj310808;
     }
+
+    if (unidade === 'TEIAS - CF VICTOR VALLA (0810)') {
+      return setor.vvteias0810;
+    }
+
+    if (unidade === 'TEIAS - CSE GERMANO SINAL FARIA (0810)') {
+      return setor.gsfteias0810;
+    }
+
 
     return ['NÃO HÁ SETORES DISPONÍVEIS!'];
   };
