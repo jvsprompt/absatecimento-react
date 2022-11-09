@@ -7,18 +7,18 @@ import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
 import unidades from '../data/unidades.json';
 import setor from '../data/setores.json';
-// import servico from '../data/servicos.json';
+import servico from '../data/servicos.json';
 import Button from 'react-bootstrap/Button';
 
 function Form() {
-  const [servicosValue, setServicosValue] = useState(new Date());
+  const [servicosValue, setServicosValue] = useState(servico[0]);
   const [dataLevantValue, setDataLevantValue] = useState(new Date());
   const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
   const [setorValue, setSetorValue] = useState('');
   const [materiaisValue, setMateriaisValue] = useState('');
 
   const entry = {
-    servico: 'entry.72998713',
+    servico: 'entry.1136451657',
     date: 'entry.1309448216',
     unidade: 'entry.275485717',
     setor: 'entry.1073286246',
@@ -27,11 +27,7 @@ function Form() {
     day: 'entry.1309448216_day',
     month: 'entry.1309448216_month',
     year: 'entry.1309448216_year',
-    day2: 'entry.72998713_day',
-    month2: 'entry.72998713_month',
-    year2: 'entry.72998713_year',
-    enc: 'entry.848539894',
-    serv: 'entry.1136451657'
+
   };
 
   const getDate = (date) => {
@@ -41,16 +37,6 @@ function Form() {
     const year = d.getFullYear();
 
     return { day, month, year };
-  };
-
-
-  const getDate2 = (date) => {
-    const d2 = new Date(date);
-    const day2 = d2.getDate();
-    const month2 = d2.getMonth() + 1;
-    const year2 = d2.getFullYear();
-
-    return { day2, month2, year2 };
   };
 
   const validateData = () => {
@@ -66,96 +52,95 @@ function Form() {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidade === '2.2 - CMS HÉLIO PELLEGRINO (0807)') {
-      return setor.hp220807;
+    if (unidade === '2.2 - CMS HÉLIO PELLEGRINO') {
+      return setor.heliopellegrino22;
     }
 
-    if (unidade === '2.2 - CMS NILZA ROSA (FORMIGA) (0807)') {
-      return setor.nr220807;
+    if (unidade === '2.2 - CMS NILZA ROSA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF ADIB JATENE (0808)') {
-      return setor.aj310808;
+    if (unidade === '3.1 - CF ADIB JATENE') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF ALOYSIO AUGUSTO NOVIS (0808)') {
-      return setor.aan310808;
+    if (unidade === '3.1 - CF ALOYSIO AUGUSTO NOVIS') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF ASSIS VALENTE (0808)') {
-      return setor.av310808;
+    if (unidade === '3.1 - CF ASSIS VALENTE') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF AUGUSTO BOAL (0808)') {
-      return setor.ab310808;
+    if (unidade === '3.1 - CF AUGUSTO BOAL') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF EIDIMIR THIAGO DE SOUZA (0808)') {
-      return setor.ets310808;
+    if (unidade === '3.1 - CF EIDIMIR THIAGO DE SOUZA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF HEITOR DOS PRAZERES (0808)') {
-      return setor.hdp310808;
+    if (unidade === '3.1 - CF HEITOR DOS PRAZERES') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF JOAOSINHO TRINTA (0808)') {
-      return setor.jt310808;
+    if (unidade === '3.1 - CF JOAOSINHO TRINTA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF MARIA SEBASTIANA DE OLIVEIRA (0808)') {
-      return setor.mso310808;
+    if (unidade === '3.1 - CF MARIA SEBASTIANA DE OLIVEIRA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF NILDA CAMPOS DE LIMA (0808)') {
-      return setor.ncdl310808;
+    if (unidade === '3.1 - CF NILDA CAMPOS DE LIMA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF WILMA COSTA (0808)') {
-      return setor.wc310808;
+    if (unidade === '3.1 - CF WILMA COSTA') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CF ZILDA ARNS (0808)') {
-      return setor.za310808;
+    if (unidade === '3.1 - CF ZILDA ARNS') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS JOSÉ BREVES DOS SANTOS (0808)') {
-      return setor.jbds310808;
+    if (unidade === '3.1 - CMS JOSÉ BREVES DOS SANTOS') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ (0808)') {
-      return setor.mtdc310808;
+    if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS NAGIB JORGE FARAH (0808)') {
-      return setor.njf310808;
+    if (unidade === '3.1 - CMS NAGIB JORGE FARAH') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS NECKER PINTO (0808)') {
-      return setor.np310808;
+    if (unidade === '3.1 - CMS NECKER PINTO') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE (0808)') {
-      return setor.pjpf310808;
+    if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE') {
+      return setor.botafogo;
     }
 
-    if (unidade === '3.1 - CMS VILA DO JOÃO (0808)') {
-      return setor.vdj310808;
+    if (unidade === '3.1 - CMS VILA DO JOÃO') {
+      return setor.botafogo;
     }
 
-    if (unidade === 'TEIAS - CF VICTOR VALLA (0810)') {
-      return setor.vvteias0810;
+    if (unidade === 'TEIAS - CF VICTOR VALLA') {
+      return setor.botafogo;
     }
 
-    if (unidade === 'TEIAS - CSE GERMANO SINAL FARIA (0810)') {
-      return setor.gsfteias0810;
+    if (unidade === 'TEIAS - CSE GERMANO SINAL FARIA') {
+      return setor.botafogo;
     }
 
-
-    return ['NÃO HÁ SETORES DISPONÍVEIS!'];
+    return ['Não há setores disponíveis'];
   };
 
   const restoreDefaultValues = () => {
-    setServicosValue(new Date());
+    setServicosValue(servico[0]);
     setDataLevantValue(new Date());
     setUnidadesValue(unidades[0]);
     setSetorValue(setor1)
@@ -172,19 +157,13 @@ function Form() {
 
     if (testData === true) {
       const { day, month, year } = getDate(dataLevantValue);
-      const { day2, month2, year2 } = getDate2(servicosValue);
       const materialUpper = materiaisValue.toUpperCase();
 
-      // dataToPost.append(entry.servico, servicosValue);
+      dataToPost.append(entry.servico, servicosValue);
       dataToPost.append(entry.os, 'ABRIR CHAMADO');
-      dataToPost.append(entry.enc, ' ');
-      dataToPost.append(entry.serv, ' ');
       dataToPost.append(entry.day, day);
       dataToPost.append(entry.month, month);
       dataToPost.append(entry.year, year);
-      dataToPost.append(entry.day2, day2);
-      dataToPost.append(entry.month2, month2);
-      dataToPost.append(entry.year2, year2);
       dataToPost.append(entry.unidade, unidadesValue);
       dataToPost.append(entry.setor, setorValue);
       dataToPost.append(entry.materiais, materialUpper);
@@ -213,22 +192,23 @@ function Form() {
 
   return (
     <div className='main-div'>
-
+      <InputDropdown
+        name='SERVIÇO'
+        value={servicosValue}
+        change={setServicosValue}
+        items={servico}
+        localStore={false}
+      // classN='Input2 '
+      />
       <InputDate
-        name='DATA DO PEDIDO'
+        name='DATA DE LEVANTAMENTO'
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
       // classN='input2 '
       />
-      <InputDate
-        name='DATA DE ENTREGA'
-        value={servicosValue}
-        change={setServicosValue}
-        localStore={false}
-      // classN='input2 '
-      />
       <div></div>
+
       <InputDropdown
         name='UNIDADE'
         value={unidadesValue}
@@ -237,7 +217,7 @@ function Form() {
         localStore={false}
       />
       <InputDropdown
-        name='EQUIPAMENTO'
+        name='SETOR'
         value={setorValue}
         change={setSetorValue}
         items={getSetor(unidadesValue)}
