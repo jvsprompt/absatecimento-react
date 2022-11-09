@@ -150,6 +150,106 @@ function Form() {
       return setor.gsfteias0810;
     }
 
+    
+    if (unidade === '5.2 - CF AGENOR DE MIRANDA [CAZUZA] (0809)') {
+      return setor.admc0809;
+    }
+
+    if (unidade === '5.2 - CF ALKINDAR SOARES PERREIRA FILHO (0809)') {
+      return setor.aspf0809;
+    }
+
+    if (unidade === '5.2 - CF ANA GONZAGA (0809)') {
+      return setor.ag0809;
+    }
+
+    if (unidade === '5.2 - CF ARTHUR ZANETTI (0809)') {
+      return setor.az0809;
+    }
+
+    if (unidade === '5.2 - CF BRUNO SCHIMIDT (0809)') {
+      return setor.bs0809;
+    }
+
+    if (unidade === '5.2 - CF DALMIR DE ABREU SALGADO (0809)') {
+      return setor.das0809;
+    }
+
+    if (unidade === '5.2 - CF EVERTON DE SOUZA  SANTOS (0809)') {
+      return setor.ess0809;
+    }
+
+    if (unidade === '5.2 - CF HANS JURGEN FERNANDO DOHMANN (0809)') {
+      return setor.hjfd0809;
+    }
+
+    if (unidade === '5.2 - CF ISABELA SEVERO DA SILVA (0809)') {
+      return setor.iss0809;
+    }
+
+    if (unidade === '5.2 - CF LECY RANQUINE (0809)') {
+      return setor.lr0809;
+    }
+
+    if (unidade === '5.2 - CF VALDECIR SALUSTIANO (0809)') {
+      return setor.vs0809;
+    }
+
+    if (unidade === '5.2 - CMS ADÃO PEREIRA NUNES (0809)') {
+      return setor.apn0809;
+    }
+
+    if (unidade === '5.2 - CMS AGUIAR TORRES (0809)') {
+      return setor.at0809;
+    }
+
+    if (unidade === '5.2 - CMS ALVIMAR DE CARVALHO (0809)') {
+      return setor.adc0809;
+    }
+
+    if (unidade === '5.2 - CMS BELIZÁRIO PENNA (0809)') {
+      return setor.bp0809;
+    }
+
+    if (unidade === '5.2 - CMS DR JOSÉ DE PAULA LOPES PONTES (0809)') {
+      return setor.djplp0809;
+    }
+
+    if (unidade === '5.2 - CMS DR OSWALDO VILELLA (0809)') {
+      return setor.dov0809;
+    }
+
+    if (unidade === '5.2 - CMS EDGARD MAGALHÃES (0809)') {
+      return setor.em0809;
+    }
+
+    if (unidade === '5.2 - CMS GARFIELD DE ALMEIDA (0809)') {
+      return setor.gda0809;
+    }
+
+    if (unidade === '5.2 - CMS MAIA BITTENCOURT (0809)') {
+      return setor.mb0809;
+    }
+
+    if (unidade === '5.2 - CMS MANOEL DE ABREU (0809)') {
+      return setor.ma0809;
+    }
+
+    if (unidade === '5.2 - CMS MARIO RODRIGUES CID (0809)') {
+      return setor.mrc0809;
+    }
+
+    if (unidade === '5.2 - CMS MÁRIO VITOR DE ASSIS PACHECO (0809)') {
+      return setor.mvdap0809;
+    }
+
+    if (unidade === '5.2 - CMS RAUL BARROSO (0809)') {
+      return setor.rb0809;
+    }
+
+    if (unidade === '5.2 - CMS VILA DO CÉU (0809)') {
+      return setor.vc0809;
+    }
 
     return ['NÃO HÁ SETORES DISPONÍVEIS!'];
   };
@@ -244,7 +344,7 @@ function Form() {
         localStore={false}
       />
       <InputTextArea
-        name='MATERIAIS'
+        name='MATERIAL'
         value={materiaisValue}
         change={setMateriaisValue}
         localStore={false}

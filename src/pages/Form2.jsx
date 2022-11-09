@@ -5,8 +5,8 @@ import InputDropdown from '../components/InputDropdown';
 // import InputText from '../components/InputText';
 import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
-import unidades from '../data/unidades.json';
-import setor from '../data/setores.json';
+import unidades from '../data/unidades2.json';
+import setor from '../data/setores2.json';
 // import servico from '../data/servicos.json';
 import Button from 'react-bootstrap/Button';
 
@@ -66,88 +66,16 @@ function Form() {
       return ['Selecione a unidade primeiro'];
     }
 
-    if (unidade === '2.2 - CMS HÉLIO PELLEGRINO (0807)') {
-      return setor.hp220807;
+    if (unidade === 'COPPEAD - UFRJ (0822)') {
+      return setor.coppead0822;
     }
 
-    if (unidade === '2.2 - CMS NILZA ROSA (FORMIGA) (0807)') {
-      return setor.nr220807;
+    if (unidade === 'IGUÁ RJ - ADMINISTRATIVO (0818)') {
+      return setor.iguarj0818;
     }
 
-    if (unidade === '3.1 - CF ADIB JATENE (0808)') {
-      return setor.aj310808;
-    }
-
-    if (unidade === '3.1 - CF ALOYSIO AUGUSTO NOVIS (0808)') {
-      return setor.aan310808;
-    }
-
-    if (unidade === '3.1 - CF ASSIS VALENTE (0808)') {
-      return setor.av310808;
-    }
-
-    if (unidade === '3.1 - CF AUGUSTO BOAL (0808)') {
-      return setor.ab310808;
-    }
-
-    if (unidade === '3.1 - CF EIDIMIR THIAGO DE SOUZA (0808)') {
-      return setor.ets310808;
-    }
-
-    if (unidade === '3.1 - CF HEITOR DOS PRAZERES (0808)') {
-      return setor.hdp310808;
-    }
-
-    if (unidade === '3.1 - CF JOAOSINHO TRINTA (0808)') {
-      return setor.jt310808;
-    }
-
-    if (unidade === '3.1 - CF MARIA SEBASTIANA DE OLIVEIRA (0808)') {
-      return setor.mso310808;
-    }
-
-    if (unidade === '3.1 - CF NILDA CAMPOS DE LIMA (0808)') {
-      return setor.ncdl310808;
-    }
-
-    if (unidade === '3.1 - CF WILMA COSTA (0808)') {
-      return setor.wc310808;
-    }
-
-    if (unidade === '3.1 - CF ZILDA ARNS (0808)') {
-      return setor.za310808;
-    }
-
-    if (unidade === '3.1 - CMS JOSÉ BREVES DOS SANTOS (0808)') {
-      return setor.jbds310808;
-    }
-
-    if (unidade === '3.1 - CMS MADRE TERESA DE CALCUTÁ (0808)') {
-      return setor.mtdc310808;
-    }
-
-    if (unidade === '3.1 - CMS NAGIB JORGE FARAH (0808)') {
-      return setor.njf310808;
-    }
-
-    if (unidade === '3.1 - CMS NECKER PINTO (0808)') {
-      return setor.np310808;
-    }
-
-    if (unidade === '3.1 - CMS POLICLINICA JOSÉ PARANHOS FONTENELLE (0808)') {
-      return setor.pjpf310808;
-    }
-
-    if (unidade === '3.1 - CMS VILA DO JOÃO (0808)') {
-      return setor.vdj310808;
-    }
-
-    if (unidade === 'TEIAS - CF VICTOR VALLA (0810)') {
-      return setor.vvteias0810;
-    }
-
-    if (unidade === 'TEIAS - CSE GERMANO SINAL FARIA (0810)') {
-      return setor.gsfteias0810;
+    if (unidade === 'IGUÁ RJ - ELETROMECÂNICA (0797)') {
+      return setor.iguarj0797;
     }
 
 
@@ -230,21 +158,21 @@ function Form() {
       />
       <div></div>
       <InputDropdown
-        name='UNIDADE'
+        name='CONTRATO'
         value={unidadesValue}
         change={setUnidadesValue}
         items={unidades}
         localStore={false}
       />
       <InputDropdown
-        name='EQUIPAMENTO'
+        name='SETOR'
         value={setorValue}
         change={setSetorValue}
         items={getSetor(unidadesValue)}
         localStore={false}
       />
       <InputTextArea
-        name='MATERIAIS'
+        name='MATERIAL'
         value={materiaisValue}
         change={setMateriaisValue}
         localStore={false}
