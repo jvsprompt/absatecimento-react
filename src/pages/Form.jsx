@@ -292,8 +292,17 @@ function Form() {
       submitForm(url, dataToPost);
 
       restoreDefaultValues();
+      
+      if (navigator.onLine){
+        return alert('ENVIADO COM SUCESSO!');
+      }
 
-      return alert('Enviado!');
+      else{
+       alert('NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!');
+      }
+      return('')
+
+
     }
     alert(testData);
   };
@@ -352,6 +361,17 @@ function Form() {
         rows='6'
         maxLen={1500}
       />
+      {/* <button
+  onClick={() => {
+    if (navigator.onLine){
+      alert('you are online dude!');
+    }
+    else{
+     alert('sorry, you are offline');
+    }
+  }}
+> Check connection
+</button> */}
       <Button className="test" variant="primary" size="" active type="submit" value="Submit" onClick={sendData}>Enviar</Button>
       {/* className="myButton" type="submit" onClick={sendData} */}
       <div className='botton'></div>
