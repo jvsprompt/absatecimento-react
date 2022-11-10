@@ -120,8 +120,17 @@ function Form() {
       submitForm(url, dataToPost);
 
       restoreDefaultValues();
+      
+      if (navigator.onLine){
+        return alert('ENVIADO COM SUCESSO!');
+      }
 
-      return alert('Enviado!');
+      else{
+       alert('NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!');
+      }
+      return('')
+
+
     }
     alert(testData);
   };
