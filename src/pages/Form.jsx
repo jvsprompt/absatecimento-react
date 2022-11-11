@@ -292,7 +292,7 @@ function Form() {
       submitForm(url, dataToPost);
 
       restoreDefaultValues();
-      
+
       if (navigator.onLine){
         return alert('ENVIADO COM SUCESSO!');
       }
@@ -339,21 +339,21 @@ function Form() {
       />
       <div></div>
       <InputDropdown
-        name='UNIDADE'
+        name='SELECIONE A UNIDADE'
         value={unidadesValue}
         change={setUnidadesValue}
         items={unidades}
         localStore={false}
       />
       <InputDropdown
-        name='EQUIPAMENTO'
+        name='SELECIONE O EQUIPAMENTO'
         value={setorValue}
         change={setSetorValue}
         items={getSetor(unidadesValue)}
         localStore={false}
       />
       <InputTextArea
-        name='MATERIAL'
+        name='SELECIONE O MATERIAL(S)'
         value={materiaisValue}
         change={setMateriaisValue}
         localStore={false}

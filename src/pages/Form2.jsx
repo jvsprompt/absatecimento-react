@@ -167,21 +167,21 @@ function Form() {
       />
       <div></div>
       <InputDropdown
-        name='CONTRATO'
+        name='SELECIONE O CONTRATO'
         value={unidadesValue}
         change={setUnidadesValue}
         items={unidades}
         localStore={false}
       />
       <InputDropdown
-        name='SETOR'
+        name='SELECIONE O SETOR'
         value={setorValue}
         change={setSetorValue}
         items={getSetor(unidadesValue)}
         localStore={false}
       />
       <InputTextArea
-        name='MATERIAL'
+        name='DIGITE O MATERIAL(S)'
         value={materiaisValue}
         change={setMateriaisValue}
         localStore={false}
