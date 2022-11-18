@@ -17,11 +17,20 @@ function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/formulario" element={<Form />} />
-          <Route path="/formulario2" element={<Form2 />} />
-          <Route path="/equipamentos" element={<Equipaments />} />
-          <Route path="/abastecimento" element={<FuelRegistration />} />
+          <Route exact path="/" element={<Home />} />
+
+          {/* remover quando aplicativo estiver atualizado */}
+          <Route exact path="/formulario" element={<Form />} />
+
+          {/* remover quando aplicativo estiver atualizado */}
+          <Route exact path="/formulario2" element={<Form2 />} />
+
+          <Route exact path="/form/academia" element={<Form />} />
+          <Route exact path="/form/hmon" element={<Form />} />
+          <Route exact path="/form/igua" element={<Form2 />} />
+          <Route exact path="/form/coppead" element={<Form2 />} />
+          <Route exact path="/equipamentos" element={<Equipaments />} />
+          <Route exact path="/abastecimento" element={<FuelRegistration />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
