@@ -82,12 +82,21 @@
 	top: 1px;
 }
 
-.botton {
-	margin: 0px 0px 50px 0px;
-}
-
 .materiais-title {
 	display: block;
+}
+
+.lista-materiais {
+	width: 96%;
+	margin: auto;
+}
+
+.lista-material {
+	text-align: left;
+}
+
+.botao-lista {
+	float: right;
 }
 
 .materiais-input {
@@ -99,4 +108,8 @@
 	display: inline-block;
 	width: 23%;
 	margin-left: 1%;
+}
+
+.botton {
+	margin: 0px 0px 50px 0px;
 }

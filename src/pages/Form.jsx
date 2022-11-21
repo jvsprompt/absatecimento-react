@@ -182,18 +182,20 @@ function Form() {
       />
       <label htmlFor='material' className='block'>
         <span className='materiais-title'>MATERIAIS</span>
-        <ul className='todo-list'>
+        <ul className='lista-materiais'>
           {materialsList.map((item, i) => (
-            <li key={i}>
+            <li key={i} className='lista-material'>
               {item.name}
               <Button
                 onClick={() => removeMaterial(item.id)}
+                className='botao-lista'
               >
                 Apagar
               </Button>
             </li>
           ))}
         </ul>
+        <div className=''/>
         <input
           type='text'
           id='material'
