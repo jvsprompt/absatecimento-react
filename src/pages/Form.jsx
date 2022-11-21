@@ -41,6 +41,7 @@ function Form() {
     setUnidadesValue(unidades[0]);
     setSetorValue(setor1)
     setMateriaisValue('');
+    setMaterialsList([]);
   };
 
   const setor1 = getSetor(unidadesValue)[0];
