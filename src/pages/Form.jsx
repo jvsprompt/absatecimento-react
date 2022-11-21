@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
 // import InputText from '../components/InputText';
-import InputTextArea from '../components/InputTextArea';
+// import InputTextArea from '../components/InputTextArea';
 import submitForm from '../utils/submitForm';
 import unidades from '../data/unidades.json';
-// import servico from '../data/servicos.json';
 import Button from 'react-bootstrap/Button';
 
 import getSetor from '../utils/getSetor';
@@ -17,6 +16,8 @@ function Form() {
   const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
   const [setorValue, setSetorValue] = useState('');
   const [materiaisValue, setMateriaisValue] = useState('');
+  const [materialsList, setMaterialsList] = useState([]);
+  const [mId, setMId] = useState(1);
 
   const entry = {
     servico: 'entry.72998713',
@@ -82,7 +83,6 @@ function Form() {
       const { day2, month2, year2 } = getDate2(servicosValue);
       const materialUpper = materiaisValue.toUpperCase();
 
-      // dataToPost.append(entry.servico, servicosValue);
       dataToPost.append(entry.os, 'ABRIR CHAMADO');
       dataToPost.append(entry.enc, ' ');
       dataToPost.append(entry.serv, ' ');
@@ -113,6 +113,30 @@ function Form() {
     alert(testData);
   };
 
+  const updateMaterialValue = (e) => {
+    const value = e.currentTarget.value;
+    setMateriaisValue(value);
+  };
+
+  const removeMaterial = (id) => {
+    setMaterialsList(
+      materialsList.filter((info) => info.id !== id)
+    );
+  };
+
+  const updateMaterialsList = (value) => {
+    if (!value) {
+      return alert('CAMPO DE MATERIAL NÃO PODE ESTAR VAZIO');
+    }
+    setMaterialsList([
+      ...materialsList,
+      { id: mId, name: value },
+    ]);
+    setMId(mId + 1);
+    setMateriaisValue('');
+    return;
+  };
+
   useEffect(() => {
     setSetorValue(setor1);
   }, [unidadesValue]);
@@ -123,6 +147,7 @@ function Form() {
     console.log('unidades =>', unidadesValue);
     console.log('setor =>', setorValue);
     console.log('mateirais =>', materiaisValue);
+    console.log('materials list =>', materialsList)
     console.log('');
   });
 
@@ -134,16 +159,13 @@ function Form() {
         value={dataLevantValue}
         change={setDataLevantValue}
         localStore={false}
-      // classN='input2 '
       />
       <InputDate
         name='DATA DE ENTREGA'
         value={servicosValue}
         change={setServicosValue}
         localStore={false}
-      // classN='input2 '
       />
-      <div></div>
       <InputDropdown
         name='UNIDADE'
         value={unidadesValue}
@@ -158,28 +180,51 @@ function Form() {
         items={getSetor(unidadesValue)}
         localStore={false}
       />
-      <InputTextArea
-        name='MATERIAL'
-        value={materiaisValue}
-        change={setMateriaisValue}
-        localStore={false}
-        cols='30'
-        rows='6'
-        maxLen={1500}
-      />
-      {/* <button
-  onClick={() => {
-    if (navigator.onLine){
-      alert('you are online dude!');
-    }
-    else{
-     alert('sorry, you are offline');
-    }
-  }}
-> Check connection
-</button> */}
-      <Button className="test" variant="primary" size="" active type="submit" value="Submit" onClick={sendData}>Enviar</Button>
-      {/* className="myButton" type="submit" onClick={sendData} */}
+      <label htmlFor='material' className='block'>
+        <span className='materiais-title'>MATERIAIS</span>
+        <ul className='todo-list'>
+          {materialsList.map((item, i) => (
+            <li key={i}>
+              {item.name}
+              <Button
+                onClick={() => removeMaterial(item.id)}
+              >
+                Apagar
+              </Button>
+            </li>
+          ))}
+        </ul>
+        <input
+          type='text'
+          id='material'
+          value={materiaisValue}
+          onChange={
+            (e) => updateMaterialValue(e)
+          }
+          className='form-control input materiais-input'
+          placeholder='DIGITE O SETOR'
+        />
+        <Button
+          className='input materiais-button'
+          variant='primary'
+          active
+          type='submit'
+          value='Submit'
+          onClick={() => updateMaterialsList(materiaisValue)}
+        >
+          Adicionar
+        </Button>
+      </label>
+      <Button
+        className='test'
+        variant='primary'
+        active
+        type='submit'
+        value='Submit'
+        onClick={sendData}
+      >
+        Enviar
+      </Button>
       <div className='botton'></div>
     </div>
 
