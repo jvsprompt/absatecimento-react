@@ -1,3 +1,5 @@
+export const academiaURI = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdEkBoaxNY5D8JJqKmBwcpcJHVfhJmMvigYJIsvAN5FdKmCoQ/formResponse';
+
 export const ENTRY = {
   servico: 'entry.72998713',
   date: 'entry.1309448216',
