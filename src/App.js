@@ -3,6 +3,7 @@ import AppProvider from './context/AppProvider';
 
 import Home from './pages/Home';
 import FormAcademia from './pages/FormAcademia';
+import FormHMON from './pages/FormHMON';
 import Equipaments from './pages/Equipaments';
 import FuelRegistration from './pages/FuelRegistration';
 
@@ -22,9 +23,9 @@ function App() {
           <Route exact path="/formulario2" element={<Form2 />} /> */}
 
           <Route exact path="/form/academia" element={<FormAcademia />} />
-          {/* <Route exact path="/form/hmon" element={<Form />} />
-          <Route exact path="/form/igua" element={<Form />} />
-          <Route exact path="/form/coppead" element={<Form />} /> */}
+          <Route exact path="/form/hmon" element={<FormHMON />} />
+          {/* <Route exact path="/form/igua" element={<Form />} /> */}
+          {/* <Route exact path="/form/coppead" element={<Form />} /> */}
           <Route exact path="/equipamentos" element={<Equipaments />} />
           <Route exact path="/abastecimento" element={<FuelRegistration />} />
         </Routes>

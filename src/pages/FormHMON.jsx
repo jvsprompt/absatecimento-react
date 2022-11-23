@@ -1,40 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
-import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
-import InputTextArea from '../components/InputTextArea';
+import EquipModal from '../components/EquipModal';
+import InputText from '../components/InputText';
 
 import submitForm from '../utils/submitForm';
 import getSetor from '../utils/getSetor';
 import getDate from '../utils/getDate';
-import validateData from '../utils/validateData';
 
-import { ENTRY as entry, academiaURI } from '../config/strings';
+import { ENTRY_HMON as entry, HMON_URI } from '../config/strings';
 import unidades from '../data/unidades.json';
 
-function Form() {
+function FormHMON() {
   const [servicosValue, setServicosValue] = useState(new Date());
   const [dataLevantValue, setDataLevantValue] = useState(new Date());
   const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
   const [setorValue, setSetorValue] = useState('');
-  const [materiaisValue, setMateriaisValue] = useState('');
+  const [tagValue, setTagValue] = useState('');
   const [materialsList, setMaterialsList] = useState([]);
   const [mId, setMId] = useState(1);
+  const [modalShow, setModalShow] = useState(false);
 
   const restoreDefaultValues = () => {
     setServicosValue(new Date());
     setDataLevantValue(new Date());
     setUnidadesValue(unidades[0]);
     setSetorValue(setor1)
-    setMateriaisValue('');
     setMaterialsList([]);
+  };
+
+  const validateData = (data) => {
+    if (!data) {
+      return 'Lista de materiais não pode estar vazia!'
+    }
+    return true;
   };
 
   const setor1 = getSetor(unidadesValue)[0];
 
   const sendData = () => {
-    const url = academiaURI;
+    const url = HMON_URI;
     const testData = validateData(materialsList);
 
     for (let i = 0; i < materialsList.length; i++) {
@@ -61,7 +67,6 @@ function Form() {
 
         submitForm(url, dataToPost);
       }
-
     }
     restoreDefaultValues();
 
@@ -72,43 +77,19 @@ function Form() {
     }
 };
 
-const updateMaterialValue = (e) => {
-  const value = e.currentTarget.value;
-  setMateriaisValue(value);
-};
-
-const removeMaterial = (id) => {
-  setMaterialsList(
-    materialsList.filter((info) => info.id !== id)
-  );
-};
-
-const updateMaterialsList = (value) => {
-  if (!value) {
-    return alert('CAMPO DE MATERIAL NÃO PODE ESTAR VAZIO');
-  }
-  setMaterialsList([
-    ...materialsList,
-    { id: mId, name: value },
-  ]);
-  setMId(mId + 1);
-  setMateriaisValue('');
-  return;
-};
-
-const renderList = () => {
-  const list = materialsList.map((item, i) => (
-    <li className='lista-material' key={i}>
-      {item.name}
-      <Button className='botao-lista' onClick={
-        () => removeMaterial(item.id)
-      }>
-        Apagar
-      </Button>
-    </li>
-  ));
-  return list;
-};
+// const renderList = () => {
+//   const list = materialsList.map((item, i) => (
+//     <li className='lista-material' key={i}>
+//       {item.name}
+//       <Button className='botao-lista' onClick={
+//         () => removeMaterial(item.id)
+//       }>
+//         Apagar
+//       </Button>
+//     </li>
+//   ));
+//   return list;
+// };
 
 useEffect(() => {
   setSetorValue(setor1);
@@ -126,18 +107,6 @@ useEffect(() => {
 
 return (
   <div className='main-div'>
-    <InputDate
-      name='DATA DO PEDIDO'
-      value={dataLevantValue}
-      change={setDataLevantValue}
-      localStore={false}
-    />
-    <InputDate
-      name='DATA DE ENTREGA'
-      value={servicosValue}
-      change={setServicosValue}
-      localStore={false}
-    />
     <InputDropdown
       name='UNIDADE'
       value={unidadesValue}
@@ -145,14 +114,26 @@ return (
       items={unidades}
       localStore={false}
     />
-    <InputDropdown
+    {/* <InputDropdown
       name='EQUIPAMENTO'
       value={setorValue}
       change={setSetorValue}
       items={getSetor(unidadesValue)}
       localStore={false}
+    /> */}
+
+
+    <InputText name='TAG' value={tagValue} change={setTagValue} />
+    <Button variant="primary" onClick={() => setModalShow(true)}>
+      Selecionar Equipamento
+    </Button>
+    <EquipModal
+      show={modalShow}
+      onHide={() => setModalShow(false)}
     />
-    <label htmlFor='material' className='block'>
+
+
+    {/* <label htmlFor='material' className='block'>
       <span className='materiais-title'>MATERIAIS</span>
       <ul className='lista-materiais'>
         {renderList()}
@@ -175,7 +156,7 @@ return (
       >
         Adicionar
       </Button>
-    </label>
+    </label> */}
     <Button
       className='test'
       variant='primary'
@@ -190,4 +171,4 @@ return (
 );
 }
 
-export default Form;
+export default FormHMON;

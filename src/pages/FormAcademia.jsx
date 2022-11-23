@@ -9,10 +9,10 @@ import submitForm from '../utils/submitForm';
 import getSetor from '../utils/getSetor';
 import getDate from '../utils/getDate';
 
-import { ENTRY as entry, academiaURI } from '../config/strings';
+import { ENTRY_ACADEMIA as entry, ACADEMIA_URI } from '../config/strings';
 import unidades from '../data/unidades.json';
 
-function Form() {
+function FormAcademia() {
   const [servicosValue, setServicosValue] = useState(new Date());
   const [dataLevantValue, setDataLevantValue] = useState(new Date());
   const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
@@ -37,7 +37,7 @@ function Form() {
   const setor1 = getSetor(unidadesValue)[0];
 
   const sendData = () => {
-    const url = academiaURI;
+    const url = ACADEMIA_URI;
     const testData = validateData(materiaisValue);
     const dataToPost = new FormData();
 
@@ -135,4 +135,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default FormAcademia;
