@@ -8,7 +8,10 @@ function Home() {
       <Link to={`/equipamentos`}>Ir para equipamentos</Link>
       <br />
       <br />
-      <Link to={`/formulario`}>Ir para formulário</Link>
+      <Link to={`/form/hmon`}>Ir para formulário HMON</Link>
+      <br />
+      <br />
+      <Link to={`/form/academia`}>Ir para formulário Academia</Link>
       <br />
       <br />
       <Link to={`/abastecimento`}>Ir para abastecimento</Link>

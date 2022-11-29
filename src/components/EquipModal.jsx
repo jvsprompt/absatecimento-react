@@ -17,25 +17,17 @@ function EquipModal(props) {
       <Modal.Body>
         <table>
           <tr>
-            <th>titulo teste 1</th>
-            <th>titulo teste 2</th>
-            <th>titulo teste 3</th>
+            {props.columns.map((data, i) => (
+              <th key={i}>{data}</th>
+            ))}
           </tr>
-          <tr>
-            <td>linha teste 1</td>
-            <td>linha teste 2</td>
-            <td>linha teste 3</td>
-          </tr>
-          <tr>
-            <td>linha teste 1</td>
-            <td>linha teste 2</td>
-            <td>linha teste 3</td>
-          </tr>
-          <tr>
-            <td>linha teste 1</td>
-            <td>linha teste 2</td>
-            <td>linha teste 3</td>
-          </tr>
+          {props.table.map((data, i) => (
+            <tr key={i}>
+              <td>{data.tag}</td>
+              <td>{data.name}</td>
+              {/* <td>{data.unidade}</td> */}
+            </tr>
+          ))}
         </table>
       </Modal.Body>
       <Modal.Footer>

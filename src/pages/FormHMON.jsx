@@ -11,64 +11,60 @@ import getDate from '../utils/getDate';
 
 import { ENTRY_HMON as entry, HMON_URI } from '../config/strings';
 import unidades from '../data/unidades.json';
+import getMateriais from '../utils/getMateriais';
+import Loading from '../components/Loading';
 
 function FormHMON() {
-  const [servicosValue, setServicosValue] = useState(new Date());
-  const [dataLevantValue, setDataLevantValue] = useState(new Date());
-  const [unidadesValue, setUnidadesValue] = useState(unidades[0]);
-  const [setorValue, setSetorValue] = useState('');
-  const [tagValue, setTagValue] = useState('');
-  const [materialsList, setMaterialsList] = useState([]);
-  const [mId, setMId] = useState(1);
   const [modalShow, setModalShow] = useState(false);
+  const [unidadesValue, setUnidadesValue] = useState();
+  const [materiaisValue, setMateriaisValue] = useState([{
+    tag: '0000',
+    name: '0000',
+    unidade: 'UN',
+  }]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const restoreDefaultValues = () => {
-    setServicosValue(new Date());
-    setDataLevantValue(new Date());
-    setUnidadesValue(unidades[0]);
-    setSetorValue(setor1)
-    setMaterialsList([]);
+  const loadMateriaisModal = async () => {
+    await setIsLoading(true);
+    const materiaisF = await getMateriais();
+    setMateriaisValue(materiaisF);
+    setIsLoading(false);
   };
 
-  const validateData = (data) => {
-    if (!data) {
-      return 'Lista de materiais não pode estar vazia!'
-    }
-    return true;
-  };
+  const columns = ['TAG', 'DESCRIÇÃO', 'UNIDADE'];
 
-  const setor1 = getSetor(unidadesValue)[0];
+  // const restoreDefaultValues = () => {
+  //   setServicosValue(new Date());
+  //   setDataLevantValue(new Date());
+  //   setUnidadesValue(unidades[0]);
+  //   setSetorValue(setor1)
+  //   setMaterialsList([]);
+  // };
+
+  // const validateData = (data) => {
+  //   if (!data) {
+  //     return 'Lista de materiais não pode estar vazia!'
+  //   }
+  //   return true;
+  // };
+
 
   const sendData = () => {
     const url = HMON_URI;
-    const testData = validateData(materialsList);
 
-    for (let i = 0; i < materialsList.length; i++) {
-      const dataToPost = new FormData();
-      console.log('index =>', i);
+    // for (let i = 0; i < materialsList.length; i++) {
+    //   const dataToPost = new FormData();
+    //   console.log('index =>', i);
 
-      if (testData === true) {
-        const { day, month, year } = getDate(dataLevantValue);
-        const date = getDate(servicosValue);
-        const materialUpper = materialsList[i].name.toUpperCase();
+    //   if (testData === true) {
+    //     const { day, month, year } = getDate(dataLevantValue);
+    //     const date = getDate(servicosValue);
+    //     // const materialUpper = materialsList[i].name.toUpperCase();
 
-        dataToPost.append(entry.os, 'ABRIR CHAMADO');
-        dataToPost.append(entry.enc, ' ');
-        dataToPost.append(entry.serv, ' ');
-        dataToPost.append(entry.day, day);
-        dataToPost.append(entry.month, month);
-        dataToPost.append(entry.year, year);
-        dataToPost.append(entry.day2, date.day);
-        dataToPost.append(entry.month2, date.month);
-        dataToPost.append(entry.year2, date.year);
-        dataToPost.append(entry.unidade, unidadesValue);
-        dataToPost.append(entry.setor, setorValue);
-        dataToPost.append(entry.materiais, materialUpper);
-
-        submitForm(url, dataToPost);
-      }
-    }
-    restoreDefaultValues();
+    //     submitForm(url, dataToPost);
+    //   }
+    // }
+    // restoreDefaultValues();
 
     if (navigator.onLine) {
       return alert('ENVIADO COM SUCESSO!');
@@ -91,9 +87,9 @@ function FormHMON() {
 //   return list;
 // };
 
-useEffect(() => {
-  setSetorValue(setor1);
-}, [unidadesValue]);
+// useEffect(() => {
+//   setSetorValue(setor1);
+// }, [unidadesValue]);
 
 // useEffect(() => {
 //   console.log('servicos =>', servicosValue);
@@ -104,16 +100,18 @@ useEffect(() => {
 //   console.log('materials list =>', materialsList)
 //   console.log('');
 // });
+  
+  useEffect(() => { loadMateriaisModal() }, [])
 
-return (
+return isLoading ? <Loading /> : (
   <div className='main-div'>
-    <InputDropdown
+    {/* <InputDropdown
       name='UNIDADE'
       value={unidadesValue}
       change={setUnidadesValue}
       items={unidades}
       localStore={false}
-    />
+    /> */}
     {/* <InputDropdown
       name='EQUIPAMENTO'
       value={setorValue}
@@ -123,13 +121,15 @@ return (
     /> */}
 
 
-    <InputText name='TAG' value={tagValue} change={setTagValue} />
+    {/* <InputText name='TAG' value={tagValue} change={setTagValue} /> */}
     <Button variant="primary" onClick={() => setModalShow(true)}>
-      Selecionar Equipamento
+      Selecionar Material
     </Button>
     <EquipModal
       show={modalShow}
       onHide={() => setModalShow(false)}
+      columns={columns}
+      table={materiaisValue}
     />
 
 

@@ -1,0 +1,1 @@
+export const HMON_BACKEND = 'http://localhost:7000';
