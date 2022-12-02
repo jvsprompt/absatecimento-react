@@ -1,0 +1,14 @@
+.modal-table {
+  overflow-y: scroll;
+  height: 40vh;
+  display: block;
+}
+
+.tag-input {
+  width: 100px;
+  display: inline-block;
+}
+
+.selected {
+  background-color: rgb(212, 213, 214);
+}

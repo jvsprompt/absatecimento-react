@@ -31,7 +31,7 @@ function FormHMON() {
     setIsLoading(false);
   };
 
-  const columns = ['TAG', 'DESCRIÇÃO', 'UNIDADE'];
+  const columns = ['TAG', 'DESCRIÇÃO'];
 
   // const restoreDefaultValues = () => {
   //   setServicosValue(new Date());

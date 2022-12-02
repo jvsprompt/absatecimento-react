@@ -18,10 +18,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-
-          {/* <Route exact path="/formulario" element={<Form />} />
-          <Route exact path="/formulario2" element={<Form2 />} /> */}
-
           <Route exact path="/form/academia" element={<FormAcademia />} />
           <Route exact path="/form/hmon" element={<FormHMON />} />
           {/* <Route exact path="/form/igua" element={<Form />} /> */}
