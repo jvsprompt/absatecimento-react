@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 import InputDate from '../components/InputDate';
 import InputDropdown from '../components/InputDropdown';
+import InputTextArea from '../components/InputTextArea';
 
 import submitForm from '../utils/submitForm';
 import getSetor from '../utils/getSetor';
@@ -47,7 +48,7 @@ function Form() {
   const setor1 = getSetor(unidadesValue)[0];
 
   const sendData = () => {
-    const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdEkBoaxNY5D8JJqKmBwcpcJHVfhJmMvigYJIsvAN5FdKmCoQ/formResponse'
+    const url = 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSeaG7ME235aq00cLAxyOVW4LnekoTI68chxGB7bkbuiduRYtQ/formResponse'
     const testData = validateData();
 
     for (let i = 0; i < materialsList.length; i++) {
@@ -55,30 +56,17 @@ function Form() {
       console.log('index =>', i);
 
       if (testData === true) {
-        const { day, month, year } = getDate(dataLevantValue);
-        const date = getDate(servicosValue);
         const materialUpper = materialsList[i].name.toUpperCase();
 
-        dataToPost.append(entry.os, 'ABRIR CHAMADO');
-        dataToPost.append(entry.enc, ' ');
-        dataToPost.append(entry.serv, ' ');
-        dataToPost.append(entry.day, day);
-        dataToPost.append(entry.month, month);
-        dataToPost.append(entry.year, year);
-        dataToPost.append(entry.day2, date.day);
-        dataToPost.append(entry.month2, date.month);
-        dataToPost.append(entry.year2, date.year);
-        dataToPost.append(entry.unidade, unidadesValue);
-        dataToPost.append(entry.setor, setorValue);
+        dataToPost.append(entry.os, 'HMON');
+        dataToPost.append(entry.enc, '1. SOLICITADO');
         dataToPost.append(entry.materiais, materialUpper);
 
         submitForm(url, dataToPost);
       }
-
     }
-    restoreDefaultValues();
-
     if (navigator.onLine) {
+      restoreDefaultValues();
       return alert('ENVIADO COM SUCESSO!');
     } else {
       return alert('NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!');
@@ -139,7 +127,7 @@ useEffect(() => {
 
 return (
   <div className='main-div'>
-    <InputDate
+    {/* <InputDate
       name='DATA DO PEDIDO'
       value={dataLevantValue}
       change={setDataLevantValue}
@@ -164,7 +152,7 @@ return (
       change={setSetorValue}
       items={getSetor(unidadesValue)}
       localStore={false}
-    />
+    /> */}
     <label htmlFor='material' className='block'>
       <span className='materiais-title'>MATERIAIS</span>
       <ul className='lista-materiais'>
@@ -176,8 +164,9 @@ return (
         value={materiaisValue}
         onChange={(e) => updateMaterialValue(e)}
         className='form-control input materiais-input'
-        placeholder='DIGITE O SETOR'
+        placeholder='DESC., QTD E OBS.'
       />
+
       <Button
         className='input materiais-button'
         variant='primary'
@@ -186,8 +175,17 @@ return (
         value='Submit'
         onClick={() => updateMaterialsList(materiaisValue)}
       >
-        Adicionar
+       + 
       </Button>
+      {/* <InputTextArea
+        name='OBSERVAÇÃO'
+        value={setorValue}
+        change={setSetorValue}
+        localStore={false}
+        cols='30'
+        rows='6'
+        maxLen={1500}
+      /> */}
     </label>
     <Button
       className='test'

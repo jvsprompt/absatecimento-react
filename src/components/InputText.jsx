@@ -34,7 +34,7 @@ function InputText({
         onChange={(e) => updateValue(e)}
         className={`form-control input ${classN}`}
         maxLength={maxLen}
-        placeholder='DIGITE O SETOR'
+        placeholder='DIGITE O MATERIAL, QTD E OBS'
       />
     </label>
   );
