@@ -80,16 +80,22 @@ function FormHMON() {
     }
   };
 
+  const removeMaterial = (id) => {
+    setMaterialList(
+      materialList.filter((info) => info.id !== id)
+    );
+  };
+
   const renderList = () => {
     if (materialList.length !== 0) {
       const list = materialList.map((item, i) => (
         <li className='lista-material' key={i}>
           {item.name}
-          {/* <Button className='botao-lista' onClick={
+          <Button className='botao-lista' onClick={
             () => removeMaterial(item.id)
           }>
             Apagar
-          </Button> */}
+          </Button>
         </li>
       ));
       return list;
@@ -150,10 +156,10 @@ function FormHMON() {
         <ul className='lista-materiais'>
           {renderList()}
         </ul>
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Selecionar Material
+        </Button>
       </label>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Selecionar Material
-      </Button>
       <Button
         className='test'
         variant='primary'
