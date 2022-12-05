@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -10,6 +10,7 @@ function EquipModal(props) {
 
   const [selectedItem, setSelectedItem] = useState({});
   const [filteredData, setFilteredData] = useState(table);
+  const [searchInput, setSearchInput] = useState('');
 
   const removeSelectedClass = () => {
     // Provisório ↑
@@ -36,11 +37,33 @@ function EquipModal(props) {
     console.log(selectedItem);
   };
 
+  const updateSearch = (e) => {
+    const searchNormalize = searchInput
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    const filter = table.filter(({ name, tag }) =>
+      name
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .includes(searchNormalize)
+      || tag.includes(searchNormalize)
+    );
+
+    setFilteredData(filter);
+  };
+
   const {
     id,
     tag,
     name,
   } = selectedItem;
+
+  useEffect(() => {
+    updateSearch()
+  }, [searchInput]);
 
   return (
     <Modal
@@ -57,13 +80,9 @@ function EquipModal(props) {
           <Form.Control
             type="text"
             placeholder="Digite a Tag ou o Nome"
-            value={name}
+            value={searchInput}
             className='search-input'
-          // onChange={(e) => setNewValue({
-          //   id, tag, name: e.target.value,
-          //   category, availableStock,
-          //   minimumStock, active,
-          // })}
+            onChange={(e) => { setSearchInput(e.target.value) } }
           />
         </Form.Group>
       </Modal.Header>
@@ -101,7 +120,7 @@ function EquipModal(props) {
             />
           </Form.Group>
           <Form.Group className="mb-3 tag-input">
-            <Form.Label>UNIDADE</Form.Label>
+            <Form.Label>QUANTIDADE</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o Código"
