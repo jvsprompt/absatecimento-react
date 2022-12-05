@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import InputDropdown from '../components/InputDropdown';
@@ -14,7 +14,14 @@ import unidades from '../data/unidades.json';
 import getMateriais from '../utils/getMateriais';
 import Loading from '../components/Loading';
 
+import AppContext from '../context/AppContext';
+
 function FormHMON() {
+  const {
+    materialList,
+    setMaterialList,
+  } = useContext(AppContext);
+
   const [modalShow, setModalShow] = useState(false);
   const [unidadesValue, setUnidadesValue] = useState();
   const [materiaisValue, setMateriaisValue] = useState([{
@@ -71,48 +78,58 @@ function FormHMON() {
     } else {
       return alert('NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!');
     }
-};
+  };
 
-// const renderList = () => {
-//   const list = materialsList.map((item, i) => (
-//     <li className='lista-material' key={i}>
-//       {item.name}
-//       <Button className='botao-lista' onClick={
-//         () => removeMaterial(item.id)
-//       }>
-//         Apagar
-//       </Button>
-//     </li>
-//   ));
-//   return list;
-// };
+  const renderList = () => {
+    if (materialList.length !== 0) {
+      const list = materialList.map((item, i) => (
+        <li className='lista-material' key={i}>
+          {item.name}
+          {/* <Button className='botao-lista' onClick={
+            () => removeMaterial(item.id)
+          }>
+            Apagar
+          </Button> */}
+        </li>
+      ));
+      return list;
+    }
 
-// useEffect(() => {
-//   setSetorValue(setor1);
-// }, [unidadesValue]);
+    const message = (
+      <li className='lista-material'>
+        Não há nenhum material na lista
+      </li>
+    );
 
-// useEffect(() => {
-//   console.log('servicos =>', servicosValue);
-//   console.log('dataLevant =>', dataLevantValue);
-//   console.log('unidades =>', unidadesValue);
-//   console.log('setor =>', setorValue);
-//   console.log('mateirais =>', materiaisValue);
-//   console.log('materials list =>', materialsList)
-//   console.log('');
-// });
-  
+    return message;
+  };
+
+  // useEffect(() => {
+  //   setSetorValue(setor1);
+  // }, [unidadesValue]);
+
+  // useEffect(() => {
+  //   console.log('servicos =>', servicosValue);
+  //   console.log('dataLevant =>', dataLevantValue);
+  //   console.log('unidades =>', unidadesValue);
+  //   console.log('setor =>', setorValue);
+  //   console.log('mateirais =>', materiaisValue);
+  //   console.log('materials list =>', materialsList)
+  //   console.log('');
+  // });
+
   useEffect(() => { loadMateriaisModal() }, [])
 
-return isLoading ? <Loading /> : (
-  <div className='main-div'>
-    {/* <InputDropdown
+  return isLoading ? <Loading /> : (
+    <div className='main-div'>
+      {/* <InputDropdown
       name='UNIDADE'
       value={unidadesValue}
       change={setUnidadesValue}
       items={unidades}
       localStore={false}
     /> */}
-    {/* <InputDropdown
+      {/* <InputDropdown
       name='EQUIPAMENTO'
       value={setorValue}
       change={setSetorValue}
@@ -121,54 +138,34 @@ return isLoading ? <Loading /> : (
     /> */}
 
 
-    {/* <InputText name='TAG' value={tagValue} change={setTagValue} /> */}
-    <Button variant="primary" onClick={() => setModalShow(true)}>
-      Selecionar Material
-    </Button>
-    <EquipModal
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-      columns={columns}
-      table={materiaisValue}
-    />
-
-
-    {/* <label htmlFor='material' className='block'>
-      <span className='materiais-title'>MATERIAIS</span>
-      <ul className='lista-materiais'>
-        {renderList()}
-      </ul>
-      <input
-        type='text'
-        id='material'
-        value={materiaisValue}
-        onChange={(e) => updateMaterialValue(e)}
-        className='form-control input materiais-input'
-        placeholder='DIGITE O SETOR'
+      {/* <InputText name='TAG' value={tagValue} change={setTagValue} /> */}
+      <EquipModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        columns={columns}
+        table={materiaisValue}
       />
+      <label htmlFor='material' className='block'>
+        <span className='materiais-title'>MATERIAIS</span>
+        <ul className='lista-materiais'>
+          {renderList()}
+        </ul>
+      </label>
+      <Button variant="primary" onClick={() => setModalShow(true)}>
+        Selecionar Material
+      </Button>
       <Button
-        className='input materiais-button'
+        className='test'
         variant='primary'
         active
         type='submit'
         value='Submit'
-        onClick={() => updateMaterialsList(materiaisValue)}
+        onClick={sendData}
       >
-        Adicionar
+        Enviar
       </Button>
-    </label> */}
-    <Button
-      className='test'
-      variant='primary'
-      active
-      type='submit'
-      value='Submit'
-      onClick={sendData}
-    >
-      Enviar
-    </Button>
-  </div>
-);
+    </div>
+  );
 }
 
 export default FormHMON;

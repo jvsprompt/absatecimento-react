@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
+  const [materialList, setMaterialList] = useState([]);
   const exportProvider = {
-    
+    materialList,
+    setMaterialList,
   };
 
   return (

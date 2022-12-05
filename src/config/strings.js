@@ -24,7 +24,7 @@ export const ENTRY_HMON = {
   codigo: 'entry.1309448216',
   material: 'entry.275485717',
   setor: 'entry.1073286246',
-  qtd: 'entry.1986892611',
-  unid: 'entry.1053084165',
+  unid: 'entry.1986892611',
+  qtd: 'entry.1053084165',
   obs: 'entry.1309448216_day',
 };

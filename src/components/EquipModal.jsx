@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
+import AppContext from '../context/AppContext';
+
 import '../css/EquipModal.css';
 
 function EquipModal(props) {
+  const {
+    materialList,
+    setMaterialList,
+  } = useContext(AppContext);
   const table = props.table;
 
   const [selectedItem, setSelectedItem] = useState({});
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
+  const [quantidade, setQuantidade] = useState();
 
   const removeSelectedClass = () => {
     // Provisório ↑
@@ -51,19 +58,29 @@ function EquipModal(props) {
         .includes(searchNormalize)
       || tag.includes(searchNormalize)
     );
-
     setFilteredData(filter);
   };
-
+  
   const {
     id,
     tag,
     name,
+    unidade,
   } = selectedItem;
-
+  
+  const pushMaterial = () => {
+    setMaterialList([...materialList, selectedItem]);
+    };
+  
   useEffect(() => {
     updateSearch()
   }, [searchInput]);
+
+  useEffect(() => {
+    console.log('selected Item -=>', selectedItem);
+    console.log('name =>', name);
+    console.log('material list =>', materialList);
+  })
 
   return (
     <Modal
@@ -73,16 +90,13 @@ function EquipModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        {/* <Modal.Title id="contained-modal-title-vcenter">
-          Equipamentos
-        </Modal.Title> */}
         <Form.Group className="mb-3">
           <Form.Control
             type="text"
             placeholder="Digite a Tag ou o Nome"
             value={searchInput}
             className='search-input'
-            onChange={(e) => { setSearchInput(e.target.value) } }
+            onChange={(e) => { setSearchInput(e.target.value) }}
           />
         </Form.Group>
       </Modal.Header>
@@ -100,7 +114,6 @@ function EquipModal(props) {
               <tr onClick={selectedI} key={i}>
                 <td>{data.tag}</td>
                 <td>{data.name}</td>
-                {/* <td>{data.unidade}</td> */}
               </tr>
             ))}
           </tbody>
@@ -109,46 +122,64 @@ function EquipModal(props) {
           <Form.Group className="mb-3 tag-input">
             <Form.Label>TAG</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Digite o Código"
+              type='text'
+              placeholder='Digite a TAG'
               value={tag}
-              // onChange={(e) => setNewValue({
-              //   id, tag: e.target.value, name,
-              //   category, availableStock,
-              //   minimumStock, active,
-              // })}
+            // onChange={(e) => {
+            //   if (tag !== 99999) return;
+            //   setSelectedItem({
+            //     id, tag: e.target.value,
+            //     name, unidade,
+            //   })
+            // }}
             />
           </Form.Group>
-          <Form.Group className="mb-3 tag-input">
+          <Form.Group className='mb-3 tag-input'>
             <Form.Label>QUANTIDADE</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Digite o Código"
-              value={tag}
-            // onChange={(e) => setNewValue({
-            //   id, tag: e.target.value, name,
-            //   category, availableStock,
-            //   minimumStock, active,
-            // })}
+              type='number'
+              placeholder='Digite a Quantidade'
+              value={quantidade}
+              onChange={(e) => setQuantidade(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Nome</Form.Label>
+          <Form.Group className='mb-3 tag-input'>
+            <Form.Label>UNIDADE</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Digite o Nome"
+              type='text'
+              placeholder='UNIDADE'
+              value={unidade}
+              onChange={(e) => {
+                if (tag !== '99999') return;
+                setSelectedItem({
+                  id, tag, name,
+                  unidade: e.target.value,
+                })
+              }}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3'>
+            <Form.Label>DESCRIÇÃO</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Descrição do Material'
               value={name}
-              // onChange={(e) => setNewValue({
-              //   id, tag, name: e.target.value,
-              //   category, availableStock,
-              //   minimumStock, active,
-              // })}
+              onChange={(e) => {
+                if (tag !== '99999') return;
+                setSelectedItem({
+                  id, tag, name: e.target.value,
+                  unidade,
+                })
+              }}
             />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Selecionar</Button>
+        <Button onClick={() => {
+          pushMaterial()
+          props.onHide()
+        }}>Selecionar</Button>
       </Modal.Footer>
     </Modal>
   );
