@@ -69,7 +69,14 @@ function EquipModal(props) {
   } = selectedItem;
   
   const pushMaterial = () => {
-    setMaterialList([...materialList, selectedItem]);
+    const pushItem = {
+      id: selectedItem.id,
+      name: selectedItem.name,
+      quantidade: quantidade ? quantidade : '0',
+      tag: selectedItem.tag,
+      unidade: selectedItem.unidade,
+    };
+    setMaterialList([...materialList, pushItem]);
     };
   
   useEffect(() => {
@@ -140,7 +147,14 @@ function EquipModal(props) {
               type='number'
               placeholder='Digite a Quantidade'
               value={quantidade}
-              onChange={(e) => setQuantidade(e.target.value)}
+              onChange={(e) => {
+                setQuantidade(e.target.value)
+                setSelectedItem({
+                  id, tag, name,
+                  quantidade: quantidade,
+                  unidade,
+                })
+              }}
             />
           </Form.Group>
           <Form.Group className='mb-3 tag-input'>
@@ -152,7 +166,7 @@ function EquipModal(props) {
               onChange={(e) => {
                 if (tag !== '99999') return;
                 setSelectedItem({
-                  id, tag, name,
+                  id, tag, name, quantidade,
                   unidade: e.target.value,
                 })
               }}
@@ -168,7 +182,7 @@ function EquipModal(props) {
                 if (tag !== '99999') return;
                 setSelectedItem({
                   id, tag, name: e.target.value,
-                  unidade,
+                  quantidade, unidade,
                 })
               }}
             />

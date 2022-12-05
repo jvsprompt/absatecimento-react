@@ -9,6 +9,11 @@
   display: inline-block;
 }
 
+.table-material {
+  font-size: 19px;
+  color: red;
+}
+
 .selected {
   background-color: rgb(212, 213, 214);
 }

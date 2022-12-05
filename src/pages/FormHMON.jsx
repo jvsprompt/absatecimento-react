@@ -86,19 +86,24 @@ function FormHMON() {
     );
   };
 
-  const renderList = () => {
+  const renderTable = () => {
     if (materialList.length !== 0) {
-      const list = materialList.map((item, i) => (
-        <li className='lista-material' key={i}>
-          {item.name}
-          <Button className='botao-lista' onClick={
-            () => removeMaterial(item.id)
-          }>
-            Apagar
-          </Button>
-        </li>
+      const table = materialList.map((item, i) => (
+        <tr>
+          {/* <td>{item.tag}</td> */}
+          <td>{item.name}</td>
+          <td>{item.quantidade}</td>
+          <td>
+            <Button className='botao-lista'
+              onClick={
+                () => removeMaterial(item.id)
+              }>
+              -
+            </Button>
+          </td>
+        </tr>
       ));
-      return list;
+      return table;
     }
 
     const message = (
@@ -106,7 +111,6 @@ function FormHMON() {
         Não há nenhum material na lista
       </li>
     );
-
     return message;
   };
 
@@ -151,15 +155,23 @@ function FormHMON() {
         columns={columns}
         table={materiaisValue}
       />
-      <label htmlFor='material' className='block'>
+      <label htmlFor='material' className='block table table-material'>
         <span className='materiais-title'>MATERIAIS</span>
-        <ul className='lista-materiais'>
-          {renderList()}
-        </ul>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Selecionar Material
-        </Button>
+        <table>
+          <thead>
+            <tr>
+              <td>DESCRIÇÃO</td>
+              <td>QUANTIDADE</td>
+            </tr>
+          </thead>
+          <tbody>
+            {renderTable()}
+          </tbody>
+        </table>
       </label>
+      <Button variant="primary" onClick={() => setModalShow(true)}>
+        Selecionar Material
+      </Button>
       <Button
         className='test'
         variant='primary'
