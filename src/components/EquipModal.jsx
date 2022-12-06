@@ -101,7 +101,7 @@ function EquipModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      {/* <Modal.Header closeButton>
         <Form.Group className="mb-3">
           <Form.Control
             type="text"
@@ -113,8 +113,19 @@ function EquipModal(props) {
             }}
           />
         </Form.Group>
-      </Modal.Header>
+      </Modal.Header> */}
       <Modal.Body>
+        <Form.Group className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Digite a Tag ou o Nome"
+            value={searchInput}
+            className='search-input modal-input'
+            onChange={(e) => {
+              setSearchInput(e.target.value.toUpperCase())
+            }}
+          />
+        </Form.Group>
         <table className='table modal-table'>
           <thead>
             <tr>
@@ -133,7 +144,7 @@ function EquipModal(props) {
           </tbody>
         </table>
         <Form>
-          <Form.Group className="mb-3 tag-input">
+          <Form.Group className="mb-3 tag-input modal-input">
             <Form.Label>TAG</Form.Label>
             <Form.Control
               type='text'
@@ -142,7 +153,7 @@ function EquipModal(props) {
               readOnly
             />
           </Form.Group>
-          <Form.Group className='mb-3 tag-input'>
+          <Form.Group className='mb-3 tag-input modal-input'>
             <Form.Label>QUANTIDADE</Form.Label>
             <Form.Control
               type='number'
@@ -158,7 +169,7 @@ function EquipModal(props) {
               }}
             />
           </Form.Group>
-          <Form.Group className='mb-3 tag-input'>
+          <Form.Group className='mb-3 tag-input modal-input'>
             <Form.Label>UNIDADE</Form.Label>
             <Form.Control
               type='text'
@@ -174,7 +185,7 @@ function EquipModal(props) {
               }}
             />
           </Form.Group>
-          <Form.Group className='mb-3'>
+          <Form.Group className='mb-3 modal-input'>
             <Form.Label>DESCRIÇÃO</Form.Label>
             <Form.Control
               type='text'
@@ -190,7 +201,7 @@ function EquipModal(props) {
               }}
             />
           </Form.Group>
-          <Form.Group className='mb-3'>
+          <Form.Group className='mb-3 modal-input'>
             <Form.Label>OBSERVAÇÃO</Form.Label>
             <Form.Control
               type='text'
@@ -202,13 +213,34 @@ function EquipModal(props) {
             />
           </Form.Group>
         </Form>
+        <Button
+          className='modal-button select-button'
+          onClick={() => {
+          pushMaterial()
+          props.onHide()
+        }}>Selecionar</Button>
+        <Button
+          variant='danger'
+          className='modal-button cancel-button'
+          onClick={() => {
+            props.onHide()
+            restoreDefaultValues()
+          }}
+        ><span className='cancel-button'>Cancelar</span></Button>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
+        <Button
+          variant='danger'
+          onClick={() => {
+            props.onHide()
+            restoreDefaultValues()
+          }}
+        >Cancelar</Button>
         <Button onClick={() => {
           pushMaterial()
           props.onHide()
         }}>Selecionar</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

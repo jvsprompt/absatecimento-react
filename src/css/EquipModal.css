@@ -1,6 +1,6 @@
 .modal-table {
   overflow-y: scroll;
-  height: 40vh;
+  height: 41.5vh;
   display: block;
 }
 
@@ -17,3 +17,23 @@
 .selected {
   background-color: rgb(212, 213, 214);
 }
+
+.modal-input {
+  margin-bottom: -20px;
+  margin-top: -11px;
+}
+
+.select-button {
+  float: right;
+}
+
+.modal-button {
+  margin-left: 10px;
+  /* margin-right: 10px; */
+  float: right;
+}
+
+.search-input {
+  margin-bottom: -13px;
+}
+

@@ -16,15 +16,16 @@ export const ENTRY_ACADEMIA = {
   month2: 'entry.72998713_month',
   year2: 'entry.72998713_year',
   enc: 'entry.848539894',
-  serv: 'entry.1136451657'
+  serv: 'entry.1136451657',
 };
 
 export const ENTRY_HMON = {
-  cliente: 'entry.72998713',
-  codigo: 'entry.1309448216',
-  material: 'entry.275485717',
+  cliente: 'entry.2015943270',
+  codigo: 'entry.800546336',
+  material: 'entry.1557542801',
   setor: 'entry.1073286246',
-  unid: 'entry.1986892611',
-  qtd: 'entry.1053084165',
-  obs: 'entry.1309448216_day',
+  unid: 'entry.1373967913',
+  qtd: 'entry.761035177',
+  obs: 'entry.1804424579',
+  status: 'entry.1915704119',
 };

@@ -1,16 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 
-import InputDropdown from '../components/InputDropdown';
 import EquipModal from '../components/EquipModal';
-import InputText from '../components/InputText';
 
 import submitForm from '../utils/submitForm';
-import getSetor from '../utils/getSetor';
-import getDate from '../utils/getDate';
 
 import { ENTRY_HMON as entry, HMON_URI } from '../config/strings';
-import unidades from '../data/unidades.json';
 import getMateriais from '../utils/getMateriais';
 import Loading from '../components/Loading';
 
@@ -23,7 +18,6 @@ function FormHMON() {
   } = useContext(AppContext);
 
   const [modalShow, setModalShow] = useState(false);
-  const [unidadesValue, setUnidadesValue] = useState();
   const [materiaisValue, setMateriaisValue] = useState([{
     tag: '0000',
     name: '0000',
@@ -40,38 +34,28 @@ function FormHMON() {
 
   const columns = ['TAG', 'DESCRIÇÃO'];
 
-  // const restoreDefaultValues = () => {
-  //   setServicosValue(new Date());
-  //   setDataLevantValue(new Date());
-  //   setUnidadesValue(unidades[0]);
-  //   setSetorValue(setor1)
-  //   setMaterialsList([]);
-  // };
-
-  // const validateData = (data) => {
-  //   if (!data) {
-  //     return 'Lista de materiais não pode estar vazia!'
-  //   }
-  //   return true;
-  // };
-
-
   const sendData = () => {
     const url = HMON_URI;
 
-    // for (let i = 0; i < materialsList.length; i++) {
-    //   const dataToPost = new FormData();
-    //   console.log('index =>', i);
+    for (let i = 0; i < materialList.length; i++) {
+      const dataToPost = new FormData();
+      console.log('index =>', i);
 
-    //   if (testData === true) {
-    //     const { day, month, year } = getDate(dataLevantValue);
-    //     const date = getDate(servicosValue);
-    //     // const materialUpper = materialsList[i].name.toUpperCase();
+      dataToPost.append(entry.cliente, 'HMON');
+      dataToPost.append(entry.codigo, materialList[i].tag);
+      dataToPost.append(entry.material, materialList[i].name);
+      dataToPost.append(entry.setor, 'HMON');
+      dataToPost.append(entry.unid, materialList[i].unidade);
+      dataToPost.append(entry.qtd, materialList[i].quantidade);
+      dataToPost.append(entry.obs, materialList[i].obs);
+      dataToPost.append(entry.status, '1. SOLICITADO');
 
-    //     submitForm(url, dataToPost);
-    //   }
-    // }
-    // restoreDefaultValues();
+      console.log(materialList[i].name);
+      console.log(`post ${i} <=> data => ${materialList[i]}`)
+      console.log(materialList[i]);
+
+      submitForm(url, dataToPost);
+    }
 
     if (navigator.onLine) {
       return alert('ENVIADO COM SUCESSO!');
@@ -95,6 +79,7 @@ function FormHMON() {
           <td>{item.quantidade}</td>
           <td>
             <Button className='botao-lista'
+              variant='danger'
               onClick={
                 () => removeMaterial(item.id)
               }>
@@ -116,41 +101,10 @@ function FormHMON() {
     return message;
   };
 
-  // useEffect(() => {
-  //   setSetorValue(setor1);
-  // }, [unidadesValue]);
-
-  // useEffect(() => {
-  //   console.log('servicos =>', servicosValue);
-  //   console.log('dataLevant =>', dataLevantValue);
-  //   console.log('unidades =>', unidadesValue);
-  //   console.log('setor =>', setorValue);
-  //   console.log('mateirais =>', materiaisValue);
-  //   console.log('materials list =>', materialsList)
-  //   console.log('');
-  // });
-
   useEffect(() => { loadMateriaisModal() }, [])
 
   return isLoading ? <Loading /> : (
     <div className='main-div'>
-      {/* <InputDropdown
-      name='UNIDADE'
-      value={unidadesValue}
-      change={setUnidadesValue}
-      items={unidades}
-      localStore={false}
-    /> */}
-      {/* <InputDropdown
-      name='EQUIPAMENTO'
-      value={setorValue}
-      change={setSetorValue}
-      items={getSetor(unidadesValue)}
-      localStore={false}
-    /> */}
-
-
-      {/* <InputText name='TAG' value={tagValue} change={setTagValue} /> */}
       <EquipModal
         show={modalShow}
         onHide={() => setModalShow(false)}

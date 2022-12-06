@@ -74,16 +74,6 @@ function FormAcademia() {
     setSetorValue(setor1);
   }, [unidadesValue]);
 
-  // useEffect(() => {
-  //   console.log('servicos =>', servicosValue);
-  //   console.log('dataLevant =>', dataLevantValue);
-  //   console.log('unidades =>', unidadesValue);
-  //   console.log('setor =>', setorValue);
-  //   console.log('mateirais =>', materiaisValue);
-  //   console.log('materials list =>', materialsList)
-  //   console.log('');
-  // });
-
   return (
     <div className='main-div'>
       <InputDate
