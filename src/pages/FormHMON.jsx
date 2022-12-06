@@ -110,6 +110,7 @@ function FormHMON() {
         onHide={() => setModalShow(false)}
         columns={columns}
         table={materiaisValue}
+        selectedItem={{}}
       />
       <label htmlFor='material' className='block table table-material'>
         <span className='materiais-title'>MATERIAIS</span>

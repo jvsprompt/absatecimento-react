@@ -14,7 +14,7 @@ function EquipModal(props) {
   } = useContext(AppContext);
   const table = props.table;
 
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem, setSelectedItem] = useState(props.selectedItem || {});
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
@@ -156,7 +156,7 @@ function EquipModal(props) {
           <Form.Group className='mb-3 tag-input modal-input'>
             <Form.Label>QUANTIDADE</Form.Label>
             <Form.Control
-              type='number'
+              type='text'
               placeholder='Digite a Quantidade'
               value={quantidade}
               onChange={(e) => {
