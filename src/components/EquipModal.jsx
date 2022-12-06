@@ -18,6 +18,7 @@ function EquipModal(props) {
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
+  const [obsValue, setObsValue] = useState('');
 
   const removeSelectedClass = () => {
     // Provisório ↑
@@ -57,17 +58,25 @@ function EquipModal(props) {
         .toLowerCase()
         .includes(searchNormalize)
       || tag.includes(searchNormalize)
+      || tag.includes(99999)
     );
     setFilteredData(filter);
   };
-  
+
   const {
     id,
     tag,
     name,
     unidade,
   } = selectedItem;
-  
+
+  const restoreDefaultValues = () => {
+    setSearchInput('');
+    setObsValue('');
+    setQuantidade('');
+    setSelectedItem('');
+  };
+
   const pushMaterial = () => {
     const pushItem = {
       id: selectedItem.id,
@@ -75,19 +84,15 @@ function EquipModal(props) {
       quantidade: quantidade ? quantidade : '0',
       tag: selectedItem.tag,
       unidade: selectedItem.unidade,
+      obs: obsValue ? obsValue : '',
     };
     setMaterialList([...materialList, pushItem]);
-    };
-  
+    restoreDefaultValues();
+  };
+
   useEffect(() => {
     updateSearch()
   }, [searchInput]);
-
-  useEffect(() => {
-    console.log('selected Item -=>', selectedItem);
-    console.log('name =>', name);
-    console.log('material list =>', materialList);
-  })
 
   return (
     <Modal
@@ -103,7 +108,9 @@ function EquipModal(props) {
             placeholder="Digite a Tag ou o Nome"
             value={searchInput}
             className='search-input'
-            onChange={(e) => { setSearchInput(e.target.value) }}
+            onChange={(e) => {
+              setSearchInput(e.target.value.toUpperCase())
+            }}
           />
         </Form.Group>
       </Modal.Header>
@@ -132,13 +139,7 @@ function EquipModal(props) {
               type='text'
               placeholder='Digite a TAG'
               value={tag}
-            // onChange={(e) => {
-            //   if (tag !== 99999) return;
-            //   setSelectedItem({
-            //     id, tag: e.target.value,
-            //     name, unidade,
-            //   })
-            // }}
+              readOnly
             />
           </Form.Group>
           <Form.Group className='mb-3 tag-input'>
@@ -167,7 +168,8 @@ function EquipModal(props) {
                 if (tag !== '99999') return;
                 setSelectedItem({
                   id, tag, name, quantidade,
-                  unidade: e.target.value,
+                  unidade: e.target.value
+                    .toUpperCase(),
                 })
               }}
             />
@@ -181,9 +183,21 @@ function EquipModal(props) {
               onChange={(e) => {
                 if (tag !== '99999') return;
                 setSelectedItem({
-                  id, tag, name: e.target.value,
+                  id, tag, name: e.target.value
+                    .toUpperCase(),
                   quantidade, unidade,
                 })
+              }}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3'>
+            <Form.Label>OBSERVAÇÃO</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='OBSERVAÇÃO'
+              value={obsValue}
+              onChange={(e) => {
+                setObsValue(e.target.value.toUpperCase())
               }}
             />
           </Form.Group>

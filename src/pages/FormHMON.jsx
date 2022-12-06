@@ -107,9 +107,11 @@ function FormHMON() {
     }
 
     const message = (
-      <li className='lista-material'>
-        Não há nenhum material na lista
-      </li>
+      <tr>
+        <td className='lista-material'>
+          Não há nenhum material na lista
+        </td>
+      </tr>
     );
     return message;
   };
