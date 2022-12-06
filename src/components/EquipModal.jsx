@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import AppContext from '../context/AppContext';
 
 import '../css/EquipModal.css';
-import { useDebugValue } from 'react';
 
 function EquipModal(props) {
   const {
@@ -21,6 +20,7 @@ function EquipModal(props) {
     name: '',
     unidade: '',
   });
+
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
@@ -37,7 +37,6 @@ function EquipModal(props) {
   };
 
   const selectedI = async (event) => {
-    console.log('running selectedI');
     const selected = event.target;
 
     removeSelectedClass();
@@ -49,7 +48,6 @@ function EquipModal(props) {
       return false;
     });
     setSelectedItem(findMaterial);
-    console.log(selectedItem);
   };
 
   const updateSearch = (e) => {
@@ -89,7 +87,33 @@ function EquipModal(props) {
     });
   };
 
+  const validateData = () => {
+    if (
+      !quantidade
+      || quantidade === ''
+      || quantidade === '0'
+      || quantidade === 0
+    ) {
+      alert('Campo de quantidade deve ser preenchido!');
+      return false;
+    }
+
+    if (
+      !selectedItem.name
+      || selectedItem.name === ''
+    ) {
+      alert('Campo de Descrição deve ser preenchido!');
+      return false;
+    }
+    return true;
+  };
+
   const pushMaterial = () => {
+    const validate = validateData();
+
+    if (validate !== true) {
+      return;
+    }
     const pushItem = {
       id: selectedItem.id,
       name: selectedItem.name,
@@ -113,24 +137,11 @@ function EquipModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      {/* <Modal.Header closeButton>
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="text"
-            placeholder="Digite a Tag ou o Nome"
-            value={searchInput}
-            className='search-input'
-            onChange={(e) => {
-              setSearchInput(e.target.value.toUpperCase())
-            }}
-          />
-        </Form.Group>
-      </Modal.Header> */}
       <Modal.Body>
         <Form.Group className="mb-3 search-input modal-input">
           <Form.Control
-            type="text"
-            placeholder="Digite a Tag ou o Nome"
+            type='text'
+            placeholder='Pesquisa'
             value={searchInput}
             className=''
             onChange={(e) => {
@@ -234,18 +245,16 @@ function EquipModal(props) {
             checked={isChecked}
             onChange={() => setIsChecked(!isChecked)}
           />
-          Continuar Incluindo
+          {' Continuar Incluindo'}
         </label>
         <Button
           className='modal-button select-button'
           onClick={() => {
             if (isChecked === true) {
-              pushMaterial();
-              return restoreDefaultValues();
+              return pushMaterial();
             }
-            pushMaterial()
-            restoreDefaultValues();
-            props.onHide()
+            pushMaterial();
+            props.onHide();
           }}>Selecionar</Button>
         <Button
           variant='danger'
@@ -256,19 +265,6 @@ function EquipModal(props) {
           }}
         ><span className='cancel-button'>Cancelar</span></Button>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button
-          variant='danger'
-          onClick={() => {
-            props.onHide()
-            restoreDefaultValues()
-          }}
-        >Cancelar</Button>
-        <Button onClick={() => {
-          pushMaterial()
-          props.onHide()
-        }}>Selecionar</Button>
-      </Modal.Footer> */}
     </Modal>
   );
 }
