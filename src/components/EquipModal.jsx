@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import AppContext from '../context/AppContext';
 
 import '../css/EquipModal.css';
+import { useDebugValue } from 'react';
 
 function EquipModal(props) {
   const {
@@ -24,6 +25,7 @@ function EquipModal(props) {
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
   const [obsValue, setObsValue] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const removeSelectedClass = () => {
     // Provisório ↑
@@ -79,7 +81,12 @@ function EquipModal(props) {
     setSearchInput('');
     setObsValue('');
     setQuantidade('');
-    setSelectedItem('');
+    setSelectedItem({
+      id: '',
+      tag: '',
+      name: '',
+      unidade: '',
+    });
   };
 
   const pushMaterial = () => {
@@ -120,12 +127,12 @@ function EquipModal(props) {
         </Form.Group>
       </Modal.Header> */}
       <Modal.Body>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 search-input modal-input">
           <Form.Control
             type="text"
             placeholder="Digite a Tag ou o Nome"
             value={searchInput}
-            className='search-input modal-input'
+            className=''
             onChange={(e) => {
               setSearchInput(e.target.value.toUpperCase())
             }}
@@ -181,7 +188,7 @@ function EquipModal(props) {
               placeholder=''
               value={unidade}
               onChange={(e) => {
-                if (tag.toString() !== '99999') return;
+                if (tag !== '99999') return;
                 setSelectedItem({
                   id, tag, name, quantidade,
                   unidade: e.target.value
@@ -197,7 +204,7 @@ function EquipModal(props) {
               placeholder=''
               value={name}
               onChange={(e) => {
-                if (tag.toString() !== '99999') return;
+                if (tag !== '99999') return;
                 setSelectedItem({
                   id, tag, name: e.target.value
                     .toUpperCase(),
@@ -218,12 +225,28 @@ function EquipModal(props) {
             />
           </Form.Group>
         </Form>
+        <label htmlFor='continuar'>
+          <input
+            type='checkbox'
+            id='continuar'
+            name='continuar'
+            value='continuar'
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          Continuar Incluindo
+        </label>
         <Button
           className='modal-button select-button'
           onClick={() => {
-          pushMaterial()
-          props.onHide()
-        }}>Selecionar</Button>
+            if (isChecked === true) {
+              pushMaterial();
+              return restoreDefaultValues();
+            }
+            pushMaterial()
+            restoreDefaultValues();
+            props.onHide()
+          }}>Selecionar</Button>
         <Button
           variant='danger'
           className='modal-button cancel-button'
