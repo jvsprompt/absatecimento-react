@@ -14,7 +14,12 @@ function EquipModal(props) {
   } = useContext(AppContext);
   const table = props.table;
 
-  const [selectedItem, setSelectedItem] = useState(props.selectedItem || {});
+  const [selectedItem, setSelectedItem] = useState({
+    id: '',
+    tag: '',
+    name: '',
+    unidade: '',
+  });
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
@@ -148,7 +153,7 @@ function EquipModal(props) {
             <Form.Label>TAG</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Digite a TAG'
+              placeholder=' '
               value={tag}
               readOnly
             />
@@ -157,7 +162,7 @@ function EquipModal(props) {
             <Form.Label>QUANTIDADE</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Digite a Quantidade'
+              placeholder=''
               value={quantidade}
               onChange={(e) => {
                 setQuantidade(e.target.value)
@@ -173,10 +178,10 @@ function EquipModal(props) {
             <Form.Label>UNIDADE</Form.Label>
             <Form.Control
               type='text'
-              placeholder='UNIDADE'
+              placeholder=''
               value={unidade}
               onChange={(e) => {
-                if (tag !== '99999') return;
+                if (tag.toString() !== '99999') return;
                 setSelectedItem({
                   id, tag, name, quantidade,
                   unidade: e.target.value
@@ -189,10 +194,10 @@ function EquipModal(props) {
             <Form.Label>DESCRIÇÃO</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Descrição do Material'
+              placeholder=''
               value={name}
               onChange={(e) => {
-                if (tag !== '99999') return;
+                if (tag.toString() !== '99999') return;
                 setSelectedItem({
                   id, tag, name: e.target.value
                     .toUpperCase(),
@@ -205,7 +210,7 @@ function EquipModal(props) {
             <Form.Label>OBSERVAÇÃO</Form.Label>
             <Form.Control
               type='text'
-              placeholder='OBSERVAÇÃO'
+              placeholder=''
               value={obsValue}
               onChange={(e) => {
                 setObsValue(e.target.value.toUpperCase())
