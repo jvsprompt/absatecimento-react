@@ -16,11 +16,18 @@ function EquipModal(props) {
   } = useContext(AppContext);
   const table = props.table;
 
-  const [selectedItem, setSelectedItem] = useState(props.selectedItem || {});
+  const [selectedItem, setSelectedItem] = useState({
+    id: '',
+    tag: '',
+    name: '',
+    unidade: '',
+  });
+
   const [filteredData, setFilteredData] = useState(table);
   const [searchInput, setSearchInput] = useState('');
   const [quantidade, setQuantidade] = useState();
   const [obsValue, setObsValue] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const removeSelectedClass = () => {
     // Provisório ↑
@@ -32,7 +39,6 @@ function EquipModal(props) {
   };
 
   const selectedI = async (event) => {
-    console.log('running selectedI');
     const selected = event.target;
 
     removeSelectedClass();
@@ -44,7 +50,6 @@ function EquipModal(props) {
       return false;
     });
     setSelectedItem(findMaterial);
-    console.log(selectedItem);
   };
 
   const updateSearch = (e) => {
@@ -76,10 +81,41 @@ function EquipModal(props) {
     setSearchInput('');
     setObsValue('');
     setQuantidade('');
-    setSelectedItem('');
+    setSelectedItem({
+      id: '',
+      tag: '',
+      name: '',
+      unidade: '',
+    });
+  };
+
+  const validateData = () => {
+    if (
+      !quantidade
+      || quantidade === ''
+      || quantidade === '0'
+      || quantidade === 0
+    ) {
+      alert('Campo de quantidade deve ser preenchido!');
+      return false;
+    }
+
+    if (
+      !selectedItem.name
+      || selectedItem.name === ''
+    ) {
+      alert('Campo de Descrição deve ser preenchido!');
+      return false;
+    }
+    return true;
   };
 
   const pushMaterial = () => {
+    const validate = validateData();
+
+    if (validate !== true) {
+      return;
+    }
     const pushItem = {
       id: selectedItem.id,
       name: selectedItem.name,
@@ -103,26 +139,13 @@ function EquipModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      {/* <Modal.Header closeButton>
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="text"
-            placeholder="Digite a Tag ou o Nome"
-            value={searchInput}
-            className='search-input'
-            onChange={(e) => {
-              setSearchInput(e.target.value.toUpperCase())
-            }}
-          />
-        </Form.Group>
-      </Modal.Header> */}
       <Modal.Body>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 search-input modal-input">
           <Form.Control
-            type="text"
-            placeholder="Digite a Tag ou o Nome"
+            type='text'
+            placeholder='Pesquisa'
             value={searchInput}
-            className='search-input modal-input'
+            className=''
             onChange={(e) => {
               setSearchInput(e.target.value.toUpperCase())
             }}
@@ -150,7 +173,7 @@ function EquipModal(props) {
             <Form.Label>TAG</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Digite a TAG'
+              placeholder=' '
               value={tag}
               readOnly
             />
@@ -159,7 +182,7 @@ function EquipModal(props) {
             {/* <Form.Label>QUANTIDADE</Form.Label> */}
             {/* <Form.Control
               type='text'
-              placeholder='Digite a Quantidade'
+              placeholder=''
               value={quantidade}
               onChange={(e) => {
                 setQuantidade(e.target.value)
@@ -191,7 +214,7 @@ function EquipModal(props) {
             <Form.Label>UNIDADE</Form.Label>
             <Form.Control
               type='text'
-              placeholder='UNIDADE'
+              placeholder=''
               value={unidade}
               onChange={(e) => {
                 if (tag !== '99999') return;
@@ -207,7 +230,7 @@ function EquipModal(props) {
             <Form.Label>DESCRIÇÃO</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Descrição do Material'
+              placeholder=''
               value={name}
               onChange={(e) => {
                 if (tag !== '99999') return;
@@ -223,7 +246,7 @@ function EquipModal(props) {
             <Form.Label>OBSERVAÇÃO</Form.Label>
             <Form.Control
               type='text'
-              placeholder='OBSERVAÇÃO'
+              placeholder=''
               value={obsValue}
               onChange={(e) => {
                 setObsValue(e.target.value.toUpperCase())
@@ -231,12 +254,26 @@ function EquipModal(props) {
             />
           </Form.Group>
         </Form>
+        <label htmlFor='continuar'>
+          <input
+            type='checkbox'
+            id='continuar'
+            name='continuar'
+            value='continuar'
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          {' Continuar Incluindo'}
+        </label>
         <Button
           className='modal-button select-button'
           onClick={() => {
-            pushMaterial()
-            props.onHide()
-          }}>Selecionar</Button>
+            if (isChecked === true) {
+              return pushMaterial();
+            }
+              pushMaterial();
+              props.onHide();
+            }}>Selecionar</Button>
         <Button
           variant='danger'
           className='modal-button cancel-button'
@@ -246,19 +283,6 @@ function EquipModal(props) {
           }}
         ><span className='cancel-button'>Cancelar</span></Button>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button
-          variant='danger'
-          onClick={() => {
-            props.onHide()
-            restoreDefaultValues()
-          }}
-        >Cancelar</Button>
-        <Button onClick={() => {
-          pushMaterial()
-          props.onHide()
-        }}>Selecionar</Button>
-      </Modal.Footer> */}
     </Modal>
   );
 }
