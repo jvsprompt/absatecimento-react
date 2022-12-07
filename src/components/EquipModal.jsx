@@ -197,7 +197,7 @@ function EquipModal(props) {
               name='Quantidade'
               value={quantidade}
               onChange={(e) => {
-                setQuantidade(e.target.value)
+                setQuantidade(e)
                 setSelectedItem({
                   id, tag, name,
                   quantidade: quantidade,
