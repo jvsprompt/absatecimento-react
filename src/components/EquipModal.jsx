@@ -126,6 +126,7 @@ function EquipModal(props) {
     };
     setMaterialList([...materialList, pushItem]);
     restoreDefaultValues();
+    props.onHide();
   };
 
   useEffect(() => {
@@ -272,7 +273,6 @@ function EquipModal(props) {
               return pushMaterial();
             }
               pushMaterial();
-              props.onHide();
             }}>Selecionar</Button>
         <Button
           variant='danger'
