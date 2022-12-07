@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
+import InputNumber from './InputNumber';
+
 import AppContext from '../context/AppContext';
 
 import '../css/EquipModal.css';
@@ -154,8 +156,8 @@ function EquipModal(props) {
             />
           </Form.Group>
           <Form.Group className='mb-3 tag-input modal-input'>
-            <Form.Label>QUANTIDADE</Form.Label>
-            <Form.Control
+            {/* <Form.Label>QUANTIDADE</Form.Label> */}
+            {/* <Form.Control
               type='text'
               placeholder='Digite a Quantidade'
               value={quantidade}
@@ -167,6 +169,22 @@ function EquipModal(props) {
                   unidade,
                 })
               }}
+            /> */}
+            <InputNumber
+              name='Quantidade'
+              value={quantidade}
+              onChange={(e) => {
+                setQuantidade(e.target.value)
+                setSelectedItem({
+                  id, tag, name,
+                  quantidade: quantidade,
+                  unidade,
+                })
+              }
+              }
+              localStore={false}
+              maskChar={null}
+              inputmode="numeric"
             />
           </Form.Group>
           <Form.Group className='mb-3 tag-input modal-input'>
@@ -216,9 +234,9 @@ function EquipModal(props) {
         <Button
           className='modal-button select-button'
           onClick={() => {
-          pushMaterial()
-          props.onHide()
-        }}>Selecionar</Button>
+            pushMaterial()
+            props.onHide()
+          }}>Selecionar</Button>
         <Button
           variant='danger'
           className='modal-button cancel-button'
