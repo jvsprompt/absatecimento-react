@@ -15,6 +15,9 @@ function Home() {
       <br />
       <br />
       <Link to={`/abastecimento`}>Ir para abastecimento</Link>
+      <br />
+      <br />
+      <Link to={`/oseffort`}>Ir para OS EFFORT</Link>
     </div>
   );
 }

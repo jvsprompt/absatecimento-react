@@ -6,6 +6,8 @@ import FormAcademia from './pages/FormAcademia';
 import FormHMON from './pages/FormHMON';
 import Equipaments from './pages/Equipaments';
 import FuelRegistration from './pages/FuelRegistration';
+import OsEffort from './pages/OsEffort';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
@@ -24,6 +26,7 @@ function App() {
           {/* <Route exact path="/form/coppead" element={<Form />} /> */}
           <Route exact path="/equipamentos" element={<Equipaments />} />
           <Route exact path="/abastecimento" element={<FuelRegistration />} />
+          <Route exact path="/oseffort" element={<OsEffort />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
