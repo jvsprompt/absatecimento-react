@@ -8,7 +8,6 @@ import Equipaments from './pages/Equipaments';
 import FuelRegistration from './pages/FuelRegistration';
 import OsEffort from './pages/OsEffort';
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 import './css/Form.css';
@@ -22,6 +21,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/form/academia" element={<FormAcademia />} />
           <Route exact path="/form/hmon" element={<FormHMON />} />
+          <Route exact path="/form" element={<FormHMON />} />
           {/* <Route exact path="/form/igua" element={<Form />} /> */}
           {/* <Route exact path="/form/coppead" element={<Form />} /> */}
           <Route exact path="/equipamentos" element={<Equipaments />} />
