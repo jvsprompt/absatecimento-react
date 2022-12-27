@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import InputDropdown from '../components/InputDropdown';
@@ -8,13 +7,18 @@ import AppContext from '../context/AppContext';
 
 function Step1Form() {
   const {
-    materialList,
-    setMaterialList,
     type,
     setType,
     cc,
     setCc,
   } = useContext(AppContext);
+
+  const [cc2, setCc2] = useState('');
+
+  const setCc3 = (a) =>  {
+    setCc(a);
+    setCc2(a);
+  };
 
   const ccs = [
     'Teste',
@@ -31,28 +35,33 @@ function Step1Form() {
       <InputDropdown
         name='CC'
         value={cc}
-        change={setCc}
+        change={setCc3}
         items={ccs}
         localStore={false}
+        placeholder={true}
       />
-      <InputDropdown
-        name='CATEGORIA'
-        value={type}
-        change={setType}
-        items={types}
-        localStore={false}
-      />
-      <Link to={`/form`} style={ { margin: '2%' } }>
+      {
+        cc2 === '' ?
+          null :
+          <InputDropdown
+            name='CATEGORIA'
+            value={type}
+            change={setType}
+            items={types}
+            localStore={false}
+          />
+      }
         <Button
-          className='test'
+          className='test button-step1'
           variant='primary'
           active
           type='submit'
           value='Submit'
+          href='/form'
+        disabled={cc2 === '' ? true : false}
         >
           Ir para requisição de material
           </Button>
-      </Link>
     </div>
   );
 }
