@@ -42,8 +42,16 @@ function Step1Form() {
         items={types}
         localStore={false}
       />
-      <Link to={`/form`}>
-        <Button>Ir para Solicitação de Material</Button>
+      <Link to={`/form`} style={ { margin: '2%' } }>
+        <Button
+          className='test'
+          variant='primary'
+          active
+          type='submit'
+          value='Submit'
+        >
+          Ir para requisição de material
+          </Button>
       </Link>
     </div>
   );
