@@ -15,13 +15,25 @@ function Step1Form() {
 
   const [cc2, setCc2] = useState('');
 
-  const setCc3 = (a) =>  {
+  const setCc3 = (a) => {
     setCc(a);
     setCc2(a);
   };
 
   const ccs = [
-    'Teste',
+    '0621	HMOGC',
+    '0797	IGUA - EM',
+    '0807	2.2 - AC',
+    '0808	3.1 - AC',
+    '0809	5.2 - AC',
+    '0810	TEIAS - AC',
+    '0811	TIVIT',
+    '0816	CMS - FC',
+    '0818	IGUA - ADM',
+    '0822	COPPEAD',
+    '0823	HMAS',
+    '0824	CMS - PN',
+    '0825	CMS - BP',
   ];
 
   const types = [
@@ -51,17 +63,17 @@ function Step1Form() {
             localStore={false}
           />
       }
-        <Button
-          className='test button-step1'
-          variant='primary'
-          active
-          type='submit'
-          value='Submit'
-          href='/form'
+      <Button
+        className='test button-step1'
+        variant='primary'
+        active
+        type='submit'
+        value='Submit'
+        href='/form'
         disabled={cc2 === '' ? true : false}
-        >
-          Ir para requisição de material
-          </Button>
+      >
+        Ir para requisição de material
+      </Button>
     </div>
   );
 }
