@@ -15,6 +15,7 @@ function FormHMON() {
   const {
     materialList,
     setMaterialList,
+    type,
   } = useContext(AppContext);
 
   const [modalShow, setModalShow] = useState(false);
@@ -27,7 +28,7 @@ function FormHMON() {
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
-    const materiaisF = await getMateriais();
+    const materiaisF = await getMateriais(type);
     setMateriaisValue(materiaisF);
     setIsLoading(false);
   };

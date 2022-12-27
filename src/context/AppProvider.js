@@ -4,9 +4,16 @@ import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [materialList, setMaterialList] = useState([]);
+  const [type, setType] = useState('');
+  const [cc, setCc] = useState('');
+
   const exportProvider = {
     materialList,
     setMaterialList,
+    type,
+    setType,
+    cc,
+    setCc,
   };
 
   return (

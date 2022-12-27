@@ -2,11 +2,28 @@ import axios from 'axios';
 
 import { HMON_BACKEND } from '../config/config';
 
-const getMateriais = async () => {
+const getMateriais = async (tipo) => {
   const { data } = await axios.get(`${HMON_BACKEND}/product/find/all`)
   console.log('data [ OK! ]', await data);
 
-  const newData = data.map((data) => {
+  const gData = () => {
+    if (tipo === 'EPI') {
+      const nData = data.filter(d => d.typeId === 2);
+      return nData;
+    }
+
+    if (tipo === 'FERRAMENTA') {
+      const nData = data.filter(d => d.typeId === 1);
+      return nData;
+    }
+
+    const nData = data.filter(d => d.typeId !== 2 && d.typeId !== 1);
+    return nData;
+  };
+
+  const realNewData = gData();
+
+  const newData = realNewData.map((data) => {
     return {
       tag: data.tag,
       tags: data.tags,
