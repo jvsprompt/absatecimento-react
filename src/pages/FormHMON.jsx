@@ -137,7 +137,7 @@ function FormHMON() {
         table={materiaisValue}
       />
       <label htmlFor='material' className='block table table-material'>
-        <span className='materiais-title'>{`SM-${type4}`}</span>
+        <span className='materiais-title'>{`${cc4}-SM-${type4}`}</span>
         <table>
           <thead>
             <tr>
