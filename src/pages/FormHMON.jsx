@@ -107,6 +107,16 @@ function FormHMON() {
 
   return isLoading ? <Loading /> : (
     <div className='main-div'>
+      <Button
+        variant='primary'
+        active
+        type='submit'
+        value='Submit'
+        href='/'
+        className='voltar-form'
+      >
+        {`< Voltar`}
+      </Button>
       <EquipModal
         show={modalShow}
         onHide={() => setModalShow(false)}
