@@ -28,19 +28,19 @@ function Step1Form() {
   };
 
   const ccs = [
-    '0621	HMOGC',
-    '0797	IGUA - EM',
-    '0807	2.2 - AC',
-    '0808	3.1 - AC',
-    '0809	5.2 - AC',
-    '0810	TEIAS - AC',
-    '0811	TIVIT',
-    '0816	CMS - FC',
-    '0818	IGUA - ADM',
-    '0822	COPPEAD',
-    '0823	HMAS',
-    '0824	CMS - PN',
-    '0825	CMS - BP',
+    '0621	- HMOGC',
+    '0797	- IGUA - EM',
+    '0807	- 2.2 - AC',
+    '0808	- 3.1 - AC',
+    '0809	- 5.2 - AC',
+    '0810	- TEIAS - AC',
+    '0811	- TIVIT',
+    '0816	- CMS - FC',
+    '0818	- IGUA - ADM',
+    '0822	- COPPEAD',
+    '0823	- HMAS',
+    '0824	- CMS - PN',
+    '0825	- CMS - BP',
   ];
 
   const types = [
@@ -52,20 +52,21 @@ function Step1Form() {
   useEffect(() => { console.log('type =>', type)});
 
   return (
-    <div>
+    <div className='main-div'>
+      <h1>Solicitação de Material</h1>
       <InputDropdown
-        name='CC'
+        name='Selecione o CC'
         value={cc}
         change={setCc3}
         items={ccs}
         localStore={false}
-        placeholder={true}
+        placeholder={true} 
       />
       {
         cc2 === '' ?
           null :
           <InputDropdown
-            name='CATEGORIA'
+            name='Tipo da Solicitação'
             value={type}
             change={setType3}
             items={types}
@@ -81,7 +82,7 @@ function Step1Form() {
         href='/form'
         disabled={cc2 === '' ? true : false}
       >
-        Ir para requisição de material
+        Próximo
       </Button>
     </div>
   );

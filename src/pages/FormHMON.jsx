@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 import EquipModal from '../components/EquipModal';
 
@@ -18,6 +19,10 @@ function FormHMON() {
     type,
   } = useContext(AppContext);
 
+  const cc5 = localStorage.getItem('cc4');
+  const cc4 = cc5.slice(0, 4);
+  const type4 = localStorage.getItem('type4');
+
   const [modalShow, setModalShow] = useState(false);
   const [materiaisValue, setMateriaisValue] = useState([{
     tag: '0000',
@@ -28,7 +33,6 @@ function FormHMON() {
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
-    const type4 = localStorage.getItem('type4');
     const materiaisF = await getMateriais(type4);
     setMateriaisValue(materiaisF);
     setIsLoading(false);
@@ -36,21 +40,30 @@ function FormHMON() {
 
   const columns = ['TAG', 'DESCRIÇÃO'];
 
-  const sendData = () => {
+  const getSmNumber = async () => {
+    const { data } = await axios.get(`http://lmfcloud.ddns.net:8000/contador/${type4}`);
+    console.log('sm [ OK! ]', await data);
+    return data;
+  };
+  
+  
+  const sendData = async () => {
     const url = HMON_URI;
+    const smNumber = await getSmNumber();
 
     for (let i = 0; i < materialList.length; i++) {
       const dataToPost = new FormData();
       console.log('index =>', i);
 
-      dataToPost.append(entry.cliente, 'HMON');
+      dataToPost.append(entry.cliente, `SM-${type4.slice(0,3)}-${smNumber}`);
       dataToPost.append(entry.codigo, materialList[i].tag);
       dataToPost.append(entry.material, materialList[i].name);
       dataToPost.append(entry.setor, 'HMON');
       dataToPost.append(entry.unid, materialList[i].unidade);
       dataToPost.append(entry.qtd, materialList[i].quantidade);
       dataToPost.append(entry.obs, materialList[i].obs);
-      dataToPost.append(entry.status, '1. SOLICITADO');
+      dataToPost.append(entry.status, '0. SOLICITADO');
+      dataToPost.append('entry.1608830690', type4);
 
       console.log(materialList[i].name);
       console.log(`post ${i} <=> data => ${materialList[i]}`)
@@ -124,7 +137,7 @@ function FormHMON() {
         table={materiaisValue}
       />
       <label htmlFor='material' className='block table table-material'>
-        <span className='materiais-title'>MATERIAIS</span>
+        <span className='materiais-title'>{`SM-${type4}`}</span>
         <table>
           <thead>
             <tr>
@@ -138,7 +151,7 @@ function FormHMON() {
         </table>
       </label>
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        Selecionar Material
+        Selecionar Item
       </Button>
       <Button
         className='test'
