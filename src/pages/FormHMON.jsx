@@ -28,7 +28,8 @@ function FormHMON() {
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
-    const materiaisF = await getMateriais(type);
+    const type4 = localStorage.getItem('type4');
+    const materiaisF = await getMateriais(type4);
     setMateriaisValue(materiaisF);
     setIsLoading(false);
   };

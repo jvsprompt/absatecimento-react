@@ -5,6 +5,7 @@ import { HMON_BACKEND } from '../config/config';
 const getMateriais = async (tipo) => {
   const { data } = await axios.get(`${HMON_BACKEND}/product/find/all`)
   console.log('data [ OK! ]', await data);
+  console.log('type =>', tipo);
 
   const gData = () => {
     if (tipo === 'EPI') {

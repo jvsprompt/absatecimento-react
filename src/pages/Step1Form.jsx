@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import InputDropdown from '../components/InputDropdown';
@@ -18,6 +19,12 @@ function Step1Form() {
   const setCc3 = (a) => {
     setCc(a);
     setCc2(a);
+    localStorage.setItem('cc4', a);
+  };
+
+  const setType3 = (a) => {
+    setType(a);
+    localStorage.setItem('type4', a);
   };
 
   const ccs = [
@@ -42,6 +49,8 @@ function Step1Form() {
     'MATERIAL',
   ];
 
+  useEffect(() => { console.log('type =>', type)});
+
   return (
     <div>
       <InputDropdown
@@ -58,7 +67,7 @@ function Step1Form() {
           <InputDropdown
             name='CATEGORIA'
             value={type}
-            change={setType}
+            change={setType3}
             items={types}
             localStore={false}
           />
