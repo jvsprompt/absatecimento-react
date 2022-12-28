@@ -49,7 +49,10 @@ function Step1Form() {
     'MATERIAL',
   ];
 
-  useEffect(() => { console.log('type =>', type)});
+  useEffect(() => { console.log('type =>', type) });
+  useEffect(() => {
+    localStorage.setItem('type4', 'FERRAMENTA');
+  }, []);
 
   return (
     <div className='main-div'>
