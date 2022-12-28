@@ -55,7 +55,7 @@ function FormHMON() {
       const dataToPost = new FormData();
       console.log('index =>', i);
 
-      dataToPost.append(entry.cliente, `SM-${type4.slice(0,3)}-${smNumber}`);
+      dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0,3)}-${smNumber}`);
       dataToPost.append(entry.codigo, materialList[i].tag);
       dataToPost.append(entry.material, materialList[i].name);
       dataToPost.append(entry.setor, 'HMON');
