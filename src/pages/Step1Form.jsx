@@ -28,19 +28,19 @@ function Step1Form() {
   };
 
   const ccs = [
-    '0621	- HMOGC',
-    '0797	- IGUA - EM',
-    '0807	- 2.2 - AC',
-    '0808	- 3.1 - AC',
-    '0809	- 5.2 - AC',
-    '0810	- TEIAS - AC',
-    '0811	- TIVIT',
-    '0816	- CMS - FC',
-    '0818	- IGUA - ADM',
-    '0822	- COPPEAD',
-    '0823	- HMAS',
-    '0824	- CMS - PN',
-    '0825	- CMS - BP',
+    '0621 - HMOGC',
+    '0797 - IGUA - EM',
+    '0807 - 2.2 - AC',
+    '0808 - 3.1 - AC',
+    '0809 - 5.2 - AC',
+    '0810 - TEIAS - AC',
+    '0811 - TIVIT - LPU',
+    '0816 - CFFC',
+    '0818 - IGUA - ADM',
+    '0822 - COPPEAD',
+    '0823 - HMAS',
+    '0824 - CMSPN',
+    '0825 - CMSBP',
   ];
 
   const types = [
@@ -63,7 +63,7 @@ function Step1Form() {
         change={setCc3}
         items={ccs}
         localStore={false}
-        placeholder={true} 
+        placeholder={true}
       />
       {
         cc2 === '' ?
