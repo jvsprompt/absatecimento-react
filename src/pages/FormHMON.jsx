@@ -30,6 +30,8 @@ function FormHMON() {
     unidade: 'UN',
   }]);
   const [isLoading, setIsLoading] = useState(true);
+  const [smN, setSmN] = useState();
+  const [mailList, setMailList] = useState([]);
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
@@ -45,17 +47,84 @@ function FormHMON() {
     console.log('sm [ OK! ]', await data);
     return data;
   };
-  
-  
+
+  const returnMails = () => {
+    if (cc4 === '0621') {
+      return ['pcm@monteiroinstalacoes.com.br'];
+    }
+
+    if (
+      cc4 === '0797'
+      || cc4 === '0807'
+      || cc4 === '0808'
+      || cc4 === '0809'
+      || cc4 === '0810'
+    ) {
+      return [
+        'suporte.pcm@monteiroinstalacoes.com.br',
+        'analista.pcm@monteiroinstalacoes.com.br',
+      ];
+    }
+
+    if (cc4 === '0811') {
+      return ['coordenador@monteiroinstalacoes.com.br'];
+    }
+
+    if (cc4 === '0816') {
+      return ['obras@monteiroinstalacoes.com.br'];
+    }
+
+    if (cc4 === '0818') {
+      return [
+        'suporte.pcm@monteiroinstalacoes.com.br',
+        'analista.pcm@monteiroinstalacoes.com.br',
+      ];
+    }
+
+    if (cc4 === '0822') {
+      return [
+        'manutencao.coppead@monteiroinstalacoes.com.br',
+        'coordenador@monteiroinstalacoes.com.br',
+      ];
+    }
+
+    if (cc4 === '0823') {
+      return ['obra.hmas@monteiroinstalacoes.com.br'];
+    }
+
+    if (cc4 === '0824' || cc4 === '0825') {
+      return ['obra.cmspn@monteiroinstalacoes.com.br'];
+    }
+  };
+
+  const sendMail = async () => {
+    const newList = materialList.map((d) => {
+      return {
+        tag: d.tag,
+        description: d.name,
+        quantity: d.quantidade,
+        un: d.unidade,
+      };
+    });
+
+    await axios.post('http://lmfcloud.ddns.net:7000/custom/sendmail', {
+      type: type4,
+      cost: cc4,
+      number: await smN,
+      mails: returnMails(),
+      products: newList,
+    });
+  };
+
   const sendData = async () => {
     const url = HMON_URI;
-    const smNumber = await getSmNumber();
+    await setSmN(await getSmNumber());
 
     for (let i = 0; i < materialList.length; i++) {
       const dataToPost = new FormData();
       console.log('index =>', i);
 
-      dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0,3)}-${smNumber}`);
+      dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0, 3)}-${smN}`);
       dataToPost.append(entry.codigo, materialList[i].tag);
       dataToPost.append(entry.material, materialList[i].name);
       dataToPost.append(entry.setor, 'HMON');
@@ -71,6 +140,8 @@ function FormHMON() {
 
       submitForm(url, dataToPost);
     }
+
+    sendMail();
 
     if (navigator.onLine) {
       return alert('ENVIADO COM SUCESSO!');
