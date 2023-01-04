@@ -16,7 +16,6 @@ function FormHMON() {
   const {
     materialList,
     setMaterialList,
-    type,
   } = useContext(AppContext);
 
   const cc5 = localStorage.getItem('cc4');
@@ -31,7 +30,6 @@ function FormHMON() {
   }]);
   const [isLoading, setIsLoading] = useState(true);
   const [smN, setSmN] = useState();
-  const [mailList, setMailList] = useState([]);
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
@@ -142,6 +140,7 @@ function FormHMON() {
     }
 
     sendMail();
+    document.location.href = '/';
 
     if (navigator.onLine) {
       return alert('ENVIADO COM SUCESSO!');
