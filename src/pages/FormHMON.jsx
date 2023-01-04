@@ -97,7 +97,7 @@ function FormHMON() {
     }
   };
 
-  const sendMail = async () => {
+  const sendMail = async (smNN) => {
     const newList = materialList.map((d) => {
       return {
         tag: d.tag,
@@ -110,7 +110,7 @@ function FormHMON() {
     await axios.post('http://lmfcloud.ddns.net:7000/custom/sendmail', {
       type: type4,
       cost: cc4,
-      number: await smN,
+      number: await smNN,
       mails: returnMails(),
       products: newList,
     });
@@ -118,13 +118,13 @@ function FormHMON() {
 
   const sendData = async () => {
     const url = HMON_URI;
-    await setSmN(await getSmNumber());
+    let smNumb = await getSmNumber();
 
     for (let i = 0; i < materialList.length; i++) {
       const dataToPost = new FormData();
       console.log('index =>', i);
 
-      dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0, 3)}-${smN}`);
+      dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0, 3)}-${smNumb}`);
       dataToPost.append(entry.codigo, materialList[i].tag);
       dataToPost.append(entry.material, materialList[i].name);
       dataToPost.append(entry.setor, 'HMON');
@@ -141,7 +141,7 @@ function FormHMON() {
       submitForm(url, dataToPost);
     }
 
-    sendMail();
+    await sendMail(smNumb);
 
     if (navigator.onLine) {
       return alert('ENVIADO COM SUCESSO!');
