@@ -93,6 +93,10 @@ function FormHMON() {
     if (cc4 === '0824' || cc4 === '0825') {
       return ['obra.cmspn@monteiroinstalacoes.com.br'];
     }
+
+    if (cc4 === '0828') {
+      return ['coordenador@monteiroinstalacoes.com.br'];
+    }
   };
 
   const sendMail = async (smNN) => {
