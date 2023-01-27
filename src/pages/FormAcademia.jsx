@@ -76,7 +76,7 @@ function FormAcademia() {
 
   return (
     <div className='main-div'>
-      <InputDate
+      {/* <InputDate
         name='DATA DO PEDIDO'
         value={dataLevantValue}
         change={setDataLevantValue}
@@ -87,7 +87,7 @@ function FormAcademia() {
         value={servicosValue}
         change={setServicosValue}
         localStore={false}
-      />
+      /> */}
       <InputDropdown
         name='UNIDADE'
         value={unidadesValue}

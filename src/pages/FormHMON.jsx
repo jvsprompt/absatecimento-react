@@ -29,7 +29,6 @@ function FormHMON() {
     unidade: 'UN',
   }]);
   const [isLoading, setIsLoading] = useState(true);
-  const [smN, setSmN] = useState();
 
   const loadMateriaisModal = async () => {
     await setIsLoading(true);
@@ -41,7 +40,8 @@ function FormHMON() {
   const columns = ['TAG', 'DESCRIÇÃO'];
 
   const getSmNumber = async () => {
-    const { data } = await axios.get(`http://lmfcloud.ddns.net:8000/contador/${type4}`);
+    const { data } = await axios
+      .get(`http://lmfcloud.ddns.net:8000/contador/${type4}`);
     console.log('sm [ OK! ]', await data);
     return data;
   };
@@ -95,7 +95,17 @@ function FormHMON() {
     }
 
     if (cc4 === '0828') {
-      return ['coordenador@monteiroinstalacoes.com.br'];
+      return [
+        'coordenador@monteiroinstalacoes.com.br',
+        'gerente@monteiroinstalacoes.com.br',
+      ];
+    }
+
+    if (cc4 === '0000') {
+      return [
+        'rh@monteiroinstalacoes.com.br',
+        'atendimento.rh@monteiroinstalacoes.com.br',
+      ];
     }
   };
 
@@ -106,26 +116,35 @@ function FormHMON() {
         description: d.name,
         quantity: d.quantidade,
         un: d.unidade,
+        obs: d.obs,
       };
     });
+    console.log('new list =>', newList);
 
-    await axios.post('http://lmfcloud.ddns.net:7000/custom/sendmail', {
-      type: type4,
-      cost: cc4,
-      number: await smNN,
-      mails: returnMails(),
-      products: newList,
-    });
+    await axios
+      .post('http://lmfcloud.ddns.net:7000/custom/sendmail', {
+        type: type4,
+        cost: cc4,
+        number: await smNN,
+        mails: returnMails(),
+        products: newList,
+      });
   };
 
   const sendData = async () => {
+    if (
+      materialList === []
+      || !materialList
+      || materialList === ''
+    ) {
+      return alert('A solicitação no pode estar vazia!');
+    }
+
     const url = HMON_URI;
     let smNumb = await getSmNumber();
 
     for (let i = 0; i < materialList.length; i++) {
       const dataToPost = new FormData();
-      console.log('index =>', i);
-
       dataToPost.append(entry.cliente, `${cc4}-SM-${type4.slice(0, 3)}-${smNumb}`);
       dataToPost.append(entry.codigo, materialList[i].tag);
       dataToPost.append(entry.material, materialList[i].name);
@@ -135,6 +154,7 @@ function FormHMON() {
       dataToPost.append(entry.obs, materialList[i].obs);
       dataToPost.append(entry.status, '0. SOLICITADO');
       dataToPost.append('entry.1608830690', type4);
+      dataToPost.append('entry.178058800', cc4);
 
       console.log(materialList[i].name);
       console.log(`post ${i} <=> data => ${materialList[i]}`)
@@ -153,9 +173,9 @@ function FormHMON() {
     }
   };
 
-  const removeMaterial = (id) => {
+  const removeMaterial = (tagg) => {
     setMaterialList(
-      materialList.filter((info) => info.id !== id)
+      materialList.filter((info) => info.tag !== tagg)
     );
   };
 
@@ -170,7 +190,7 @@ function FormHMON() {
             <Button className='botao-lista'
               variant='danger'
               onClick={
-                () => removeMaterial(item.id)
+                () => removeMaterial(item.tag)
               }>
               -
             </Button>
@@ -190,7 +210,8 @@ function FormHMON() {
     return message;
   };
 
-  useEffect(() => { loadMateriaisModal() }, [])
+  useEffect(() => { loadMateriaisModal() }, []);
+  useEffect(() => console.log(materialList));
 
   return isLoading ? <Loading /> : (
     <div className='main-div'>

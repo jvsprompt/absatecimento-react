@@ -42,6 +42,7 @@ function Step1Form() {
     '0824 - CMSPN',
     '0825 - CMSBP',
     '0828 - HMFST',
+    '0000 - RH',
   ];
 
   const types = [
