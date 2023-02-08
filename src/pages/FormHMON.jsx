@@ -107,6 +107,10 @@ function FormHMON() {
         'atendimento.rh@monteiroinstalacoes.com.br',
       ];
     }
+
+    if (cc4 === '0829') {
+      return ['coordenador@monteiroinstalacoes.com.br'];
+    }
   };
 
   const sendMail = async (smNN) => {

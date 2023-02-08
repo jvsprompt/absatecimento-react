@@ -27,7 +27,7 @@ function Step1Form() {
     localStorage.setItem('type4', a);
   };
 
-  const ccs = [
+  const ccs1 = [
     '0621 - HMOGC',
     '0797 - IGUA - EM',
     '0807 - 2.2 - AC',
@@ -40,10 +40,13 @@ function Step1Form() {
     '0822 - COPPEAD',
     '0823 - HMAS',
     '0824 - CMSPN',
-    '0825 - CMSBP',
+    // '0825 - CMSBP',
     '0828 - HMFST',
     '0000 - RH',
+    '0829 - VIMOLBRAS',
   ];
+
+  const ccs = ccs1.sort();
 
   const types = [
     'FERRAMENTA',
