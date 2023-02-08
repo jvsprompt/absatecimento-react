@@ -121,6 +121,7 @@ function FormHMON() {
         quantity: d.quantidade,
         un: d.unidade,
         obs: d.obs,
+        cc: '["monteiro@monteiroinstalacoes.com.br", "logistica@monteiroinstalacoes.com.br"]',
       };
     });
     console.log('new list =>', newList);
