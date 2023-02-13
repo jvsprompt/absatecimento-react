@@ -48,7 +48,11 @@ function FormHMON() {
 
   const returnMails = () => {
     if (cc4 === '0621') {
-      return ['pcm@monteiroinstalacoes.com.br'];
+      return [
+        'pcm@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
 
     if (
@@ -61,21 +65,33 @@ function FormHMON() {
       return [
         'suporte.pcm@monteiroinstalacoes.com.br',
         'analista.pcm@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
       ];
     }
 
     if (cc4 === '0811') {
-      return ['coordenador@monteiroinstalacoes.com.br'];
+      return [
+        'coordenador@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
 
     if (cc4 === '0816') {
-      return ['obras@monteiroinstalacoes.com.br'];
+      return [
+        'obras@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
 
     if (cc4 === '0818') {
       return [
         'suporte.pcm@monteiroinstalacoes.com.br',
         'analista.pcm@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
       ];
     }
 
@@ -83,21 +99,33 @@ function FormHMON() {
       return [
         'manutencao.coppead@monteiroinstalacoes.com.br',
         'coordenador@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
       ];
     }
 
     if (cc4 === '0823') {
-      return ['obra.hmas@monteiroinstalacoes.com.br'];
+      return [
+        'obra.hmas@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
 
     if (cc4 === '0824' || cc4 === '0825') {
-      return ['obra.cmspn@monteiroinstalacoes.com.br'];
+      return [
+        'obra.cmspn@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
 
     if (cc4 === '0828') {
       return [
         'coordenador@monteiroinstalacoes.com.br',
         'gerente@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
       ];
     }
 
@@ -105,11 +133,17 @@ function FormHMON() {
       return [
         'rh@monteiroinstalacoes.com.br',
         'atendimento.rh@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
       ];
     }
 
     if (cc4 === '0829') {
-      return ['coordenador@monteiroinstalacoes.com.br'];
+      return [
+        'coordenador@monteiroinstalacoes.com.br',
+        'monteiro@monteiroinstalacoes.com.br',
+        'logistica@monteiroinstalacoes.com.br',
+      ];
     }
   };
 
