@@ -8,6 +8,7 @@ import submitForm from '../utils/submitForm';
 
 import { ENTRY_HMON as entry, HMON_URI } from '../config/strings';
 import getMateriais from '../utils/getMateriais';
+import returnMails from '../utils/returnMails';
 import Loading from '../components/Loading';
 
 import AppContext from '../context/AppContext';
@@ -46,107 +47,7 @@ function FormHMON() {
     return data;
   };
 
-  const returnMails = () => {
-    if (cc4 === '0621') {
-      return [
-        'pcm@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (
-      cc4 === '0797'
-      || cc4 === '0807'
-      || cc4 === '0808'
-      || cc4 === '0809'
-      || cc4 === '0810'
-    ) {
-      return [
-        'suporte.pcm@monteiroinstalacoes.com.br',
-        'analista.pcm@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0811') {
-      return [
-        'coordenador@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0816') {
-      return [
-        'obras@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-        'obra.cffc@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0818') {
-      return [
-        'suporte.pcm@monteiroinstalacoes.com.br',
-        'analista.pcm@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0822') {
-      return [
-        'manutencao.coppead@monteiroinstalacoes.com.br',
-        'coordenador@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0823') {
-      return [
-        'obra.hmas@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0824' || cc4 === '0825') {
-      return [
-        'obra.cmspn@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0828') {
-      return [
-        'coordenador@monteiroinstalacoes.com.br',
-        'gerente@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0000') {
-      return [
-        'rh@monteiroinstalacoes.com.br',
-        'atendimento.rh@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-
-    if (cc4 === '0829') {
-      return [
-        'coordenador@monteiroinstalacoes.com.br',
-        'monteiro@monteiroinstalacoes.com.br',
-        'logistica@monteiroinstalacoes.com.br',
-      ];
-    }
-  };
+  
 
   const sendMail = async (smNN) => {
     const newList = materialList.map((d) => {
@@ -166,7 +67,7 @@ function FormHMON() {
         type: type4,
         cost: cc4,
         number: await smNN,
-        mails: returnMails(),
+        mails: returnMails(cc4),
         products: newList,
       });
   };
@@ -176,8 +77,10 @@ function FormHMON() {
       materialList === []
       || !materialList
       || materialList === ''
+      || materialList.length === 0
     ) {
-      return alert('A solicitação no pode estar vazia!');
+      console.log('A solicitação não pode estar vazia!');
+      return alert('A solicitação não pode estar vazia!');
     }
 
     const url = HMON_URI;
