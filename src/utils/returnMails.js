@@ -98,6 +98,14 @@ const returnMails = (cc4) => {
       'logistica@monteiroinstalacoes.com.br',
     ];
   }
+
+  if (cc4 === '0831') {
+    return [
+      'coordenador@monteiroinstalacoes.com.br',
+      'monteiro@monteiroinstalacoes.com.br',
+      'logistica@monteiroinstalacoes.com.br',
+    ];
+  }
 };
 
 export default returnMails;
