@@ -28,24 +28,29 @@ function Step1Form() {
   };
 
   const ccs1 = [
-    '0621 - HMOGC',
+    //'0621 - HMOGC',
     '0797 - IGUA - EM',
     '0807 - 2.2 - AC',
-    '0808 - 3.1 - AC',
-    '0809 - 5.2 - AC',
-    '0810 - TEIAS - AC',
+    // '0808 - 3.1 - AC',
+    // '0809 - 5.2 - AC',
+    // '0810 - TEIAS - AC',
     '0811 - TIVIT - LPU',
     '0816 - CFFC',
     '0818 - IGUA - ADM',
     '0822 - COPPEAD',
-    '0823 - HMAS',
+    // '0823 - HMAS',
     '0824 - CMSPN',
     // '0825 - CMSBP',
     '0828 - HMFST',
     '0000 - RH',
-    '0829 - VIMOLBRAS',
-    '0831 - COPPEAD CE.',
-  ];
+    //'0829 - VIMOLBRAS',
+    //'0831 - COPPEAD CE.',
+    '0838 - CAPS MA',
+    '0839 - ASSAI DESUM',
+    '0840 – COPPEAD TANQUE',
+    '0841 – CRUX 80K',
+    '0842 - 2024.02.000002 - TAKODA (Iluminação Emergência)',
+    ];
 
   const ccs = ccs1.sort();
 
