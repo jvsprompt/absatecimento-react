@@ -8,7 +8,7 @@ import InputTextKm from "../components/InputTextKm";
 import InputNumberKm from "../components/InputNumberKm";
 import InputDropdownKm from "../components/InputDropdownKm";
 
-import submitForm from "../utils/submitForm";
+import submitFormv2 from "../utils/submitFormv2";
 
 import motoristas from "../data/motoristas.json";
 import veiculos from "../data/veiculos.json";
@@ -41,29 +41,32 @@ function FormFuel() {
       const urlItem = URL_Return.find(
         (item) => item["veiculo/placa"] === placa
       );
-
       const response = await axios.get(urlItem.url);
       console.log("get vehicles response =>", response);
+
+      // Filtrando os dados para incluir apenas os do último dia
       const currentDate = new Date().toLocaleDateString();
-      const filteredData = await response.data.filter((item) =>
+      const filteredData = response.data.filter((item) =>
         item["Carimbo de data/hora"].includes(currentDate)
       );
 
-      filteredData
-        .sort(
-          (a, b) =>
-            new Date(b["Carimbo de data/hora"]) -
-            new Date(a["Carimbo de data/hora"])
-        )
-        .reverse();
+      // Ordenando os dados por data de forma decrescente
+      filteredData.sort(
+        (a, b) =>
+          new Date(b["Carimbo de data/hora"]) -
+          new Date(a["Carimbo de data/hora"])
+      )
+      .reverse();
 
-      setData(filteredData);
+      // Pegando apenas os 50 últimos dados
+      const last50Data = filteredData.slice(0, 50);
+
+      setData(last50Data);
       console.log("vehicles data =>", data);
-      // window.location.reload();
-      return setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setLoading(true);
+      setLoading(false);
     }
   };
 
@@ -119,7 +122,7 @@ function FormFuel() {
         dataToPost.append(VEICULO, last8Digits);
         dataToPost.append(MOTORISTA, motoristaValue);
 
-        submitForm(URI, dataToPost);
+        submitFormv2(URI, dataToPost);
 
         restoreDefaultValues();
 
