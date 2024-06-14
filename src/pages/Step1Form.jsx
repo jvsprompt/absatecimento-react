@@ -50,6 +50,8 @@ function Step1Form() {
     '0840 – COPPEAD TANQUE',
     '0841 – CRUX 80K',
     '0842 - 2024.02.000002 - TAKODA (Iluminação Emergência)',
+    '0844 - 2024.05.000004 - Viva Rio 3.1 Vila do João (Manutenção Academia Carioca)',
+    '0845 - 2024.04.000005 - COPPEAD (Adequação Centro Pesquisa Inovacao)',
     ];
 
   const ccs = ccs1.sort();
