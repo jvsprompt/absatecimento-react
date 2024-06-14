@@ -126,10 +126,10 @@ function FormHMON() {
     if (materialList.length !== 0) {
       const table = materialList.map((item, i) => (
         <tr>
-          {/* <td>{item.tag}</td> */}
+          <td>{item.tag}</td>
           <td>{item.name}</td>
           <td>{item.quantidade}</td>
-          <td>
+          {/* <td>
             <Button className='botao-lista'
               variant='danger'
               onClick={
@@ -137,7 +137,7 @@ function FormHMON() {
               }>
               -
             </Button>
-          </td>
+          </td> */}
         </tr>
       ));
       return table;
@@ -179,6 +179,7 @@ function FormHMON() {
         <table>
           <thead>
             <tr>
+            <td>- - - TAG - - -</td>
               <td>DESCRIÇÃO</td>
               <td>QUANTIDADE</td>
             </tr>

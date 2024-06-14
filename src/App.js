@@ -9,6 +9,7 @@ import FuelRegistration from './pages/FuelRegistration';
 import OsEffort from './pages/OsEffort';
 import Step1Form from './pages/Step1Form';
 import MaterialsList from './pages/MaterialsList';
+import KmRegistration from './pages/KmRegistration';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/abastecimento" element={<FuelRegistration />} />
           <Route exact path="/oseffort" element={<OsEffort />} />
           <Route exact path="/material-lista" element={<MaterialsList />} />
+          <Route exact path="km/:placa" element={<KmRegistration />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
