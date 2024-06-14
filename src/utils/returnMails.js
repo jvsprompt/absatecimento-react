@@ -19,6 +19,8 @@ const returnMails = (cc4) => {
       'analista.pcm@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'coordenador@monteiroinstalacoes.com.br',
+      'gerente@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -46,6 +48,8 @@ const returnMails = (cc4) => {
       'analista.pcm@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'coordenador@monteiroinstalacoes.com.br',
+      'gerente@monteiroinstalacoes.com.br',
     ];
   }
 
