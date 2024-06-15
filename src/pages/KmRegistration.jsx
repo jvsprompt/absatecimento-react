@@ -22,6 +22,7 @@ function FormFuel() {
   const [kmValue, setKmValue] = useState("");
   const [motoristaValue, setMotoristaValue] = useState("");
   const [data, setData] = useState([]);
+  const [tableData, setTableData] = useState([]); // Novo estado para os dados da tabela
   const [loading, setLoading] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [modalLocked, setModalLocked] = useState(false);
@@ -51,17 +52,19 @@ function FormFuel() {
       );
 
       // Ordenando os dados por data de forma decrescente
-      filteredData.sort(
-        (a, b) =>
-          new Date(b["Carimbo de data/hora"]) -
-          new Date(a["Carimbo de data/hora"])
-      )
-      .reverse();
+      filteredData
+        .sort(
+          (a, b) =>
+            new Date(b["Carimbo de data/hora"]) -
+            new Date(a["Carimbo de data/hora"])
+        )
+        .reverse();
 
       // Pegando apenas os 50 últimos dados
       const last50Data = filteredData.slice(0, 50);
 
       setData(last50Data);
+      setTableData(last50Data); // Atualizando tableData com os dados filtrados
       console.log("vehicles data =>", data);
       setLoading(false);
     } catch (error) {
@@ -122,12 +125,24 @@ function FormFuel() {
         dataToPost.append(VEICULO, last8Digits);
         dataToPost.append(MOTORISTA, motoristaValue);
 
+        // Adicionando os dados localmente para atualização imediata
+        const newEntry = {
+          "Carimbo de data/hora": new Date().toLocaleString(),
+          TIPO: tipoValue,
+          KM: kmValue,
+          LOCAL: localValue,
+          "VEÍCULO/PLACA": last8Digits,
+          MOTORISTA: motoristaValue,
+        };
+
+        setData([newEntry, ...data]);
+        setTableData([newEntry, ...tableData]);
+
         submitFormv2(URI, dataToPost);
 
         restoreDefaultValues();
 
         if (navigator.onLine) {
-          // setShowSuccessModal(true);
           setModalLocked(true);
           setDataUpdated(true);
         } else {
@@ -141,7 +156,6 @@ function FormFuel() {
         setShowErrorModal(true);
       }
     }
-    fetchData();
   };
 
   const diasDaSemana = [
@@ -198,6 +212,16 @@ function FormFuel() {
       setDataUpdated(false);
     }
   }, [showSuccessModal, dataUpdated]);
+
+  // Adicionando setTimeout para fechar o modal automaticamente após 3 segundos
+  useEffect(() => {
+    if (showFinalModal) {
+      const timer = setTimeout(() => {
+        setShowFinalModal(false);
+      }, 1500);
+      return () => clearTimeout(timer); // Limpa o timeout se o modal for fechado antes dos 3 segundos
+    }
+  }, [showFinalModal]);
 
   useEffect(() => {
     initializeStates();
@@ -276,8 +300,8 @@ function FormFuel() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.length > 0 ? (
-                      data.map((item, index) => (
+                    {tableData.length > 0 ? ( // Usando tableData em vez de data
+                      tableData.map((item, index) => (
                         <tr key={index}>
                           <td className="small">
                             {item["Carimbo de data/hora"]}
@@ -312,23 +336,25 @@ function FormFuel() {
           <Modal.Title>Enviando dados...</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          POR FAVOR, AGUARDE ALGUNS SEGUNDOS. <p /> NÃO FECHE OU ATUALIZE ESTÁ
+          POR FAVOR, AGUARDE ALGUNS SEGUNDOS. <p /> NÃO FECHE OU ATUALIZE ESTA
           PÁGINA!
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
 
-      {/* <Modal show={showFinalModal} onHide={handleFinalModalClose}>
+      <Modal show={showFinalModal} onHide={handleFinalModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Envio Realizado! </Modal.Title>
+          <Modal.Title>Envio Realizado!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>AGUARDE ALGUNS SEGUNDOS QUE A TABELA ABAIXO SERÁ ATUALIZADA.</Modal.Body>
+        <Modal.Body>
+          A TABELA FOI  ATUALIZADA.
+        </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
           <Button variant="secondary" onClick={handleFinalModalClose}>
             Fechar
           </Button>
         </Modal.Footer>
-      </Modal> */}
+      </Modal>
 
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
         <Modal.Header closeButton>
