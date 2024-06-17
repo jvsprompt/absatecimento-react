@@ -218,7 +218,7 @@ function FormFuel() {
     if (showFinalModal) {
       const timer = setTimeout(() => {
         setShowFinalModal(false);
-      }, 1500);
+      }, 900);
       return () => clearTimeout(timer); // Limpa o timeout se o modal for fechado antes dos 3 segundos
     }
   }, [showFinalModal]);
@@ -344,16 +344,16 @@ function FormFuel() {
 
       <Modal show={showFinalModal} onHide={handleFinalModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Envio Realizado!</Modal.Title>
+          <Modal.Title>Enviado com sucesso!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        {/* <Modal.Body>
           A TABELA FOI  ATUALIZADA.
-        </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-center">
+        </Modal.Body> */}
+        {/* <Modal.Footer className="d-flex justify-content-center">
           <Button variant="secondary" onClick={handleFinalModalClose}>
             Fechar
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
 
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
