@@ -67,6 +67,11 @@ function FormFuel() {
       setTableData(last50Data); // Atualizando tableData com os dados filtrados
       console.log("vehicles data =>", data);
       setLoading(false);
+
+      // Pegando o "LOCAL" mais recente e atualizando o estado localValue
+      if (last50Data.length > 0) {
+        setLocalValue(last50Data[0].LOCAL);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
@@ -86,7 +91,6 @@ function FormFuel() {
   };
 
   const restoreDefaultValues = () => {
-    setLocalValue("");
     setKmValue("");
     setMotoristaValue("");
   };
@@ -228,6 +232,12 @@ function FormFuel() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (tableData.length > 0) {
+      setLocalValue(tableData[0].LOCAL);
+    }
+  }, [tableData]);
+
   return (
     <div className="form-group">
       <div className="">
@@ -346,14 +356,6 @@ function FormFuel() {
         <Modal.Header closeButton>
           <Modal.Title>Enviado com sucesso!</Modal.Title>
         </Modal.Header>
-        {/* <Modal.Body>
-          A TABELA FOI  ATUALIZADA.
-        </Modal.Body> */}
-        {/* <Modal.Footer className="d-flex justify-content-center">
-          <Button variant="secondary" onClick={handleFinalModalClose}>
-            Fechar
-          </Button>
-        </Modal.Footer> */}
       </Modal>
 
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
