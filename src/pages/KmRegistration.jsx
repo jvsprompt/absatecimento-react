@@ -23,6 +23,7 @@ function FormFuel() {
   const [motoristaValue, setMotoristaValue] = useState("");
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState([]); // Novo estado para os dados da tabela
+  const [lastTipo, setLastTipo] = useState(""); // Novo estado para armazenar o último TIPO
   const [loading, setLoading] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [modalLocked, setModalLocked] = useState(false);
@@ -68,9 +69,10 @@ function FormFuel() {
       console.log("vehicles data =>", data);
       setLoading(false);
 
-      // Pegando o "LOCAL" mais recente e atualizando o estado localValue
+      // Pegando o "LOCAL" e "TIPO" mais recente e atualizando o estado localValue e lastTipo
       if (last50Data.length > 0) {
         setLocalValue(last50Data[0].LOCAL);
+        setLastTipo(last50Data[0].TIPO); // Atualizando lastTipo
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -141,6 +143,7 @@ function FormFuel() {
 
         setData([newEntry, ...data]);
         setTableData([newEntry, ...tableData]);
+        setLastTipo(tipoValue); // Atualizando lastTipo com o novo tipo
 
         submitFormv2(URI, dataToPost);
 
@@ -235,6 +238,7 @@ function FormFuel() {
   useEffect(() => {
     if (tableData.length > 0) {
       setLocalValue(tableData[0].LOCAL);
+      setLastTipo(tableData[0].TIPO); // Atualizando lastTipo
     }
   }, [tableData]);
 
@@ -276,6 +280,7 @@ function FormFuel() {
               <Button
                 className="btn btn-info btn-lg rounded-left w-50 font-weight-bold"
                 onClick={() => sendData("ORIGEM")}
+                disabled={lastTipo === "ORIGEM"}
               >
                 ORIGEM
               </Button>
@@ -283,6 +288,7 @@ function FormFuel() {
               <Button
                 className="btn btn-warning btn-lg rounded-right w-50 font-weight-bold"
                 onClick={() => sendData("DESTINO")}
+                disabled={lastTipo === "DESTINO"}
               >
                 DESTINO
               </Button>
