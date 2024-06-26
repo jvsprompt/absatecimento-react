@@ -1,0 +1,808 @@
+commit cd51f84cf6fca4c98244b2ac85f1f681fb17fed0
+Merge: fc3c991 9f51c0d
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Mon Jun 24 13:50:36 2024 -0300
+
+    o ultimo LOCAL add aparece no inputText Local ao enviar ou carregar a pagina, verifica se o tipo do ultimo envio e origem ou destino e bloqueia o botao de acordo com o tipo
+
+commit fc3c9917c7174700c88415ed790164091eb3bddf
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Sat Jun 22 13:23:19 2024 -0300
+
+    adicionado valor do ultimo local ao inpuText local sempre que enviar ou carregar a pagina
+
+commit 9f51c0d4bedfc22368f70bc33a38ddd95e6b8695
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Mon Jun 17 14:26:25 2024 -0300
+
+    centro de custo adicionado 0846
+
+commit 9fc45b19edd4e0ae6a731bca89aa54aa6972f942
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Mon Jun 17 10:43:20 2024 -0300
+
+    ajuste no modal envio realizado!
+
+commit 5920a0de25f8dbb2b809fa5b2f09f487851a457a
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Sat Jun 15 05:30:35 2024 -0300
+
+    carregamento instantaneo da resposta enviada na tabela renderizada, modal 'envido realizado' o mesmo fecha em 1500
+
+commit 7eee1194494dfb36931d5d46a067db66b206625e
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Fri Jun 14 15:56:27 2024 -0300
+
+    Criado submitFormV2.js e adicionado const em const fetchData para trazer somente os ultimos 50 dados
+
+commit d39b5245f945834ff0e37b81a938106198961de0
+Author: Jean Vincent <jeanvincentvicente@gmail.com>
+Date:   Fri Jun 14 11:44:51 2024 -0300
+
+    Add History of KM for Tests by Robert Moreira
+
+commit ea06258f6baf588594b1a0b13d9dbe7bf5319394
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Fri Jun 14 10:53:36 2024 -0300
+
+    novos emails adicionados
+
+commit 33e5756a3871513ca000c95b2b33828d6598e4b4
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Fri Jun 14 09:56:25 2024 -0300
+
+    alteracao
+
+commit afe6bdeb994fe82dee698c2ad1360e58426cc1ab
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Mon Apr 29 13:56:23 2024 -0300
+
+    alteracoes
+
+commit 6cf23411f1983cc3529d8a42a973531533fb019d
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Fri May 19 14:53:42 2023 -0300
+
+    coordenador e suporte.pcm adicionado a lista de emails
+
+commit bea6ea567e0315da8cc8daa05bb35199942964b9
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Thu May 4 11:24:45 2023 -0300
+
+    Atualização Centros de custo
+
+commit c691e914c182a3168572117cc5733dd00af4a4eb
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Mar 15 11:51:03 2023 -0300
+
+    Correção ao enviar solicitações vazias
+
+commit 6c05eda7d84429e41947c551b20702cb4b071761
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Fri Mar 10 13:15:07 2023 -0300
+
+    Atualicação CC 0816
+
+commit 78bd7e47a2cb5c78f3b6f9c5b0b0ade12a3870e6
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Feb 13 07:46:22 2023 -0300
+
+    Email da logistica e monteiro adicionados manualmente a funcao return emails
+
+commit 166d6ff92eb3a83e845d3337ad707b28709c5146
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Feb 8 11:40:27 2023 -0300
+
+    cc adicionados
+
+commit a1cb966c9087df2f44ea63e0b7744a358736139e
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Feb 8 11:36:52 2023 -0300
+
+    Novo centro de custo adicionado
+
+commit 8b6ddfdcdc41a9e542b6eb49af984457b32cd270
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Jan 30 09:54:58 2023 -0300
+
+    Lista de materiais adicionado
+
+commit ff268bac55dda2698b036c313d8fcba7ffae8c76
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Fri Jan 27 12:05:40 2023 -0300
+
+    Pagina de materiais adicionada
+
+commit 8764bfd5f6998c9b0b6c33d78a69bdcbfc156b3c
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Fri Jan 27 11:10:25 2023 -0300
+
+    Alteracoes
+
+commit 149665a2257702b2c383f992236103fd9c9da968
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Fri Jan 13 07:53:27 2023 -0300
+
+    cc adicionado
+
+commit 7ed729897957265a796f979373b2e214c9532101
+Merge: c793ba2 d763904
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Wed Jan 4 15:34:35 2023 -0300
+
+    merge
+
+commit c793ba2a3409a9de85d29ad50d23d76360667948
+Author: Fernando Monteiro <fernando@friogera.com.br>
+Date:   Wed Jan 4 15:31:50 2023 -0300
+
+    Retorna o numero da sm
+
+commit d763904c76d201309f3e397d6c29833a72fe078d
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jan 4 15:30:29 2023 -0300
+
+    Redireciona para a pagina inicial ao enviar o form
+
+commit dd22708a55da098ec24bab69b9cd386f8b12bb7e
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Fri Dec 30 11:01:23 2022 -0300
+
+    Agora envia emails ao fazer uma requisicao
+
+commit 538892dab85f4eaed446c5a21ee2852bb04d2cce
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Thu Dec 29 11:37:22 2022 -0300
+
+    dependência imap instalada
+
+commit db4c77835aa40f86ff1202af2921d907e5712265
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Thu Dec 29 09:31:50 2022 -0300
+
+    atualização na lista de ccs
+
+commit 0a091192cd1cac21e9bc932ae477535693602eba
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Thu Dec 29 09:01:04 2022 -0300
+
+    Ajuste na mensagem quando a lista de itens esta vazia
+
+commit 152d0b188e68a2d2b4d9577a08968cca506488e8
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 10:43:00 2022 -0300
+
+    cc é exibido no titulo da pagina
+
+commit 560eb24ae951550c6b46e976ab03a6017335a430
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 10:41:56 2022 -0300
+
+    Agora envia o cc no campo de cliente
+
+commit 65cc6962d13b9d733c4bada09b64ff7ac3b83895
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 10:18:47 2022 -0300
+
+    Ajuste fa seleção do tipo de solicitacao
+
+commit 67be3e28cc86409196256dc9e6027704107a306c
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 10:14:47 2022 -0300
+
+    Numero da sm é enviado a tabela
+
+commit 2320cad7aa76f92dfed2914cf46a3e6fdad76102
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 09:26:30 2022 -0300
+
+    Botão de voltar adicionado na tela de form
+
+commit 860395bcc7ed41f8f7a8c97b14e65b44b42d179b
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Dec 28 09:22:59 2022 -0300
+
+    Correção bug não registra categoria selecionada
+
+commit fb549970285ab8716370b0088bdda6052cd45d17
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 27 16:11:18 2022 -0300
+
+    Lista de centros de custo adicionada
+
+commit 9b9c1bf8b48246c02a73bca05e4fb6a9a566b43d
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 27 16:04:17 2022 -0300
+
+    Ajustes na pagina de selecao de categoria
+
+commit 57f003f32a71af5fd966942734aee2a13fe7a667
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 27 15:46:32 2022 -0300
+
+    Ajustes css tela de seleção de categoria
+
+commit c87ba084ca93f226261498cd62686fdac672dc60
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 27 15:43:59 2022 -0300
+
+    Tela para seleção de categorial de solicitacao adicionada
+
+commit f17d24176400905d0912b8cb630ec50a962b3d21
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 26 16:52:50 2022 -0300
+
+    Atualizacao conexao banco de dados
+
+commit 310f8eaec9b353fcec002c1e442c83d97b683650
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 12 14:14:05 2022 -0300
+
+    Pagina para os do effort
+
+commit 8387aea2465a64c87a23bf15f64e1a9f7f7583fa
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 16:32:12 2022 -0300
+
+    Validacao para checar se o campo de quantidade e descricao estao preenchidos
+
+commit 49610fd84b101d1cacdcba1fffeee451b9689aaa
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 15:53:15 2022 -0300
+
+    Botão para continuar adicionando
+
+commit 4430c3d106bbba9628c85f846ea594c9be629abf
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 14:47:33 2022 -0300
+
+    Campo de descriçao nao pode ser mais editado
+
+commit a99283aa7d1678fcc5644deb00a9f9deb3393376
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 11:18:39 2022 -0300
+
+    Pequenos ajustes no modal
+
+commit 3f7f25916c70d083a22fff18d692b8dc070f16f1
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 11:10:34 2022 -0300
+
+    Ajustes no envio do formulario
+
+commit b5b117d5e96e491493dfbc2a397dc3847d614172
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Dec 6 09:50:55 2022 -0300
+
+    campo de observacao adicionado a tela de selecao de materiais
+
+commit 4d01c34e0c21d3313858c9268c0a652640e19089
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 5 13:57:15 2022 -0300
+
+    Ajustes na renderizacao da tabela de materiais do form
+
+commit ef4d1d3cb8549d9c9a79535593b3f17564733eb6
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 5 13:26:59 2022 -0300
+
+    Botao para apagr itens da lista adicionado
+
+commit 353a4028e1a6b4240ce9d3f63a9d3167ae615fc3
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 5 13:04:57 2022 -0300
+
+    Renderiza a lista de materiais
+
+commit 564a1047120cf49c19c391028a5ad9de8e0402fc
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Dec 5 09:23:39 2022 -0300
+
+    Campo de busca funcionando
+
+commit 4b4673ef78c2f87b45e71d8fbfa3ee3ab9262a81
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Fri Dec 2 11:37:37 2022 -0300
+
+    Campos adicionado ao modal
+
+commit a5882bd58f1ee1c759a9b14c16a5e8377c21b371
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Tue Nov 29 16:56:22 2022 -0300
+
+    Tabela sendo renderizada na tabela
+
+commit 1467d0ecc58f772b44ebe45445971cbba685726b
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Wed Nov 23 16:57:18 2022 -0300
+
+    alterar HMON_URI e ENTRY_HMON
+
+commit be1391e091d384b1a077eda2a16c1d486e3aaea3
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Nov 23 14:41:37 2022 -0300
+
+    FormHMON incompleto
+
+commit f60cb843a3a5f2a65dddc94574afdba749ac89cc
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Wed Nov 23 11:38:21 2022 -0300
+
+    FormAcademia adicionado
+
+commit 4f2e6599936416498a9cd716cec33b13e2a5b006
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Nov 21 17:59:13 2022 -0300
+
+    Agora limpa os valores da lista de materias ao enviar
+
+commit 89104cd8566cbc0aca1de014c9b9eafee2eba47d
+Merge: 901ef18 b96d904
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Mon Nov 21 15:20:48 2022 -0300
+
+    merge - correção de conflitos
+
+commit 901ef1882026459c2f8ec0286ad5b722ad7dd2a2
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Mon Nov 21 15:10:26 2022 -0300
+
+    alteração no css dos novos input de material
+
+commit b96d9043fbe5300dff8b86a98f822e63925cd1e1
+Merge: 063103b 3a5caf6
+Author: Fernando Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Nov 21 14:25:37 2022 -0300
+
+    Merge pull request #2 from jvsprompt/fernando
+    
+    Cada material é enviado separadamente para a tabela
+
+commit 3a5caf692924778764770f9f451eabfa4c2576e5
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Nov 21 14:25:02 2022 -0300
+
+    Cada material é enviado separadamente para a tabela
+
+commit 063103bc077612600938673d4e313badcb543ded
+Merge: d97cf37 d06a987
+Author: jvsprompt <99885814+jvsprompt@users.noreply.github.com>
+Date:   Mon Nov 21 11:30:43 2022 -0300
+
+    Merge pull request #1 from jvsprompt/fernando
+    
+    Atualização Input de materiais
+
+commit d06a987918145676003b2e0a34bd23e9c2cd9c26
+Author: Fernando F Monteiro <fernando.monteiro.f11@gmail.com>
+Date:   Mon Nov 21 11:03:02 2022 -0300
+
+    Materiais é adicionado separadamente e exibido em forma de lista
+
+commit d97cf3767cfe65e43a9617700d31f91c74c22eb1
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Fri Nov 18 15:58:10 2022 -0300
+
+    alterada as rotas
+
+commit b166835c51dacadf37dc4e59aa8539a4ed9a7c1a
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Fri Nov 18 15:50:19 2022 -0300
+
+    Refaturação
+
+commit 0fa13235828fd8e1ef2627bb054820bc94489a68
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Fri Nov 18 15:07:36 2022 -0300
+
+    Função getSetor movido para pasta utils
+
+commit 96857051b126ca1554394f12e6edfd61a652f849
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Fri Nov 11 07:41:43 2022 -0300
+
+    update9
+
+commit 7791799a4662a1515aa38d8dc05cd07a944370e2
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Fri Nov 11 07:38:25 2022 -0300
+
+    update8
+
+commit 46c40bbb6f92f62216731525626d8746d3cbfd07
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Thu Nov 10 08:27:06 2022 -0300
+
+    update7
+
+commit d17cbef0f45ca46025047a7e7d1970689264e8ed
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Thu Nov 10 08:25:08 2022 -0300
+
+    update6
+
+commit 355e2267abd5cdb4a42baecb5f319c1cabff180e
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Wed Nov 9 14:59:41 2022 -0300
+
+    update5
+
+commit 143c6d6022ac2055a5b40a4a262d55a05d545859
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Wed Nov 9 10:01:31 2022 -0300
+
+    update4
+
+commit 276ef99062eacaf104e1168b2dd43432d4a96052
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Tue Nov 8 13:35:24 2022 -0300
+
+    update3
+
+commit 6bfe9adb1d8ca41470ce6149340514bda5686951
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Tue Nov 8 11:46:19 2022 -0300
+
+    update2
+
+commit c81076730f50f7fea8262636da432a904983d495
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Mon Nov 7 15:28:47 2022 -0300
+
+    update1
+
+commit 2f7b2e449a8c2d613c3a47c90515052d24130da8
+Author: Jean <jeanvicetvicente@gmail.com>
+Date:   Thu Nov 3 16:56:58 2022 -0300
+
+    Pasta SRC-Cópia deletada
+
+commit cb2736baad015fc685ddadb5198b8ed7ba2823df
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Wed Aug 17 07:20:57 2022 -0300
+
+    Adicionado novo Formulário
+
+commit a0a79a16d2bb84fb41d0296e363b9129496d84ce
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 16 11:02:02 2022 -0300
+
+    Alteração o Botão
+
+commit e5ef70be42becb9a17677360df3288d2c7b84bee
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 16 10:52:10 2022 -0300
+
+    Alteração o Botão
+
+commit 21932dee93fd653e74e15121353faa385deec918
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 16 10:49:27 2022 -0300
+
+    Alteração o Botão
+
+commit f19e0ec83a833ef68f14c454bdf6db7d1fff7cdb
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 16 08:55:06 2022 -0300
+
+    Correção dos Bugs de Setor Errado
+
+commit b3eb9b250b79a4d45a4184c0169b72ab9ae61410
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 16 08:48:19 2022 -0300
+
+    Correção dos Bugs de Setor Errado
+
+commit b163cb278299517ecdaa89ece63fe9b23c868bbe
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 15:25:03 2022 -0300
+
+    Correção nos nomes das unidade
+
+commit 77a09334d8b7914c80509fd805b8f263936a5b33
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 14:44:55 2022 -0300
+
+    Correção nos nomes das unidades
+
+commit 5b90721e740f071f532ee572bb9eeb588b6f1434
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 13:15:16 2022 -0300
+
+    Correção no Form.CSS
+
+commit 2429d17abe8adc5943d307593b17e41e41b462d6
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:36:06 2022 -0300
+
+    Validacao para materias adicionado
+
+commit 5d0a0bd74f01171d220fdec7c4e1f374fbbad55b
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:29:34 2022 -0300
+
+    Correcao bug de envio de inputs em branco
+
+commit 25855d5246f288c6019ef244b148f549a53d93de
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:12:46 2022 -0300
+
+    Correção InputDate
+
+commit ce8f4d9b005ab55b9117336c9a25e8b688b02335
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:11:11 2022 -0300
+
+    InputDate alterado - Data atual é exibida ao carregar a página
+
+commit 8662315e0c7cb527a11f63eaff42b54de66e542f
+Merge: 34ed7de 4e9fb04
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:05:49 2022 -0300
+
+    Merge branch 'main' of github.com:jvsprompt/absatecimento-react into main
+
+commit 34ed7de174ad47242e8898b356a15417a1251bfb
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 10:05:12 2022 -0300
+
+    update 1508(2)
+
+commit 4e9fb04877a7d76344283c35b7c5a4b94b883693
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Mon Aug 15 09:18:33 2022 -0300
+
+    Componente de data restaurada para mod anterior
+
+commit 41170f60d0b290c19a11300c340ad9afec3fb0e4
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Mon Aug 15 09:12:39 2022 -0300
+
+    Correção na importação
+
+commit 69a23f4460c7e03fd334d1bd7f68d26bfddee692
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Mon Aug 15 09:11:47 2022 -0300
+
+    Importação do CSS em cada página
+
+commit dedb04487859a928af6d274c7ebb5bb8790604a4
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Mon Aug 15 09:10:41 2022 -0300
+
+    Novo input de data
+
+commit e5b1e5e3e37a084213550b06f2433efac192798f
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Mon Aug 15 08:12:19 2022 -0300
+
+    update 1508
+
+commit 680d43905e06b8c5e0d53c46345a99e97c6aae58
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 16:58:54 2022 -0300
+
+    update 1208
+
+commit 88681326f7ee184448a07d0fce9a44b9208eb13e
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 16:35:47 2022 -0300
+
+    atualização nova3
+
+commit 63a0cf3752268dc4bf63f9168867dd03529724a5
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 16:27:07 2022 -0300
+
+    atualização nova2
+
+commit bfb64d1f9d666b2532ed50de52f21d9bf1869146
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 16:17:53 2022 -0300
+
+    atualização do css
+
+commit 0ff46a6b1aaa22c6ad25915006865aec5d70119b
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 11:38:13 2022 -0300
+
+    atualização do css
+
+commit 39056859a223ed0af7e7e7a31ab2794143682fe0
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 10:54:05 2022 -0300
+
+    atualização do css
+
+commit ce9bab0ec481bfed237072e748cf16e171c3f9b3
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Fri Aug 12 10:42:57 2022 -0300
+
+    Sou Goy
+
+commit 10b0566ad85f7450678edf1c3a346da37942d47a
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 11:21:50 2022 -0300
+
+    Ajustes CSS input
+
+commit 3e1157d861d20aa9a56ca5b07743f9544d11b1d0
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 11:21:24 2022 -0300
+
+    Ajustes CSS input
+
+commit 104b75988620b3210200f378a130f0342a08e84f
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 11:13:02 2022 -0300
+
+    Ajustes no código
+
+commit 26d26d649ef9f975882170430e5158dc3c10f87a
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 11:12:15 2022 -0300
+
+    Funcao para desestruturar data do forms
+
+commit b5418bfb953135699df15b1b610e767d7344a0ac
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 11:01:25 2022 -0300
+
+    Setores mudam de acordo com a unidade selecionada
+
+commit a69003e54d646d54e98a30a2a590e0113aa6e455
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Thu Aug 11 10:49:17 2022 -0300
+
+    alterado algumas coisas
+
+commit 8d8ede15385d36d8feac4bb30e6d374f7ced601b
+Merge: 1fcc7d0 c2b4f09
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Thu Aug 11 10:40:50 2022 -0300
+
+    alterado algumas coisas
+
+commit 1fcc7d053660996702b93b7c6d47b476790fae35
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Thu Aug 11 10:34:46 2022 -0300
+
+    teste
+
+commit c2b4f09549d3b289d51e40689f03f86ab8b08922
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Thu Aug 11 10:32:01 2022 -0300
+
+    Input de setor alterado para dropdown
+
+commit b59cc8c5b912a73f34177975662e99281da9fc5e
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Aug 9 11:58:09 2022 -0300
+
+    Button, Input Text Area
+
+commit c7bfb28650f8951519d6211b631d97a788f725b2
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Fri Aug 5 11:26:55 2022 -0300
+
+    Alterações nos componentes para adicionar classe e definir limite de caracteres
+
+commit 3bc98350beac27a6d5a404bfcbb99a1bbc299f08
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Fri Aug 5 11:12:26 2022 -0300
+
+    Adicionado util normalizeString
+
+commit 0cf870c81e7b8a256616df289fde0fc198294cf9
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Thu Jul 28 09:11:27 2022 -0300
+
+    sendData Forms
+
+commit a776b05d1e93b5e985b86f8131bc07ec6a03de14
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 27 11:46:19 2022 -0300
+
+    Search adicionado
+
+commit f13313a648a22c147bcf76a1d6c3dbc9f87de3ba
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 27 09:23:26 2022 -0300
+
+    Página de abastecimento adicionado
+
+commit 37a1707212e30d63e48c912ca1b26291fbf1f8c6
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 27 09:07:37 2022 -0300
+
+    Página Home adicionada
+
+commit a9342d2768738da30b88022c0d7aece591526cca
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Tue Jul 26 11:53:34 2022 -0300
+
+    Modificação no Card
+
+commit a312cec373cbfbe78d5be1490e1800a5553080df
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Tue Jul 26 11:32:34 2022 -0300
+
+    Ajustes nos componentes InputDate e InputDropdown
+
+commit 8f5e7f37196cc00ff025894cc28fe219f7dc0923
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Tue Jul 26 11:31:31 2022 -0300
+
+    Ajuste no Componente InputText
+
+commit 7788cf5ddccf7ebc23d993f0af22e46fa3f82b5e
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Tue Jul 26 11:29:21 2022 -0300
+
+    Alteração na rota da página do formulário
+
+commit 3238c950697ec029ad9f51feb17904179465ee49
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Tue Jul 26 11:28:54 2022 -0300
+
+    Alterações Página de Equipamentos
+
+commit b4d213e28c0640f4b158028363b3da7925773666
+Author: Jean <jeanvicentvicente@gmail.com>
+Date:   Tue Jul 26 10:49:18 2022 -0300
+
+    Página de Equipamentos adicionada
+
+commit 40c57bd6ad32c2b29433d0dd9d00d3f37673b25e
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 11:44:12 2022 -0300
+
+    Ajustes no components
+
+commit 4ab837274e9d8cdc55cd01fed842a6db2b79fe3d
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 11:42:32 2022 -0300
+
+    Ajustes nos inputs para puxar o valor do localStorage
+
+commit e876f8d648808229f4cad1dc01dc21adf7642236
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 11:35:43 2022 -0300
+
+    :sparkles: feat: Forms finalizado
+
+commit e5c5b5d36ba299524ba2771a1e4c40b38221b637
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 10:39:16 2022 -0300
+
+    :sparkles: feat: Context adicionado
+
+commit ceb695b8e1326deff43033ad022047420989acb8
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 10:33:00 2022 -0300
+
+    :sparkles: feat: Componente InputDate adicionado
+
+commit d5f18feab09f8e48e74e39498f17e59dee5ce6dd
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 10:29:46 2022 -0300
+
+    :sparkles: feat: Componente InputText
+
+commit 0910326b455a33bc5abff9c2b497231d263086f7
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 10:06:37 2022 -0300
+
+    :sparkles: feat: Componente InputDropdown
+
+commit 8ba8b67eb38e9236fa569557397c408a06bbf4e0
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 09:51:41 2022 -0300
+
+    :sparkles: feat: Dependências instaladas
+
+commit 8a93e06dc40dd59b2838b882ce66e5f84441e4f9
+Author: fprompto <fernando.monteiro.f11@gmail.com>
+Date:   Wed Jul 20 09:36:20 2022 -0300
+
+    Initialize project using Create React App

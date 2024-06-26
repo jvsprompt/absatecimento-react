@@ -22,8 +22,8 @@ function FormFuel() {
   const [kmValue, setKmValue] = useState("");
   const [motoristaValue, setMotoristaValue] = useState("");
   const [data, setData] = useState([]);
-  const [tableData, setTableData] = useState([]); // Novo estado para os dados da tabela
-  const [lastTipo, setLastTipo] = useState(""); // Novo estado para armazenar o último TIPO
+  const [tableData, setTableData] = useState([]);
+  const [lastTipo, setLastTipo] = useState("");
   const [loading, setLoading] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [modalLocked, setModalLocked] = useState(false);
@@ -46,13 +46,11 @@ function FormFuel() {
       const response = await axios.get(urlItem.url);
       console.log("get vehicles response =>", response);
 
-      // Filtrando os dados para incluir apenas os do último dia
       const currentDate = new Date().toLocaleDateString();
       const filteredData = response.data.filter((item) =>
         item["Carimbo de data/hora"].includes(currentDate)
       );
 
-      // Ordenando os dados por data de forma decrescente
       filteredData
         .sort(
           (a, b) =>
@@ -61,18 +59,22 @@ function FormFuel() {
         )
         .reverse();
 
-      // Pegando apenas os 50 últimos dados
       const last50Data = filteredData.slice(0, 50);
 
       setData(last50Data);
-      setTableData(last50Data); // Atualizando tableData com os dados filtrados
+      setTableData(last50Data);
       console.log("vehicles data =>", data);
       setLoading(false);
 
-      // Pegando o "LOCAL" e "TIPO" mais recente e atualizando o estado localValue e lastTipo
       if (last50Data.length > 0) {
-        setLocalValue(last50Data[0].LOCAL);
-        setLastTipo(last50Data[0].TIPO); // Atualizando lastTipo
+        const mostRecentLocal = last50Data[0].LOCAL;
+        const secondMostRecentLocal = last50Data[1]?.LOCAL || "";
+        const mostRecentKm = last50Data[0].KM;
+        setLocalValue(
+          mostRecentLocal === secondMostRecentLocal ? "" : mostRecentLocal
+        );
+        setKmValue(mostRecentKm.substring(0, 3));
+        setLastTipo(last50Data[0].TIPO);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -99,14 +101,14 @@ function FormFuel() {
 
   const sendData = (tipoValue) => {
     let urlItem;
-
+  
     for (let i = 0; i < URL_Return.length; i++) {
       if (URL_Return[i]["veiculo/placa"] === placa) {
         urlItem = URL_Return[i];
         break;
       }
     }
-
+  
     if (urlItem) {
       const URI = urlItem.uri;
       const LOCAL = urlItem.local;
@@ -114,24 +116,33 @@ function FormFuel() {
       const KM = urlItem.km;
       const VEICULO = urlItem.veiculo;
       const MOTORISTA = urlItem.motorista;
-
+  
       if (tipoValue && localValue && kmValue && placa && motoristaValue) {
         if (kmValue.length < 6) {
           setErrorMessage("O valor de KM deve ter pelo menos 6 dígitos.");
           setShowErrorModal(true);
           return;
         }
-
+  
         const last8Digits = placa.substring(placa.length - 8);
-
+  
+        // Verificar se o KM é maior ou igual ao mais recente na tabela
+        if (tableData.length > 0) {
+          const mostRecentKm = parseInt(tableData[0].KM);
+          if (parseInt(kmValue) < mostRecentKm) {
+            setErrorMessage("O valor de KM não pode ser menor que o valor mais recente.");
+            setShowErrorModal(true);
+            return;
+          }
+        }
+  
         const dataToPost = new FormData();
         dataToPost.append(LOCAL, localValue);
         dataToPost.append(TIPO, tipoValue);
         dataToPost.append(KM, kmValue);
         dataToPost.append(VEICULO, last8Digits);
         dataToPost.append(MOTORISTA, motoristaValue);
-
-        // Adicionando os dados localmente para atualização imediata
+  
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
           TIPO: tipoValue,
@@ -140,15 +151,15 @@ function FormFuel() {
           "VEÍCULO/PLACA": last8Digits,
           MOTORISTA: motoristaValue,
         };
-
+  
         setData([newEntry, ...data]);
         setTableData([newEntry, ...tableData]);
-        setLastTipo(tipoValue); // Atualizando lastTipo com o novo tipo
-
+        setLastTipo(tipoValue);
+  
         submitFormv2(URI, dataToPost);
-
+  
         restoreDefaultValues();
-
+  
         if (navigator.onLine) {
           setModalLocked(true);
           setDataUpdated(true);
@@ -164,6 +175,7 @@ function FormFuel() {
       }
     }
   };
+  
 
   const diasDaSemana = [
     "DOMINGO",
@@ -220,13 +232,12 @@ function FormFuel() {
     }
   }, [showSuccessModal, dataUpdated]);
 
-  // Adicionando setTimeout para fechar o modal automaticamente após 3 segundos
   useEffect(() => {
     if (showFinalModal) {
       const timer = setTimeout(() => {
         setShowFinalModal(false);
       }, 900);
-      return () => clearTimeout(timer); // Limpa o timeout se o modal for fechado antes dos 3 segundos
+      return () => clearTimeout(timer);
     }
   }, [showFinalModal]);
 
@@ -237,8 +248,14 @@ function FormFuel() {
 
   useEffect(() => {
     if (tableData.length > 0) {
-      setLocalValue(tableData[0].LOCAL);
-      setLastTipo(tableData[0].TIPO); // Atualizando lastTipo
+      const mostRecentLocal = tableData[0].LOCAL;
+      const secondMostRecentLocal = tableData[1]?.LOCAL || "";
+      const mostRecentKm = tableData[0].KM;
+      setLocalValue(
+        mostRecentLocal === secondMostRecentLocal ? "" : mostRecentLocal
+      );
+      setKmValue(mostRecentKm.substring(0, 3));
+      setLastTipo(tableData[0].TIPO);
     }
   }, [tableData]);
 
@@ -265,7 +282,6 @@ function FormFuel() {
                 change={setLocalValue}
                 placeholder="Digite o local"
                 uppercase={true}
-                maxLen={12}
               />
               <InputNumberKm
                 name="KM"
@@ -316,7 +332,7 @@ function FormFuel() {
                     </tr>
                   </thead>
                   <tbody>
-                    {tableData.length > 0 ? ( // Usando tableData em vez de data
+                    {tableData.length > 0 ? (
                       tableData.map((item, index) => (
                         <tr key={index}>
                           <td className="small">
