@@ -51,21 +51,18 @@ function FormFuel() {
         item["Carimbo de data/hora"].includes(currentDate)
       );
 
-      filteredData
-        .sort(
-          (a, b) =>
-            new Date(b["Carimbo de data/hora"]) -
-            new Date(a["Carimbo de data/hora"])
-        )
-        .reverse();
-
+      filteredData.sort(
+        (a, b) =>
+          new Date(b["Carimbo de data/hora"]) - new Date(a["Carimbo de data/hora"])
+      );
+  
       const last50Data = filteredData.slice(0, 50);
-
+  
       setData(last50Data);
       setTableData(last50Data);
       console.log("vehicles data =>", data);
       setLoading(false);
-
+  
       if (last50Data.length > 0) {
         const mostRecentLocal = last50Data[0].LOCAL;
         const secondMostRecentLocal = last50Data[1]?.LOCAL || "";
