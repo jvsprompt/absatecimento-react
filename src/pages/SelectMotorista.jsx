@@ -4,8 +4,7 @@ import motoristas from "../data/motoristas.json";
 import InputDropdownKm from "../components/InputDropdownKm";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "../css/menu.css";
+import styles from "../css/menu.module.css"; // Importe o arquivo CSS Module
 
 const SelectMotoristaVeiculo = () => {
   const [motoristaValue, setMotoristaValue] = useState("");
@@ -37,28 +36,34 @@ const SelectMotoristaVeiculo = () => {
   };
 
   return (
-    <div>
-      <header>
-        <div className="menu-container">
-          <h1 className="heading">Selecione o Motorista</h1>
-          <br/>
-          <p className="">{placa}</p> {/* Exibe a placa aqui */}
+    <div className={styles.menuPage}>
+      <header className={styles.menuHeader}>
+        <div className={styles.menuContainer}>
+          <h1 className={styles.heading}>Selecione o Motorista</h1>
+          <br />
+          <p className={styles.subHeading}>{placa}</p>{" "}
+          {/* Exibe a placa aqui */}
         </div>
       </header>
-      <div className="main-div">
-        <InputDropdownKm
-          name=""
-          value={motoristaValue}
-          change={setMotoristaValue}
-          items={motoristas}
-          localStore={false}
-          placeholder={true}
-          placeholdertext="Selecione o Motorista"
-        />
+      <div className={styles.content}>
+        <div className={styles.menuContainer}>
+          <InputDropdownKm
+            name=""
+            value={motoristaValue}
+            change={setMotoristaValue}
+            items={motoristas}
+            localStore={false}
+            placeholder={true}
+            placeholdertext="Selecione o Motorista"
+          />
 
-        <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-          Confirmar Motorista
-        </button>
+          <button
+            className={`btn btn-primary ${styles.btnConfirm}`}
+            onClick={handleSubmit}
+          >
+            Confirmar Motorista
+          </button>
+        </div>
       </div>
 
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
