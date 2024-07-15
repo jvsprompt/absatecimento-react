@@ -53,6 +53,7 @@ function Step1Form() {
     '0844 - 2024.05.000004 - Viva Rio 3.1 Vila do João (Manutenção Academia Carioca)',
     '0845 - 2024.04.000005 - COPPEAD (Adequação Centro Pesquisa Inovacao)',
     '0846 - 2024.05.000016 - Igua Casa Shopping (Automação VRF)',
+    '0848 - 2023.10.000011 - COPPEAD (Manutenção QTA)',
     ];
 
   const ccs = ccs1.sort();
