@@ -119,7 +119,7 @@ const returnMails = (cc4) => {
   }
 
   return ['logistica@monteiroinstalacoes.com.br', 'gerente@monteiroinstalacoes.com.br',
-    'monteiro@monteiroinstalacoes.com.br',];
+    'monteiro@monteiroinstalacoes.com.br'];
 
 };
 
