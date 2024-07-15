@@ -71,18 +71,13 @@ function FormSupply() {
         (a, b) =>
           new Date(b["Carimbo de data/hora"]) -
           new Date(a["Carimbo de data/hora"])
-      );
-
+      ).reverse();
+      
       const last50Data = filteredData.slice(0, 50);
 
-      // Adicionando a propriedade 'DATA' aos dados
-      const formattedData = last50Data.map((item) => ({
-        ...item,
-        DATA: new Date(item["Carimbo de data/hora"]).toLocaleDateString(),
-      }));
-
-      setData(formattedData);
-      setTableData(formattedData);
+      setData(last50Data);
+      setTableData(last50Data);
+      console.log("vehicles data =>", data);
       setLoading(false);
 
       if (last50Data.length > 0) {
@@ -429,13 +424,7 @@ function FormSupply() {
                           <td className="small">
                             {item["Carimbo de data/hora"]}
                           </td>
-                          <td className="small">
-                            {new Date(item.DATA).toLocaleDateString("pt-BR", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "numeric",
-                            })}
-                          </td>
+                          <td className="small">{item.DATA}</td>
                           <td className="small">{item.MOTORISTA}</td>
                           <td className="small">{item["PLACA"]}</td>
                           <td className="small">{item.TIPO}</td>
