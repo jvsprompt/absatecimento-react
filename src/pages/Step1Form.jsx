@@ -54,6 +54,8 @@ function Step1Form() {
     '0845 - 2024.04.000005 - COPPEAD (Adequação Centro Pesquisa Inovacao)',
     '0846 - 2024.05.000016 - Igua Casa Shopping (Automação VRF)',
     '0848 - 2023.10.000011 - COPPEAD (Manutenção QTA)',
+    '0849 - Vesuvius Rio (Adequação Climatização Galpão MIX)',
+    '0850 - COPPEAD (REPARO VAZAMENTO AGUA)',
     ];
 
   const ccs = ccs1.sort();
