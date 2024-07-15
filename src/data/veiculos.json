@@ -1,26 +1,9 @@
 [
-  {
-  "index": 0,
-  "veiculo/placa": "MONTANA_PYV-8D57"
-  },
-  {
-  "index": 1,
-  "veiculo/placa": "MERIVA_LPF-5C24"
-  },
-  {
-  "index": 2,
-  "veiculo/placa": "MONTANA_KVW-7793"
-  },
-  {
-  "index": 3,
-  "veiculo/placa": "MONTANA_LMF-4D61"
-  },
-  {
-  "index": 4,
-  "veiculo/placa": "MONTANA_KQJ-6J77"
-  },
-  {
-  "index": 5,
-  "veiculo/placa": "MONTANA_LTI-4E30"
-  }
+  "PYV-8D57",
+  "LPF-5C24",
+  "KVW-7793",
+  "LMF-4D61",
+  "KQJ-6J77",
+  "LTI-4E30",
+  "AAA-TEST"
 ]

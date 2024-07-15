@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";  
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import logo from "../assets/images/logo/logo.png"; // Importando a imagem do logo
 
 import InputTextKm from "../components/InputTextKm";
 import InputNumberKm from "../components/InputNumberKm";
 import InputDropdownKm from "../components/InputDropdownKm";
+import InputDate from "../components/InputDate";
+import InputValorKm from "../components/InputValorKm";
+// import InputTextArea from "../components/InputTextArea";
 
 import submitFormv2 from "../utils/submitFormv2";
 
 import motoristas from "../data/motoristas.json";
 import veiculos from "../data/veiculos.json";
+import combustiveis from "../data/combustiveis.json";
 import URL_Return from "../data/url.json";
 
-function FormFuel() {
+import logo from "../assets/images/logo/logo.png"; // Importando a imagem do logo
+
+function FormSupply() {
   const { placa } = useParams();
   const navigate = useNavigate();
 
   const [showForm, setShowForm] = useState(true);
   const [localValue, setLocalValue] = useState("");
+  // const [obsValue, setObsValue] = useState("");
   const [kmValue, setKmValue] = useState("");
   const [motoristaValue, setMotoristaValue] = useState("");
+  const [combustivelValue, setCombustivelValue] = useState("");
+  const [valorValue, setValorValue] = useState("");
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [lastTipo, setLastTipo] = useState("");
@@ -34,6 +42,7 @@ function FormFuel() {
   const [initialDataLength, setInitialDataLength] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
   const [dataUpdated, setDataUpdated] = useState(false);
+  const [dateValue, setDateValue] = useState(new Date()); // Estado para a data selecionada
 
   useEffect(() => {
     setInitialDataLength(data.length);
@@ -50,7 +59,7 @@ function FormFuel() {
       const urlItem = URL_Return.find(
         (item) => item["veiculo/placa"] === placa
       );
-      const response = await axios.get(urlItem.url);
+      const response = await axios.get(urlItem.urlb);
       console.log("get vehicles response =>", response);
 
       const currentDate = new Date().toLocaleDateString();
@@ -66,9 +75,14 @@ function FormFuel() {
 
       const last50Data = filteredData.slice(0, 50);
 
-      setData(last50Data);
-      setTableData(last50Data);
-      console.log("vehicles data =>", data);
+      // Adicionando a propriedade 'DATA' aos dados
+      const formattedData = last50Data.map((item) => ({
+        ...item,
+        DATA: new Date(item["Carimbo de data/hora"]).toLocaleDateString(),
+      }));
+
+      setData(formattedData);
+      setTableData(formattedData);
       setLoading(false);
 
       if (last50Data.length > 0) {
@@ -102,6 +116,7 @@ function FormFuel() {
   const restoreDefaultValues = () => {
     setKmValue("");
     // setMotoristaValue("");
+    setCombustivelValue("");
   };
 
   const sendData = (tipoValue) => {
@@ -115,14 +130,25 @@ function FormFuel() {
     }
 
     if (urlItem) {
-      const URI = urlItem.uri;
-      const LOCAL = urlItem.local;
+      const URIB = urlItem.urib;
+      const LOCAL = urlItem.obs;
       const TIPO = urlItem.tipo;
       const KM = urlItem.km;
       const VEICULO = urlItem.veiculo;
       const MOTORISTA = urlItem.motorista;
+      const DATA = urlItem.data;
+      const COMBUSTIVEL = urlItem.combustivel;
+      const VALOR = urlItem.local;
 
-      if (tipoValue && localValue && kmValue && placa && motoristaValue) {
+      if (
+        tipoValue &&
+        kmValue &&
+        placa &&
+        motoristaValue &&
+        dateValue &&
+        combustivelValue &&
+        valorValue
+      ) {
         if (kmValue.length < 6) {
           setErrorMessage("O valor de KM deve ter pelo menos 6 dígitos.");
           setShowErrorModal(true);
@@ -143,27 +169,41 @@ function FormFuel() {
           }
         }
 
+        // Formatar a data como DAY/MM/YYYY
+        const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
+          dataAtual.getMonth() + 1
+        )
+          .toString()
+          .padStart(2, "0")}/${anoAtual}`;
+
         const dataToPost = new FormData();
-        dataToPost.append(LOCAL, localValue);
+        dataToPost.append(LOCAL, localValue || ''); // Enviar uma string vazia se localValue for vazio
         dataToPost.append(TIPO, tipoValue);
         dataToPost.append(KM, kmValue);
         dataToPost.append(VEICULO, last8Digits);
         dataToPost.append(MOTORISTA, motoristaValue);
+        dataToPost.append(DATA, formattedDate); // Enviar a data formatada
+        dataToPost.append(COMBUSTIVEL, combustivelValue);
+        dataToPost.append(VALOR, valorValue);
 
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
           TIPO: tipoValue,
           KM: kmValue,
-          LOCAL: localValue,
-          "VEÍCULO/PLACA": last8Digits,
+          OBSERVAÇÃO: localValue || '', // Salvar uma string vazia se localValue for vazio
+          PLACA: last8Digits,
           MOTORISTA: motoristaValue,
+          DATA: formattedDate, // Salvar a data formatada no estado
+          COMBUSTÍVEL: combustivelValue,
+          VALOR: valorValue,
         };
 
         setData([newEntry, ...data]);
+        console.log("Novo registro:", newEntry);
         setTableData([newEntry, ...tableData]);
         setLastTipo(tipoValue);
 
-        submitFormv2(URI, dataToPost);
+        submitFormv2(URIB, dataToPost);
 
         restoreDefaultValues();
 
@@ -181,7 +221,7 @@ function FormFuel() {
         setShowErrorModal(true);
       }
     }
-  };
+  }
 
   const diasDaSemana = [
     "DOMINGO",
@@ -248,19 +288,6 @@ function FormFuel() {
   }, [showFinalModal]);
 
   useEffect(() => {
-    if (tableData.length > 0) {
-      const mostRecentLocal = tableData[0].LOCAL;
-      const secondMostRecentLocal = tableData[1]?.LOCAL || "";
-      const mostRecentKm = tableData[0].KM;
-      setLocalValue(
-        mostRecentLocal === secondMostRecentLocal ? "" : mostRecentLocal
-      );
-      setKmValue(mostRecentKm.substring(0, 3));
-      setLastTipo(tableData[0].TIPO);
-    }
-  }, [tableData]);
-
-  useEffect(() => {
     const motorista = localStorage.getItem("selectedMotorista");
     if (motorista) {
       setMotoristaValue(motorista);
@@ -269,21 +296,24 @@ function FormFuel() {
 
   return (
     <div className="form-group">
-    <nav className="navbar navbar-dark bg-dark fixed-top d-flex justify-content-between align-items-center px-3" style={{ marginTop: '0' }}>
-      <img
-        src={logo}
-        alt="Logo"
-        style={{ height: "30px" }}
-        onClick={() => navigate(`/menu_usuario/${placa}`)}
-      />
-      <Button
-        variant="secondary"
-        className="menu-button"
-        onClick={() => navigate(`/menu_usuario/${placa}`)}
+      <nav
+        className="navbar navbar-dark bg-dark fixed-top d-flex justify-content-between align-items-center px-3"
+        style={{ marginTop: "0" }}
       >
-        Menu
-      </Button>
-    </nav>
+        <img
+          src={logo}
+          alt="Logo"
+          style={{ height: "30px" }}
+          onClick={() => navigate(`/menu_usuario/${placa}`)}
+        />
+        <Button
+          variant="secondary"
+          className="menu-button"
+          onClick={() => navigate(`/menu_usuario/${placa}`)}
+        >
+          Menu
+        </Button>
+      </nav>
       <div className="">
         {showForm && (
           <div className="text-light text-center font-weight-bold">
@@ -298,12 +328,21 @@ function FormFuel() {
                 placeholder={true}
                 placeholdertext="Selecione o Motorista"
               />
-              <InputTextKm
-                name="LOCAL"
-                value={localValue}
-                change={setLocalValue}
-                placeholder="Digite o local"
-                uppercase={true}
+              <InputDate
+                name="DATA"
+                value={dateValue}
+                change={setDateValue}
+                localStore={false} // Para salvar no localStorage se necessário
+                classN="input-date-class" // Adicione a classe desejada aqui
+              />
+              <InputDropdownKm
+                name="COMBUSTÍVEL"
+                value={combustivelValue}
+                change={setCombustivelValue}
+                items={combustiveis}
+                localStore={false}
+                placeholder={true}
+                placeholdertext="Selecione o combustível"
               />
               <InputNumberKm
                 name="KM"
@@ -312,24 +351,51 @@ function FormFuel() {
                 placeholder="Digite o KM"
                 maxLen={6}
               />
+              <InputValorKm
+                name="VALOR"
+                value={valorValue}
+                change={setValorValue}
+                placeholder="Digite o valor"
+                uppercase={true}
+              />
+              <InputTextKm
+                name="OBSERVAÇÃO"
+                value={localValue}
+                change={setLocalValue}
+                placeholder="Digite a observação"
+                uppercase={true}
+              />
             </div>
-            <div className="main-div">ONDE VOCÊ ESTÁ?</div>
-            <div className="d-flex justify-content-center mx-5">
-              <Button
-                className="btn btn-info btn-lg rounded-left w-50 font-weight-bold"
-                onClick={() => sendData("ORIGEM")}
-                disabled={lastTipo === "ORIGEM"}
-              >
-                ORIGEM
-              </Button>
-              <div className="mx-4"></div>
-              <Button
-                className="btn btn-warning btn-lg rounded-right w-50 font-weight-bold"
-                onClick={() => sendData("DESTINO")}
-                disabled={lastTipo === "DESTINO"}
-              >
-                DESTINO
-              </Button>
+            <div className="main-div">QUAL O TIPO?</div>
+            <br />
+            <div className="row justify-content-center">
+              <div className="col-12 col-md mb-3">
+                <Button
+                  className="btn btn-warning btn-lg btn-block rounded-left font-weight-bold"
+                  onClick={() => sendData("VALE OLIVEIRENSE")}
+                  // disabled={lastTipo === "VALE OLIVEIRENSE"}
+                >
+                  VALE OLIVEIRENSE
+                </Button>
+              </div>
+              <div className="col-12 col-md mb-3">
+                <Button
+                  className="btn btn-primary btn-lg btn-block font-weight-bold"
+                  onClick={() => sendData("REEMBOLSO DE RUA")}
+                  // disabled={lastTipo === "REEMBOLSO DE RUA"}
+                >
+                  REEMBOLSO DE RUA
+                </Button>
+              </div>
+              <div className="col-12 col-md mb-3">
+                <Button
+                  className="btn btn-success btn-lg btn-block rounded-right font-weight-bold"
+                  onClick={() => sendData("VR COMBUSTIVEL")}
+                  // disabled={lastTipo === "VR COMBUSTIVEL"}
+                >
+                  VR COMBUSTIVEL
+                </Button>
+              </div>
             </div>
             <br />
             <br />
@@ -346,11 +412,14 @@ function FormFuel() {
                   <thead className="small">
                     <tr>
                       <th>Data/Hora</th>
-                      <th>Tipo</th>
-                      <th>KM</th>
-                      <th>Local</th>
-                      <th>Placa</th>
+                      <th>Data</th>
                       <th>Motorista</th>
+                      <th>Placa</th>
+                      <th>Tipo</th>
+                      <th>Valor</th>
+                      <th>KM</th>
+                      <th>Combustível</th>
+                      <th>Observação</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -360,16 +429,25 @@ function FormFuel() {
                           <td className="small">
                             {item["Carimbo de data/hora"]}
                           </td>
-                          <td className="small">{item.TIPO}</td>
-                          <td className="small">{item.KM}</td>
-                          <td className="small">{item.LOCAL}</td>
-                          <td className="small">{item["VEÍCULO/PLACA"]}</td>
+                          <td className="small">
+                            {new Date(item.DATA).toLocaleDateString("pt-BR", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })}
+                          </td>
                           <td className="small">{item.MOTORISTA}</td>
+                          <td className="small">{item["PLACA"]}</td>
+                          <td className="small">{item.TIPO}</td>
+                          <td className="small">{item.VALOR}</td>
+                          <td className="small">{item.KM}</td>
+                          <td className="small">{item.COMBUSTÍVEL}</td>
+                          <td className="small">{item.OBSERVAÇÃO}</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="6">Nenhum registro encontrado.</td>
+                        <td colSpan="9">Nenhum registro encontrado.</td>
                       </tr>
                     )}
                   </tbody>
@@ -379,6 +457,7 @@ function FormFuel() {
           </div>
         )}
       </div>
+
       <Modal
         show={showSuccessModal}
         onHide={handleNewModalClose}
@@ -396,6 +475,7 @@ function FormFuel() {
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
+
       <Modal show={showFinalModal} onHide={handleFinalModalClose}>
         <Modal.Header closeButton>
           <Modal.Title style={{ color: "black" }}>
@@ -403,6 +483,7 @@ function FormFuel() {
           </Modal.Title>
         </Modal.Header>
       </Modal>
+
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title style={{ color: "black" }}>Erro!</Modal.Title>
@@ -418,4 +499,4 @@ function FormFuel() {
   );
 }
 
-export default FormFuel;
+export default FormSupply;
