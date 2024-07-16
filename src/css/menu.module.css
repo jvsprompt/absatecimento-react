@@ -12,6 +12,16 @@
   padding: 0;
 }
 
+/* Tipografia global */
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  text-align: center;
+}
+
 /* Variáveis específicas para o componente MenuUsuario */
 .menuPage {
   font-family: "Poppins", sans-serif;

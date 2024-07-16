@@ -15,8 +15,12 @@ const SelectMotoristaVeiculo = () => {
 
   useEffect(() => {
     const storedPlaca = localStorage.getItem("selectedPlaca");
+    const storedMotorista = localStorage.getItem("selectedMotorista");
     if (storedPlaca) {
       setPlaca(storedPlaca);
+    }
+    if (storedMotorista) {
+      setMotoristaValue(storedMotorista);
     }
   }, []); // Executa apenas uma vez ao montar o componente
 
