@@ -62,7 +62,7 @@ function FormFuel() {
         (a, b) =>
           new Date(b["Carimbo de data/hora"]) -
           new Date(a["Carimbo de data/hora"])
-      );
+        ).reverse();      
 
       const last50Data = filteredData.slice(0, 50);
 
