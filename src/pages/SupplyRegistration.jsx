@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";  
+import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
@@ -67,12 +67,14 @@ function FormSupply() {
         item["Carimbo de data/hora"].includes(currentDate)
       );
 
-      filteredData.sort(
-        (a, b) =>
-          new Date(b["Carimbo de data/hora"]) -
-          new Date(a["Carimbo de data/hora"])
-      ).reverse();
-      
+      filteredData
+        .sort(
+          (a, b) =>
+            new Date(b["Carimbo de data/hora"]) -
+            new Date(a["Carimbo de data/hora"])
+        )
+        .reverse();
+
       const last50Data = filteredData.slice(0, 50);
 
       setData(last50Data);
@@ -111,7 +113,10 @@ function FormSupply() {
   const restoreDefaultValues = () => {
     setKmValue("");
     // setMotoristaValue("");
+    setDateValue("");
     setCombustivelValue("");
+    setValorValue("");
+    setLocalValue("");
   };
 
   const sendData = (tipoValue) => {
@@ -172,7 +177,7 @@ function FormSupply() {
           .padStart(2, "0")}/${anoAtual}`;
 
         const dataToPost = new FormData();
-        dataToPost.append(LOCAL, localValue || ''); // Enviar uma string vazia se localValue for vazio
+        dataToPost.append(LOCAL, localValue || ""); // Enviar uma string vazia se localValue for vazio
         dataToPost.append(TIPO, tipoValue);
         dataToPost.append(KM, kmValue);
         dataToPost.append(VEICULO, last8Digits);
@@ -185,7 +190,7 @@ function FormSupply() {
           "Carimbo de data/hora": new Date().toLocaleString(),
           TIPO: tipoValue,
           KM: kmValue,
-          OBSERVAÇÃO: localValue || '', // Salvar uma string vazia se localValue for vazio
+          OBSERVAÇÃO: localValue || "", // Salvar uma string vazia se localValue for vazio
           PLACA: last8Digits,
           MOTORISTA: motoristaValue,
           DATA: formattedDate, // Salvar a data formatada no estado
@@ -216,7 +221,7 @@ function FormSupply() {
         setShowErrorModal(true);
       }
     }
-  }
+  };
 
   const diasDaSemana = [
     "DOMINGO",

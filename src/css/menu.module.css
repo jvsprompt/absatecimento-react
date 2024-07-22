@@ -1,176 +1,49 @@
-/* menu.module.css */
-
-/* Importação de fontes */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
-
-/* Reset básico */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.navbar-custom {
+  background-color: #162857; /* Cor de fundo do header */
 }
 
-/* Tipografia global */
-/* h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  text-align: center;
-} */
-
-/* Variáveis específicas para o componente MenuUsuario */
-.menuPage {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  background-color: #0f0f1b; /* Cor de fundo principal */
-  color: white; /* Cor do texto principal */
+.navbar-custom .navbar-brand {
+  font-size: 1.5rem; /* Tamanho da fonte para a marca do Navbar */
 }
 
-.menuHeader {
-  padding: 4rem 0 2rem 0;
+.navbar-custom .nav-link,
+.navbar-custom .nav-dropdown .dropdown-item {
+  color: white; /* Cor do texto dos links e itens de dropdown */
 }
 
-.menuContainer {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 2rem;
-  text-align: center;
+.navbar-custom .nav-link-custom {
+  color: white; /* Cor do texto */
+  position: relative; /* Posicionamento relativo para o efeito de linha */
+  padding-bottom: 10px; /* Espaço abaixo do texto para a linha */
 }
 
-.heading {
-  width: 100%;
-  text-align: center;
-  position: relative;
-}
-
-.heading span {
-  font-weight: 200;
-}
-
-.subHeading {
-  margin-top: 1rem;
-}
-
-.content {
-  padding: 2rem;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.card {
-  width: 250px;
-  height: 250px;
-  background-color: #212135; /* Cor de fundo dos cartões */
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-}
-
-.card img.uiPreview {
-  width: 100%;
-  height: 70%;
-  object-fit: cover;
-}
-
-.card .uiDetails {
-  padding: 1rem;
-  color: white; /* Cor do texto dentro dos detalhes */
-}
-
-.btn-view {
-  color: white; /* Cor do texto do botão */
-  padding: 0.5rem 2rem;
-  border-radius: 20px;
-  background: linear-gradient(to bottom, #0065ae, #00b7f1);
+.navbar-custom .nav-link-custom::after {
+  content: '';
   position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff; /* Cor da linha */
+  transition: width 0.3s ease; /* Transição suave da largura */
 }
 
-.btn-view:hover {
-  background: linear-gradient(to top, #0065ae, #00b7f1);
+.navbar-custom .nav-link-custom:hover::after {
+  width: 100%; /* Largura da linha ao passar o mouse */
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem 0;
-  margin-top: 30rem;
-  background-color: #0f0f1b; /* Cor de fundo do rodapé */
-  color: white; /* Cor do texto do rodapé */
-}
-
-.footer p {
-  font-weight: 300;
-  margin: 1rem 0;
-}
-
-.footer .menuGithubLogo {
+/* Estilos para o logo */
+.logo-container {
+  width: 154px; /* Ajuste a largura conforme necessário */
+  height: 48px; /* Ajuste a altura conforme necessário */
+  background-color: #ffffff; /* Fundo branco */
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 15px; /* Espaçamento à direita para separar o logo dos links */
 }
 
-.menuGithubLogo img {
-  width: 150px;
-}
-
-/* Media Queries */
-@media (max-width: 1090px) {
-  .menuContainer {
-    padding: 0 1.5rem;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 410px) {
-  .menuContainer {
-    padding: 0 1rem;
-  }
-
-  .heading {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 330px) {
-  .heading {
-    font-size: 1.2rem;
-  }
+.navbar-logo {
+  max-width: 100%;
+  height: auto;
 }

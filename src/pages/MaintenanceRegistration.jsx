@@ -110,9 +110,14 @@ function FormSupply() {
   };
 
   const restoreDefaultValues = () => {
+    setPlacaValue("");
+    setDateValue("");
     setKmValue("");
-    // setplacaValue("");
+    setTipoValue("");
+    setLocalValue("");
     setCombustivelValue("");
+    setValormValue("");
+    setValorsValue("");
   };
 
   const sendData = () => {
