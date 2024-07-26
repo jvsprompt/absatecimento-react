@@ -22,7 +22,7 @@ import URL_Return from "../data/url.json";
 
 import logo from "../assets/images/logo/logo.png"; // Importando a imagem do logo
 
-function FormSupply() {
+function FormMaintenance() {
   const user = "GESTOR";
   const navigate = useNavigate();
 
@@ -62,40 +62,37 @@ function FormSupply() {
       const urlItem = URL_Return.find((item) => item["veiculo/placa"] === user);
       const response = await axios.get(urlItem.urlb);
       console.log("get vehicles response =>", response);
-
-      const currentDate = new Date().toLocaleDateString();
-      const filteredData = response.data.filter((item) =>
-        item["Carimbo de data/hora"].includes(currentDate)
-      );
-
-      filteredData.sort(
+  
+      // Ordena os dados pela data em ordem decrescente
+      const sortedData = response.data.sort(
         (a, b) =>
-          new Date(b["Carimbo de data/hora"]) -
-          new Date(a["Carimbo de data/hora"])
-      ).reverse();      
-
-      const last50Data = filteredData.slice(0, 50);
-
-      setData(last50Data);
-      setTableData(last50Data);
-      console.log("vehicles data =>", data);
+          new Date(b["Carimbo de data/hora"]) - new Date(a["Carimbo de data/hora"])
+      ).reverse(); 
+  
+      // Pega apenas os 3 primeiros itens
+      const last3Data = sortedData.slice(0, 3);
+  
+      setData(last3Data);
+      setTableData(last3Data);
+      console.log("vehicles data =>", last3Data);
       setLoading(false);
-
-      if (last50Data.length > 0) {
-        const mostRecentLocal = last50Data[0].LOCAL;
-        const secondMostRecentLocal = last50Data[1]?.LOCAL || "";
-        const mostRecentKm = last50Data[0].KM;
+  
+      if (last3Data.length > 0) {
+        const mostRecentLocal = last3Data[0].LOCAL;
+        const secondMostRecentLocal = last3Data[1]?.LOCAL || "";
+        const mostRecentKm = last3Data[0].KM;
         setLocalValue(
           mostRecentLocal === secondMostRecentLocal ? "" : mostRecentLocal
         );
         setKmValue(mostRecentKm.substring(0, 3));
-        setLastTipo(last50Data[0].TIPO);
+        setLastTipo(last3Data[0].TIPO);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
     }
   };
+  
 
   const initializeStates = () => {
     const found = URL_Return.find(
@@ -111,7 +108,7 @@ function FormSupply() {
 
   const restoreDefaultValues = () => {
     setPlacaValue("");
-    setDateValue("");
+    setDateValue(dataAtual);
     setKmValue("");
     setTipoValue("");
     setLocalValue("");
@@ -515,4 +512,4 @@ function FormSupply() {
   );
 }
 
-export default FormSupply;
+export default FormMaintenance

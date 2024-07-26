@@ -3,7 +3,7 @@ import InputMask from 'react-input-mask';
 import removeSpaces from '../utils/removeSpaces';
 
 function InputValor({
-  name, entry, value, change, localStore = false, classN, maxLen = 12, placeholder
+  name, entry, value, change, localStore = false, classN, maxLen = 10, placeholder
 }) {
   const labelName = removeSpaces(name);
 
