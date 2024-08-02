@@ -52,25 +52,32 @@ function FormFuel() {
       );
       const response = await axios.get(urlItem.url);
       console.log("get vehicles response =>", response);
-
+  
       const currentDate = new Date().toLocaleDateString();
       const filteredData = response.data.filter((item) =>
         item["Carimbo de data/hora"].includes(currentDate)
       );
-
-      filteredData.sort(
-        (a, b) =>
-          new Date(b["Carimbo de data/hora"]) -
-          new Date(a["Carimbo de data/hora"])
-        ).reverse();      
-
+  
+      // Adicionando logs para verificar as datas antes da ordenação
+      console.log("Data before sorting:", filteredData.map(item => item["Carimbo de data/hora"]));
+  
+      // Ordena os dados pela coluna "Carimbo de data/hora" em ordem decrescente
+      filteredData.sort((a, b) => {
+        const dateA = new Date(a["Carimbo de data/hora"].split("/").reverse().join("-"));
+        const dateB = new Date(b["Carimbo de data/hora"].split("/").reverse().join("-"));
+        return dateB - dateA;
+      });
+  
+      // Adicionando logs para verificar as datas depois da ordenação
+      console.log("Data after sorting:", filteredData.map(item => item["Carimbo de data/hora"]));
+  
       const last50Data = filteredData.slice(0, 50);
-
+  
       setData(last50Data);
       setTableData(last50Data);
-      console.log("vehicles data =>", data);
+      console.log("vehicles data =>", last50Data);
       setLoading(false);
-
+  
       if (last50Data.length > 0) {
         const mostRecentLocal = last50Data[0].LOCAL;
         const secondMostRecentLocal = last50Data[1]?.LOCAL || "";
@@ -86,7 +93,7 @@ function FormFuel() {
       setLoading(false);
     }
   };
-
+  
   const initializeStates = () => {
     const found = URL_Return.find(
       (veiculo) => veiculo["veiculo/placa"] === placa

@@ -157,16 +157,16 @@ function FormMaintenance() {
         // const last8Digits = user.substring(user.length - 8);
 
         // Verificar se o KM é maior ou igual ao mais recente na tabela
-        if (tableData.length > 0) {
-          const mostRecentKm = parseInt(tableData[0].KM);
-          if (parseInt(kmValue) < mostRecentKm) {
-            setErrorMessage(
-              "O valor de KM não pode ser menor que o valor mais recente."
-            );
-            setShowErrorModal(true);
-            return;
-          }
-        }
+        // if (tableData.length > 0) {
+        //   const mostRecentKm = parseInt(tableData[0].KM);
+        //   if (parseInt(kmValue) < mostRecentKm) {
+        //     setErrorMessage(
+        //       "O valor de KM não pode ser menor que o valor mais recente."
+        //     );
+        //     setShowErrorModal(true);
+        //     return;
+        //   }
+        // }
 
         // Formatar a data como DAY/MM/YYYY
         const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
