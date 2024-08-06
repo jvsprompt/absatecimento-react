@@ -56,6 +56,8 @@ function Step1Form() {
     '0848 - 2023.10.000011 - COPPEAD (Manutenção QTA)',
     '0849 - Vesuvius Rio (Adequação Climatização Galpão MIX)',
     '0850 - COPPEAD (REPARO VAZAMENTO AGUA)',
+    '0847 - 2024.03.000003 - Igua (Manutenção Eletrodomesticos)',
+    '0852 - 2024.06.000005 - TAKODA (Infra QTA P7)',
     ];
 
   const ccs = ccs1.sort();
