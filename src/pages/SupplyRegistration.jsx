@@ -62,13 +62,24 @@ function FormSupply() {
       const response = await axios.get(urlItem.urlb);
       console.log("get vehicles response =>", response);
   
-      // Ordenar todos os dados pela data de forma decrescente
-      const sortedData = response.data.sort(
-        (a, b) =>
-          new Date(b["Carimbo de data/hora"]) - new Date(a["Carimbo de data/hora"])
-      ).reverse();   
+      // Função para normalizar as datas para o formato ISO antes de criar o objeto Date
+      const parseDate = (dateString) => {
+        const [day, month, yearAndTime] = dateString.split("/");
+        const [year, time] = yearAndTime.split(" ");
+        return `${year}-${month}-${day}T${time || "00:00:00"}`;
+      };
   
-      // Pegar apenas os 3 primeiros itens
+      // Ordena todos os dados pela coluna "Carimbo de data/hora" em ordem decrescente
+      const sortedData = response.data.sort((a, b) => {
+        const dateA = new Date(parseDate(a["Carimbo de data/hora"]));
+        const dateB = new Date(parseDate(b["Carimbo de data/hora"]));
+        return dateB - dateA;
+      });
+  
+      // Adicionando logs para verificar as datas depois da ordenação
+      console.log("Data after sorting:", sortedData.map(item => item["Carimbo de data/hora"]));
+  
+      // Pega os 3 itens mais recentes
       const last3Data = sortedData.slice(0, 3);
   
       setData(last3Data);
