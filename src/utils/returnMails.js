@@ -4,6 +4,7 @@ const returnMails = (cc4) => {
       'pcm@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br'
     ];
   }
 
@@ -21,6 +22,7 @@ const returnMails = (cc4) => {
       'logistica@monteiroinstalacoes.com.br',
       'coordenador@monteiroinstalacoes.com.br',
       'gerente@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br'
     ];
   }
 
@@ -29,6 +31,7 @@ const returnMails = (cc4) => {
       'coordenador@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br'
     ];
   }
 
@@ -39,6 +42,7 @@ const returnMails = (cc4) => {
       'logistica@monteiroinstalacoes.com.br',
       'obra.cffc@monteiroinstalacoes.com.br',
       'coordenador@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br'
     ];
   }
 
@@ -50,6 +54,7 @@ const returnMails = (cc4) => {
       'logistica@monteiroinstalacoes.com.br',
       'coordenador@monteiroinstalacoes.com.br',
       'gerente@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -61,6 +66,7 @@ const returnMails = (cc4) => {
       'logistica@monteiroinstalacoes.com.br',
       'suporte.pcm@monteiroinstalacoes.com.br',
       'gerente@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -70,6 +76,7 @@ const returnMails = (cc4) => {
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
       'gerente@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -79,6 +86,7 @@ const returnMails = (cc4) => {
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
       'gerente@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -89,6 +97,7 @@ const returnMails = (cc4) => {
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
       'suporte.pcm@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -98,6 +107,7 @@ const returnMails = (cc4) => {
       'atendimento.rh@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -106,6 +116,7 @@ const returnMails = (cc4) => {
       'coordenador@monteiroinstalacoes.com.br',
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
@@ -115,11 +126,12 @@ const returnMails = (cc4) => {
       'monteiro@monteiroinstalacoes.com.br',
       'logistica@monteiroinstalacoes.com.br',
       'suporte.pcm@monteiroinstalacoes.com.br',
+      'obra@monteiroinstalacoes.com.br',
     ];
   }
 
   return ['logistica@monteiroinstalacoes.com.br', 'gerente@monteiroinstalacoes.com.br',
-    'monteiro@monteiroinstalacoes.com.br'];
+    'monteiro@monteiroinstalacoes.com.br', 'obra@monteiroinstalacoes.com.br'];
 
 };
 
