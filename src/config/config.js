@@ -1,1 +1,1 @@
-export const HMON_BACKEND = 'http://lmfcloud.ddns.net:7000';
+export const HMON_BACKEND = 'http://rradar.com.br:7000';

@@ -1,0 +1,157 @@
+11dd43a09b8d006e7ab6babdd3a2147402e4e101 Jean Vincent 2024-08-08 fix render tables forms abastecimento and manutencao
+3a5b68e0ce0126bedf955d82b1ab14c84599f6fe Jean Vincent 2024-08-08 add fix ordem descrecente tabela renderizada dos forms abastecimento e manutencao
+8978bfddcbd81d157dbc270012670c0b14f242d3 Jean Vincent 2024-08-08 ajuste data decrescente tabela renderizada abastecimento e manutenção
+16770b44c0f8b67e6ac706f53f300d79b1438a0b Fernando Monteiro 2024-08-06 email obra@monteiroinstalacoes.com.br adicionado a lista de emails
+95c3b2da4515a20894aeb5f107ea81d9492ebe44 Jean Vincent 2024-08-02 ajuste na função de data Form KmRegistration
+e43e75b7ae12c281f90a8a944facd7c7b17efee6 Jean Vincent 2024-07-26 adicionado logica para trazer apenas os tres ultimos dados recentes na tabela renderizada dos forms abastecimento e manutencao
+c6e79f8085c2b86fb9e7674c2751aa081fc2f5aa Jean Vincent 2024-07-23 restaurado o menu.module.css
+347531ae971456aa7e947993f28415e820ed01fc Jean Vincent 2024-07-22 adicionado limpar campos do form abastecimento e manutencao
+037a4012a5026e5ee79119d60e661bb1deee5e46 Jean Vincent 2024-07-16 correcao do merge
+134491b7f2db6087c2b82bde18e9daaf663aa3bb Jean Vincent 2024-07-16 css corrijigo
+b7fb37a229e065eb26fddb975dcb0a8aa817973f Jean Vincent 2024-07-16 ajustado css para ficar responsivo
+429b000a4f529ebb99c3b47f6b186f9307a89df2 Jean Vincent 2024-07-16 merge
+52d2e7514d508af892bb1031f94d1392d28914d8 Jean Vincent 2024-07-16 merge
+c13e8292c569463caabd01f55d878192a5832793 Jean Vincent 2024-07-15 corrigio a coluna DATA na tabela renderizada do abastecimento e manutencao
+3c35ae725a774a54aa7d4a335cd646212c8364c5 Fernando Monteiro 2024-07-15 formatacao codigo
+9d313c16cc364a216286622de81769bb1172b75d Fernando Monteiro 2024-07-15 novo cc adicionado
+0caf33a20b8de1bb64cad7226c9b899cb0c24728 Jean Vincent 2024-07-15 correcao no css dos menus
+9885ffd808b9a1c8f76c9811ebfa659efcf4bbb8 Jean Vincent 2024-07-15 add novos menus pra o usuario e gestor, inputs icones e etc...
+34b66427758b9046042b7d452e173550277f2964 Jean Vincent 2024-07-15 adicionado novos menus para rota e abastecimento do usuario motorista e um menu para o getor
+f1dfe8a0fc34290230efdbb13c5c3c402c201a8f Fernando Monteiro 2024-07-10 cc 0848 adicionado
+8f771d75b0c6e7417b4232b8e9b8dd9ad42c1992 Jean Vincent 2024-07-02 correcao da ordem decrescente da tabela renderizada
+871b405c45fad95c3f5a88dbe715643b0aa9bfd5 Jean Vincent 2024-06-28 adicionado novos motoristas
+64ab03cf5054d608bfdc043ef9443453fa26b322 Jean Vincent 2024-06-26 removido arquivos inuteis da pasta do projeto
+1c214d382643a7dc91cf050b0b398935f9681238 Jean Vincent 2024-06-26 add validacoes ao form, para trazer os 3 primeiros digitos do km, verificar se o novo km nao e menor que o anterior, verifica se o local se repete 2x, caso repita deixe o input Local em branco, novas rotas para os demais veiculos
+cd51f84cf6fca4c98244b2ac85f1f681fb17fed0 Jean Vincent 2024-06-24 o ultimo LOCAL add aparece no inputText Local ao enviar ou carregar a pagina, verifica se o tipo do ultimo envio e origem ou destino e bloqueia o botao de acordo com o tipo
+fc3c9917c7174700c88415ed790164091eb3bddf Jean Vincent 2024-06-22 adicionado valor do ultimo local ao inpuText local sempre que enviar ou carregar a pagina
+9f51c0d4bedfc22368f70bc33a38ddd95e6b8695 Fernando Monteiro 2024-06-17 centro de custo adicionado 0846
+9fc45b19edd4e0ae6a731bca89aa54aa6972f942 Jean Vincent 2024-06-17 ajuste no modal envio realizado!
+5920a0de25f8dbb2b809fa5b2f09f487851a457a Jean Vincent 2024-06-15 carregamento instantaneo da resposta enviada na tabela renderizada, modal 'envido realizado' o mesmo fecha em 1500
+7eee1194494dfb36931d5d46a067db66b206625e Jean Vincent 2024-06-14 Criado submitFormV2.js e adicionado const em const fetchData para trazer somente os ultimos 50 dados
+d39b5245f945834ff0e37b81a938106198961de0 Jean Vincent 2024-06-14 Add History of KM for Tests by Robert Moreira
+ea06258f6baf588594b1a0b13d9dbe7bf5319394 Fernando Monteiro 2024-06-14 novos emails adicionados
+33e5756a3871513ca000c95b2b33828d6598e4b4 Fernando Monteiro 2024-06-14 alteracao
+afe6bdeb994fe82dee698c2ad1360e58426cc1ab Fernando Monteiro 2024-04-29 alteracoes
+6cf23411f1983cc3529d8a42a973531533fb019d Fernando F Monteiro 2023-05-19 coordenador e suporte.pcm adicionado a lista de emails
+bea6ea567e0315da8cc8daa05bb35199942964b9 Fernando F Monteiro 2023-05-04 Atualização Centros de custo
+c691e914c182a3168572117cc5733dd00af4a4eb Fernando F Monteiro 2023-03-15 Correção ao enviar solicitações vazias
+6c05eda7d84429e41947c551b20702cb4b071761 Fernando F Monteiro 2023-03-10 Atualicação CC 0816
+78bd7e47a2cb5c78f3b6f9c5b0b0ade12a3870e6 Fernando F Monteiro 2023-02-13 Email da logistica e monteiro adicionados manualmente a funcao return emails
+166d6ff92eb3a83e845d3337ad707b28709c5146 Fernando F Monteiro 2023-02-08 cc adicionados
+a1cb966c9087df2f44ea63e0b7744a358736139e Fernando F Monteiro 2023-02-08 Novo centro de custo adicionado
+8b6ddfdcdc41a9e542b6eb49af984457b32cd270 Fernando F Monteiro 2023-01-30 Lista de materiais adicionado
+ff268bac55dda2698b036c313d8fcba7ffae8c76 Fernando Monteiro 2023-01-27 Pagina de materiais adicionada
+8764bfd5f6998c9b0b6c33d78a69bdcbfc156b3c Fernando Monteiro 2023-01-27 Alteracoes
+149665a2257702b2c383f992236103fd9c9da968 Fernando F Monteiro 2023-01-13 cc adicionado
+7ed729897957265a796f979373b2e214c9532101 Fernando Monteiro 2023-01-04 merge
+c793ba2a3409a9de85d29ad50d23d76360667948 Fernando Monteiro 2023-01-04 Retorna o numero da sm
+d763904c76d201309f3e397d6c29833a72fe078d Fernando F Monteiro 2023-01-04 Redireciona para a pagina inicial ao enviar o form
+dd22708a55da098ec24bab69b9cd386f8b12bb7e Fernando F Monteiro 2022-12-30 Agora envia emails ao fazer uma requisicao
+538892dab85f4eaed446c5a21ee2852bb04d2cce Fernando F Monteiro 2022-12-29 dependência imap instalada
+db4c77835aa40f86ff1202af2921d907e5712265 Fernando F Monteiro 2022-12-29 atualização na lista de ccs
+0a091192cd1cac21e9bc932ae477535693602eba Fernando F Monteiro 2022-12-29 Ajuste na mensagem quando a lista de itens esta vazia
+152d0b188e68a2d2b4d9577a08968cca506488e8 Fernando F Monteiro 2022-12-28 cc é exibido no titulo da pagina
+560eb24ae951550c6b46e976ab03a6017335a430 Fernando F Monteiro 2022-12-28 Agora envia o cc no campo de cliente
+65cc6962d13b9d733c4bada09b64ff7ac3b83895 Fernando F Monteiro 2022-12-28 Ajuste fa seleção do tipo de solicitacao
+67be3e28cc86409196256dc9e6027704107a306c Fernando F Monteiro 2022-12-28 Numero da sm é enviado a tabela
+2320cad7aa76f92dfed2914cf46a3e6fdad76102 Fernando F Monteiro 2022-12-28 Botão de voltar adicionado na tela de form
+860395bcc7ed41f8f7a8c97b14e65b44b42d179b Fernando F Monteiro 2022-12-28 Correção bug não registra categoria selecionada
+fb549970285ab8716370b0088bdda6052cd45d17 Fernando F Monteiro 2022-12-27 Lista de centros de custo adicionada
+9b9c1bf8b48246c02a73bca05e4fb6a9a566b43d Fernando F Monteiro 2022-12-27 Ajustes na pagina de selecao de categoria
+57f003f32a71af5fd966942734aee2a13fe7a667 Fernando F Monteiro 2022-12-27 Ajustes css tela de seleção de categoria
+c87ba084ca93f226261498cd62686fdac672dc60 Fernando F Monteiro 2022-12-27 Tela para seleção de categorial de solicitacao adicionada
+f17d24176400905d0912b8cb630ec50a962b3d21 Fernando F Monteiro 2022-12-26 Atualizacao conexao banco de dados
+310f8eaec9b353fcec002c1e442c83d97b683650 Fernando F Monteiro 2022-12-12 Pagina para os do effort
+8387aea2465a64c87a23bf15f64e1a9f7f7583fa Fernando F Monteiro 2022-12-06 Validacao para checar se o campo de quantidade e descricao estao preenchidos
+49610fd84b101d1cacdcba1fffeee451b9689aaa Fernando F Monteiro 2022-12-06 Botão para continuar adicionando
+4430c3d106bbba9628c85f846ea594c9be629abf Fernando F Monteiro 2022-12-06 Campo de descriçao nao pode ser mais editado
+a99283aa7d1678fcc5644deb00a9f9deb3393376 Fernando F Monteiro 2022-12-06 Pequenos ajustes no modal
+3f7f25916c70d083a22fff18d692b8dc070f16f1 Fernando F Monteiro 2022-12-06 Ajustes no envio do formulario
+b5b117d5e96e491493dfbc2a397dc3847d614172 Fernando F Monteiro 2022-12-06 campo de observacao adicionado a tela de selecao de materiais
+4d01c34e0c21d3313858c9268c0a652640e19089 Fernando F Monteiro 2022-12-05 Ajustes na renderizacao da tabela de materiais do form
+ef4d1d3cb8549d9c9a79535593b3f17564733eb6 Fernando F Monteiro 2022-12-05 Botao para apagr itens da lista adicionado
+353a4028e1a6b4240ce9d3f63a9d3167ae615fc3 Fernando F Monteiro 2022-12-05 Renderiza a lista de materiais
+564a1047120cf49c19c391028a5ad9de8e0402fc Fernando F Monteiro 2022-12-05 Campo de busca funcionando
+4b4673ef78c2f87b45e71d8fbfa3ee3ab9262a81 Fernando F Monteiro 2022-12-02 Campos adicionado ao modal
+a5882bd58f1ee1c759a9b14c16a5e8377c21b371 Fernando F Monteiro 2022-11-29 Tabela sendo renderizada na tabela
+1467d0ecc58f772b44ebe45445971cbba685726b Jean 2022-11-23 alterar HMON_URI e ENTRY_HMON
+be1391e091d384b1a077eda2a16c1d486e3aaea3 Fernando F Monteiro 2022-11-23 FormHMON incompleto
+f60cb843a3a5f2a65dddc94574afdba749ac89cc Fernando F Monteiro 2022-11-23 FormAcademia adicionado
+4f2e6599936416498a9cd716cec33b13e2a5b006 Fernando F Monteiro 2022-11-21 Agora limpa os valores da lista de materias ao enviar
+89104cd8566cbc0aca1de014c9b9eafee2eba47d Jean 2022-11-21 merge - correção de conflitos
+901ef1882026459c2f8ec0286ad5b722ad7dd2a2 Jean 2022-11-21 alteração no css dos novos input de material
+b96d9043fbe5300dff8b86a98f822e63925cd1e1 Fernando Monteiro 2022-11-21 Merge pull request #2 from jvsprompt/fernando
+3a5caf692924778764770f9f451eabfa4c2576e5 Fernando F Monteiro 2022-11-21 Cada material é enviado separadamente para a tabela
+063103bc077612600938673d4e313badcb543ded jvsprompt 2022-11-21 Merge pull request #1 from jvsprompt/fernando
+d06a987918145676003b2e0a34bd23e9c2cd9c26 Fernando F Monteiro 2022-11-21 Materiais é adicionado separadamente e exibido em forma de lista
+d97cf3767cfe65e43a9617700d31f91c74c22eb1 Jean 2022-11-18 alterada as rotas
+b166835c51dacadf37dc4e59aa8539a4ed9a7c1a Jean 2022-11-18 Refaturação
+0fa13235828fd8e1ef2627bb054820bc94489a68 Jean 2022-11-18 Função getSetor movido para pasta utils
+96857051b126ca1554394f12e6edfd61a652f849 Jean 2022-11-11 update9
+7791799a4662a1515aa38d8dc05cd07a944370e2 Jean 2022-11-11 update8
+46c40bbb6f92f62216731525626d8746d3cbfd07 Jean 2022-11-10 update7
+d17cbef0f45ca46025047a7e7d1970689264e8ed Jean 2022-11-10 update6
+355e2267abd5cdb4a42baecb5f319c1cabff180e Jean 2022-11-09 update5
+143c6d6022ac2055a5b40a4a262d55a05d545859 Jean 2022-11-09 update4
+276ef99062eacaf104e1168b2dd43432d4a96052 Jean 2022-11-08 update3
+6bfe9adb1d8ca41470ce6149340514bda5686951 Jean 2022-11-08 update2
+c81076730f50f7fea8262636da432a904983d495 Jean 2022-11-07 update1
+2f7b2e449a8c2d613c3a47c90515052d24130da8 Jean 2022-11-03 Pasta SRC-Cópia deletada
+cb2736baad015fc685ddadb5198b8ed7ba2823df Jean 2022-08-17 Adicionado novo Formulário
+a0a79a16d2bb84fb41d0296e363b9129496d84ce Jean 2022-08-16 Alteração o Botão
+e5ef70be42becb9a17677360df3288d2c7b84bee Jean 2022-08-16 Alteração o Botão
+21932dee93fd653e74e15121353faa385deec918 Jean 2022-08-16 Alteração o Botão
+f19e0ec83a833ef68f14c454bdf6db7d1fff7cdb Jean 2022-08-16 Correção dos Bugs de Setor Errado
+b3eb9b250b79a4d45a4184c0169b72ab9ae61410 Jean 2022-08-16 Correção dos Bugs de Setor Errado
+b163cb278299517ecdaa89ece63fe9b23c868bbe Jean 2022-08-15 Correção nos nomes das unidade
+77a09334d8b7914c80509fd805b8f263936a5b33 Jean 2022-08-15 Correção nos nomes das unidades
+5b90721e740f071f532ee572bb9eeb588b6f1434 Jean 2022-08-15 Correção no Form.CSS
+2429d17abe8adc5943d307593b17e41e41b462d6 Jean 2022-08-15 Validacao para materias adicionado
+5d0a0bd74f01171d220fdec7c4e1f374fbbad55b Jean 2022-08-15 Correcao bug de envio de inputs em branco
+25855d5246f288c6019ef244b148f549a53d93de Jean 2022-08-15 Correção InputDate
+ce8f4d9b005ab55b9117336c9a25e8b688b02335 Jean 2022-08-15 InputDate alterado - Data atual é exibida ao carregar a página
+8662315e0c7cb527a11f63eaff42b54de66e542f Jean 2022-08-15 Merge branch 'main' of github.com:jvsprompt/absatecimento-react into main
+34ed7de174ad47242e8898b356a15417a1251bfb Jean 2022-08-15 update 1508(2)
+4e9fb04877a7d76344283c35b7c5a4b94b883693 fprompto 2022-08-15 Componente de data restaurada para mod anterior
+41170f60d0b290c19a11300c340ad9afec3fb0e4 fprompto 2022-08-15 Correção na importação
+69a23f4460c7e03fd334d1bd7f68d26bfddee692 fprompto 2022-08-15 Importação do CSS em cada página
+dedb04487859a928af6d274c7ebb5bb8790604a4 fprompto 2022-08-15 Novo input de data
+e5b1e5e3e37a084213550b06f2433efac192798f Jean 2022-08-15 update 1508
+680d43905e06b8c5e0d53c46345a99e97c6aae58 Jean 2022-08-12 update 1208
+88681326f7ee184448a07d0fce9a44b9208eb13e Jean 2022-08-12 atualização nova3
+63a0cf3752268dc4bf63f9168867dd03529724a5 Jean 2022-08-12 atualização nova2
+bfb64d1f9d666b2532ed50de52f21d9bf1869146 Jean 2022-08-12 atualização do css
+0ff46a6b1aaa22c6ad25915006865aec5d70119b Jean 2022-08-12 atualização do css
+39056859a223ed0af7e7e7a31ab2794143682fe0 Jean 2022-08-12 atualização do css
+ce9bab0ec481bfed237072e748cf16e171c3f9b3 Jean 2022-08-12 Sou Goy
+10b0566ad85f7450678edf1c3a346da37942d47a fprompto 2022-08-11 Ajustes CSS input
+3e1157d861d20aa9a56ca5b07743f9544d11b1d0 fprompto 2022-08-11 Ajustes CSS input
+104b75988620b3210200f378a130f0342a08e84f fprompto 2022-08-11 Ajustes no código
+26d26d649ef9f975882170430e5158dc3c10f87a fprompto 2022-08-11 Funcao para desestruturar data do forms
+b5418bfb953135699df15b1b610e767d7344a0ac fprompto 2022-08-11 Setores mudam de acordo com a unidade selecionada
+a69003e54d646d54e98a30a2a590e0113aa6e455 Jean 2022-08-11 alterado algumas coisas
+8d8ede15385d36d8feac4bb30e6d374f7ced601b Jean 2022-08-11 alterado algumas coisas
+1fcc7d053660996702b93b7c6d47b476790fae35 Jean 2022-08-11 teste
+c2b4f09549d3b289d51e40689f03f86ab8b08922 fprompto 2022-08-11 Input de setor alterado para dropdown
+b59cc8c5b912a73f34177975662e99281da9fc5e Jean 2022-08-09 Button, Input Text Area
+c7bfb28650f8951519d6211b631d97a788f725b2 fprompto 2022-08-05 Alterações nos componentes para adicionar classe e definir limite de caracteres
+3bc98350beac27a6d5a404bfcbb99a1bbc299f08 fprompto 2022-08-05 Adicionado util normalizeString
+0cf870c81e7b8a256616df289fde0fc198294cf9 Jean 2022-07-28 sendData Forms
+a776b05d1e93b5e985b86f8131bc07ec6a03de14 fprompto 2022-07-27 Search adicionado
+f13313a648a22c147bcf76a1d6c3dbc9f87de3ba fprompto 2022-07-27 Página de abastecimento adicionado
+37a1707212e30d63e48c912ca1b26291fbf1f8c6 fprompto 2022-07-27 Página Home adicionada
+a9342d2768738da30b88022c0d7aece591526cca fprompto 2022-07-26 Modificação no Card
+a312cec373cbfbe78d5be1490e1800a5553080df fprompto 2022-07-26 Ajustes nos componentes InputDate e InputDropdown
+8f5e7f37196cc00ff025894cc28fe219f7dc0923 fprompto 2022-07-26 Ajuste no Componente InputText
+7788cf5ddccf7ebc23d993f0af22e46fa3f82b5e fprompto 2022-07-26 Alteração na rota da página do formulário
+3238c950697ec029ad9f51feb17904179465ee49 fprompto 2022-07-26 Alterações Página de Equipamentos
+b4d213e28c0640f4b158028363b3da7925773666 Jean 2022-07-26 Página de Equipamentos adicionada
+40c57bd6ad32c2b29433d0dd9d00d3f37673b25e fprompto 2022-07-20 Ajustes no components
+4ab837274e9d8cdc55cd01fed842a6db2b79fe3d fprompto 2022-07-20 Ajustes nos inputs para puxar o valor do localStorage
+e876f8d648808229f4cad1dc01dc21adf7642236 fprompto 2022-07-20 :sparkles: feat: Forms finalizado
+e5c5b5d36ba299524ba2771a1e4c40b38221b637 fprompto 2022-07-20 :sparkles: feat: Context adicionado
+ceb695b8e1326deff43033ad022047420989acb8 fprompto 2022-07-20 :sparkles: feat: Componente InputDate adicionado
+d5f18feab09f8e48e74e39498f17e59dee5ce6dd fprompto 2022-07-20 :sparkles: feat: Componente InputText
+0910326b455a33bc5abff9c2b497231d263086f7 fprompto 2022-07-20 :sparkles: feat: Componente InputDropdown
+8ba8b67eb38e9236fa569557397c408a06bbf4e0 fprompto 2022-07-20 :sparkles: feat: Dependências instaladas
+8a93e06dc40dd59b2838b882ce66e5f84441e4f9 fprompto 2022-07-20 Initialize project using Create React App
