@@ -42,7 +42,7 @@ function FormHMON() {
 
   const getSmNumber = async () => {
     const { data } = await axios
-      .get(`http://lmfcloud.ddns.net:8000/contador/${type4}`);
+      .get(`http://rradar.com.br:8000/contador/${type4}`);
     console.log('sm [ OK! ]', await data);
     return data;
   };
@@ -63,7 +63,7 @@ function FormHMON() {
     console.log('new list =>', newList);
 
     await axios
-      .post('http://lmfcloud.ddns.net:7000/custom/sendmail', {
+      .post('http://rradar.com.br:7000/custom/sendmail', {
         type: type4,
         cost: cc4,
         number: await smNN,
