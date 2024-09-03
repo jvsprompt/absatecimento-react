@@ -47,6 +47,10 @@ function FormMaintenance() {
   const [dataUpdated, setDataUpdated] = useState(false);
   const [dateValue, setDateValue] = useState(new Date()); // Estado para a data selecionada
 
+  const handleDateChange = (newDate) => {
+    setDateValue(newDate)
+  }
+
   useEffect(() => {
     setInitialDataLength(data.length);
   }, [data]);
@@ -71,7 +75,7 @@ function FormMaintenance() {
         const [year, time] = yearAndTime.split(" ");
         return `${year}-${month}-${day}T${time || "00:00:00"}`;
       };
-  
+
       // Ordena todos os dados pela coluna "Carimbo de data/hora" em ordem decrescente
       const sortedData = response.data.sort((a, b) => {
         const dateA = new Date(parseDate(a["Carimbo de data/hora"]));
@@ -132,14 +136,14 @@ function FormMaintenance() {
 
   const sendData = () => {
     let urlItem;
-
+  
     for (let i = 0; i < URL_Return.length; i++) {
       if (URL_Return[i]["veiculo/placa"] === user) {
         urlItem = URL_Return[i];
         break;
       }
     }
-
+  
     if (urlItem) {
       const URIB = urlItem.urib;
       const LOCAL = urlItem.obs;
@@ -150,11 +154,11 @@ function FormMaintenance() {
       const DATA = urlItem.data;
       const COMBUSTIVEL = urlItem.combustivel;
       const VALORM = urlItem.local;
-
+  
       if (
         tipoValue &&
         kmValue &&
-        user &&
+        localValue &&
         placaValue &&
         dateValue &&
         combustivelValue &&
@@ -166,31 +170,14 @@ function FormMaintenance() {
           setShowErrorModal(true);
           return;
         }
-
-        // const last8Digits = user.substring(user.length - 8);
-
-        // Verificar se o KM é maior ou igual ao mais recente na tabela
-        // if (tableData.length > 0) {
-        //   const mostRecentKm = parseInt(tableData[0].KM);
-        //   if (parseInt(kmValue) < mostRecentKm) {
-        //     setErrorMessage(
-        //       "O valor de KM não pode ser menor que o valor mais recente."
-        //     );
-        //     setShowErrorModal(true);
-        //     return;
-        //   }
-        // }
-
-        // Formatar a data como DAY/MM/YYYY
-        const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
-          dataAtual.getMonth() + 1
-        )
-          .toString()
-          .padStart(2, "0")}/${anoAtual}`;
-
+  
+        // Formatar a data selecionada pelo usuário como "DD/MM/YYYY"
+        const formattedDate = `${dateValue.getDate().toString().padStart(2, "0")}/${(
+          dateValue.getMonth() + 1
+        ).toString().padStart(2, "0")}/${dateValue.getFullYear()}`;
+  
         const dataToPost = new FormData();
         dataToPost.append(LOCAL, localValue);
-        // dataToPost.append(TIPO, tipoValue);
         dataToPost.append(KM, kmValue);
         dataToPost.append(PLACA, placaValue);
         dataToPost.append(MOTORISTA, tipoValue);
@@ -198,10 +185,9 @@ function FormMaintenance() {
         dataToPost.append(COMBUSTIVEL, combustivelValue);
         dataToPost.append(VALORM, valormValue);
         dataToPost.append(VALORS, valorsValue);
-
+  
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
-          // TIPO: tipoValue,
           PLACA: placaValue,
           DATA: formattedDate,
           KM: kmValue,
@@ -211,16 +197,15 @@ function FormMaintenance() {
           "VALOR MATERIAL": valormValue,
           "VALOR SERVIÇO": valorsValue,
         };
-
+  
         setData([newEntry, ...data]);
         console.log("Novo registro:", newEntry);
         setTableData([newEntry, ...tableData]);
-        // setLastTipo(tipoValue);
-
+  
         submitFormv2(URIB, dataToPost);
-
+  
         restoreDefaultValues();
-
+  
         if (navigator.onLine) {
           setModalLocked(true);
           setDataUpdated(true);
@@ -236,6 +221,7 @@ function FormMaintenance() {
       }
     }
   };
+  
 
   const diasDaSemana = [
     "DOMINGO",
@@ -345,7 +331,7 @@ function FormMaintenance() {
               <InputDate
                 name="DATA"
                 value={dateValue}
-                change={setDateValue}
+                change={handleDateChange}
                 localStore={false} // Para salvar no localStorage se necessário
                 classN="input-date-class" // Adicione a classe desejada aqui
               />
@@ -372,7 +358,7 @@ function FormMaintenance() {
                 items={preventiva}
                 localStore={false}
                 placeholder={true}
-                placeholdertext="Selecione o fornecedor"
+                placeholdertext="Selecione a Descrição"
               />
               <InputDropdownKm
                 name="FORNECEDOR"
