@@ -36,7 +36,7 @@ function Step1Form() {
     // '0809 - 5.2 - AC',
     // '0810 - TEIAS - AC',
     '0811 - TIVIT - LPU',
-    '0816 - CFFC',
+    // '0816 - CFFC',
     '0818 - IGUA - ADM',
     '0822 - COPPEAD',
     // '0823 - HMAS',
