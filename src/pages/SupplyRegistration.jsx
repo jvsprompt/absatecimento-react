@@ -43,6 +43,7 @@ function FormSupply() {
   const [showFinalModal, setShowFinalModal] = useState(false);
   const [dataUpdated, setDataUpdated] = useState(false);
   const [dateValue, setDateValue] = useState(new Date()); // Estado para a data selecionada
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para prevenir envios múltiplos
 
   useEffect(() => {
     setInitialDataLength(data.length);
@@ -127,15 +128,18 @@ function FormSupply() {
   };
 
   const sendData = (tipoValue) => {
+    if (isSubmitting) return; // Impede múltiplos envios simultâneos
+    setIsSubmitting(true); // Define como 'enviando'
+  
     let urlItem;
-
+  
     for (let i = 0; i < URL_Return.length; i++) {
       if (URL_Return[i]["veiculo/placa"] === placa) {
         urlItem = URL_Return[i];
         break;
       }
     }
-
+  
     if (urlItem) {
       const URIB = urlItem.urib;
       const LOCAL = urlItem.obs;
@@ -146,7 +150,7 @@ function FormSupply() {
       const DATA = urlItem.data;
       const COMBUSTIVEL = urlItem.combustivel;
       const VALOR = urlItem.local;
-
+  
       if (
         tipoValue &&
         kmValue &&
@@ -159,11 +163,12 @@ function FormSupply() {
         if (kmValue.length < 6) {
           setErrorMessage("O valor de KM deve ter pelo menos 6 dígitos.");
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
           return;
         }
-
+  
         const last8Digits = placa.substring(placa.length - 8);
-
+  
         // Verificar se o KM é maior ou igual ao mais recente na tabela
         if (tableData.length > 0) {
           const mostRecentKm = parseInt(tableData[0].KM);
@@ -172,48 +177,48 @@ function FormSupply() {
               "O valor de KM não pode ser menor que o valor mais recente."
             );
             setShowErrorModal(true);
+            setIsSubmitting(false); // Reativa o botão de envio
             return;
           }
         }
-
+  
         // Formatar a data como DAY/MM/YYYY
         const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
           dataAtual.getMonth() + 1
         )
           .toString()
           .padStart(2, "0")}/${anoAtual}`;
-
+  
         const dataToPost = new FormData();
-        dataToPost.append(LOCAL, localValue || ""); // Enviar uma string vazia se localValue for vazio
+        dataToPost.append(LOCAL, localValue || "");
         dataToPost.append(TIPO, tipoValue);
         dataToPost.append(KM, kmValue);
         dataToPost.append(VEICULO, last8Digits);
         dataToPost.append(MOTORISTA, motoristaValue);
-        dataToPost.append(DATA, formattedDate); // Enviar a data formatada
+        dataToPost.append(DATA, formattedDate);
         dataToPost.append(COMBUSTIVEL, combustivelValue);
         dataToPost.append(VALOR, valorValue);
-
+  
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
           TIPO: tipoValue,
           KM: kmValue,
-          OBSERVAÇÃO: localValue || "", // Salvar uma string vazia se localValue for vazio
+          OBSERVAÇÃO: localValue || "",
           PLACA: last8Digits,
           MOTORISTA: motoristaValue,
-          DATA: formattedDate, // Salvar a data formatada no estado
+          DATA: formattedDate,
           COMBUSTÍVEL: combustivelValue,
           VALOR: valorValue,
         };
-
+  
         setData([newEntry, ...data]);
-        console.log("Novo registro:", newEntry);
         setTableData([newEntry, ...tableData]);
         setLastTipo(tipoValue);
-
+  
         submitFormv2(URIB, dataToPost);
-
+  
         restoreDefaultValues();
-
+  
         if (navigator.onLine) {
           setModalLocked(true);
           setDataUpdated(true);
@@ -222,13 +227,18 @@ function FormSupply() {
             "NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!"
           );
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
         }
+  
+        setIsSubmitting(false); // Reativa o botão de envio após envio bem-sucedido
       } else {
         setErrorMessage("POR FAVOR, PREENCHA TODOS OS CAMPOS ANTES DE ENVIAR.");
         setShowErrorModal(true);
+        setIsSubmitting(false); // Reativa o botão de envio
       }
     }
   };
+  
 
   const diasDaSemana = [
     "DOMINGO",
@@ -380,6 +390,7 @@ function FormSupply() {
                 <Button
                   className="btn btn-warning btn-lg btn-block rounded-left font-weight-bold"
                   onClick={() => sendData("VALE OLIVEIRENSE")}
+                  disabled={isSubmitting} // Desativa o botão ao enviar
                   // disabled={lastTipo === "VALE OLIVEIRENSE"}
                 >
                   VALE OLIVEIRENSE
@@ -389,6 +400,7 @@ function FormSupply() {
                 <Button
                   className="btn btn-primary btn-lg btn-block font-weight-bold"
                   onClick={() => sendData("REEMBOLSO DE RUA")}
+                  disabled={isSubmitting} // Desativa o botão ao enviar
                   // disabled={lastTipo === "REEMBOLSO DE RUA"}
                 >
                   REEMBOLSO DE RUA
@@ -398,6 +410,7 @@ function FormSupply() {
                 <Button
                   className="btn btn-success btn-lg btn-block rounded-right font-weight-bold"
                   onClick={() => sendData("VR COMBUSTIVEL")}
+                  disabled={isSubmitting} // Desativa o botão ao enviar
                   // disabled={lastTipo === "VR COMBUSTIVEL"}
                 >
                   VR COMBUSTIVEL

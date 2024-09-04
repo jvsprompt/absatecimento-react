@@ -46,10 +46,11 @@ function FormMaintenance() {
   const [showFinalModal, setShowFinalModal] = useState(false);
   const [dataUpdated, setDataUpdated] = useState(false);
   const [dateValue, setDateValue] = useState(new Date()); // Estado para a data selecionada
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para prevenir envios múltiplos
 
   const handleDateChange = (newDate) => {
-    setDateValue(newDate)
-  }
+    setDateValue(newDate);
+  };
 
   useEffect(() => {
     setInitialDataLength(data.length);
@@ -63,12 +64,10 @@ function FormMaintenance() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const urlItem = URL_Return.find(
-        (item) => item["veiculo/placa"] === user
-      );
+      const urlItem = URL_Return.find((item) => item["veiculo/placa"] === user);
       const response = await axios.get(urlItem.urlb);
       console.log("get vehicles response =>", response);
-  
+
       // Função para normalizar as datas para o formato ISO antes de criar o objeto Date
       const parseDate = (dateString) => {
         const [day, month, yearAndTime] = dateString.split("/");
@@ -82,18 +81,21 @@ function FormMaintenance() {
         const dateB = new Date(parseDate(b["Carimbo de data/hora"]));
         return dateB - dateA;
       });
-  
+
       // Adicionando logs para verificar as datas depois da ordenação
-      console.log("Data after sorting:", sortedData.map(item => item["Carimbo de data/hora"]));
-  
+      console.log(
+        "Data after sorting:",
+        sortedData.map((item) => item["Carimbo de data/hora"])
+      );
+
       // Pega os 3 itens mais recentes
       const last3Data = sortedData.slice(0, 3);
-  
+
       setData(last3Data);
       setTableData(last3Data);
       console.log("vehicles data =>", last3Data);
       setLoading(false);
-  
+
       if (last3Data.length > 0) {
         const mostRecentLocal = last3Data[0].LOCAL;
         const secondMostRecentLocal = last3Data[1]?.LOCAL || "";
@@ -109,7 +111,6 @@ function FormMaintenance() {
       setLoading(false);
     }
   };
-  
 
   const initializeStates = () => {
     const found = URL_Return.find(
@@ -135,15 +136,18 @@ function FormMaintenance() {
   };
 
   const sendData = () => {
+    if (isSubmitting) return; // Impede múltiplos envios simultâneos
+    setIsSubmitting(true); // Define como 'enviando'
+
     let urlItem;
-  
+
     for (let i = 0; i < URL_Return.length; i++) {
       if (URL_Return[i]["veiculo/placa"] === user) {
         urlItem = URL_Return[i];
         break;
       }
     }
-  
+
     if (urlItem) {
       const URIB = urlItem.urib;
       const LOCAL = urlItem.obs;
@@ -154,7 +158,7 @@ function FormMaintenance() {
       const DATA = urlItem.data;
       const COMBUSTIVEL = urlItem.combustivel;
       const VALORM = urlItem.local;
-  
+
       if (
         tipoValue &&
         kmValue &&
@@ -168,14 +172,18 @@ function FormMaintenance() {
         if (kmValue.length < 6) {
           setErrorMessage("O valor de KM deve ter pelo menos 6 dígitos.");
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
           return;
         }
-  
+
         // Formatar a data selecionada pelo usuário como "DD/MM/YYYY"
-        const formattedDate = `${dateValue.getDate().toString().padStart(2, "0")}/${(
-          dateValue.getMonth() + 1
-        ).toString().padStart(2, "0")}/${dateValue.getFullYear()}`;
-  
+        const formattedDate = `${dateValue
+          .getDate()
+          .toString()
+          .padStart(2, "0")}/${(dateValue.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}/${dateValue.getFullYear()}`;
+
         const dataToPost = new FormData();
         dataToPost.append(LOCAL, localValue);
         dataToPost.append(KM, kmValue);
@@ -185,7 +193,7 @@ function FormMaintenance() {
         dataToPost.append(COMBUSTIVEL, combustivelValue);
         dataToPost.append(VALORM, valormValue);
         dataToPost.append(VALORS, valorsValue);
-  
+
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
           PLACA: placaValue,
@@ -197,15 +205,15 @@ function FormMaintenance() {
           "VALOR MATERIAL": valormValue,
           "VALOR SERVIÇO": valorsValue,
         };
-  
+
         setData([newEntry, ...data]);
         console.log("Novo registro:", newEntry);
         setTableData([newEntry, ...tableData]);
-  
+
         submitFormv2(URIB, dataToPost);
-  
+
         restoreDefaultValues();
-  
+
         if (navigator.onLine) {
           setModalLocked(true);
           setDataUpdated(true);
@@ -214,14 +222,17 @@ function FormMaintenance() {
             "NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!"
           );
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
         }
+
+        setIsSubmitting(false); // Reativa o botão de envio após envio bem-sucedido
       } else {
         setErrorMessage("POR FAVOR, PREENCHA TODOS OS CAMPOS ANTES DE ENVIAR.");
         setShowErrorModal(true);
+        setIsSubmitting(false); // Reativa o botão de envio
       }
     }
   };
-  
 
   const diasDaSemana = [
     "DOMINGO",
@@ -304,12 +315,12 @@ function FormMaintenance() {
           src={logo}
           alt="Logo"
           style={{ height: "30px" }}
-          onClick={() => navigate('/menu_gestor')}
+          onClick={() => navigate("/menu_gestor")}
         />
         <Button
           variant="secondary"
           className="menu-button"
-          onClick={() => navigate('/menu_gestor')}
+          onClick={() => navigate("/menu_gestor")}
         >
           Menu
         </Button>
@@ -391,6 +402,7 @@ function FormMaintenance() {
                 <Button
                   className="btn btn-primary btn-lg btn-block rounded-left font-weight-bold"
                   onClick={sendData}
+                  disabled={isSubmitting} // Desativa o botão ao envia
                   // disabled={lastTipo === "VALE OLIVEIRENSE"}
                 >
                   ENVIAR
@@ -511,4 +523,4 @@ function FormMaintenance() {
   );
 }
 
-export default FormMaintenance
+export default FormMaintenance;

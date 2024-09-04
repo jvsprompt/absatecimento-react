@@ -34,6 +34,7 @@ function FormFuel() {
   const [initialDataLength, setInitialDataLength] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
   const [dataUpdated, setDataUpdated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para prevenir envios múltiplos
 
   useEffect(() => {
     setInitialDataLength(data.length);
@@ -112,6 +113,9 @@ function FormFuel() {
   };
 
   const sendData = (tipoValue) => {
+    if (isSubmitting) return; // Impede múltiplos envios simultâneos
+    setIsSubmitting(true); // Define como 'enviando'
+
     let urlItem;
 
     for (let i = 0; i < URL_Return.length; i++) {
@@ -133,6 +137,7 @@ function FormFuel() {
         if (kmValue.length < 6) {
           setErrorMessage("O valor de KM deve ter pelo menos 6 dígitos.");
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
           return;
         }
 
@@ -146,6 +151,7 @@ function FormFuel() {
               "O valor de KM não pode ser menor que o valor mais recente."
             );
             setShowErrorModal(true);
+            setIsSubmitting(false); // Reativa o botão de envio
             return;
           }
         }
@@ -182,10 +188,15 @@ function FormFuel() {
             "NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!"
           );
           setShowErrorModal(true);
+          setIsSubmitting(false); // Reativa o botão de envio
         }
+
+
+        setIsSubmitting(false); // Reativa o botão de envio
       } else {
         setErrorMessage("POR FAVOR, PREENCHA TODOS OS CAMPOS ANTES DE ENVIAR.");
         setShowErrorModal(true);
+        setIsSubmitting(false); // Reativa o botão de envio
       }
     }
   };
@@ -325,7 +336,7 @@ function FormFuel() {
               <Button
                 className="btn btn-info btn-lg rounded-left w-50 font-weight-bold"
                 onClick={() => sendData("ORIGEM")}
-                disabled={lastTipo === "ORIGEM"}
+                disabled={isSubmitting || lastTipo === "ORIGEM"}
               >
                 ORIGEM
               </Button>
@@ -333,7 +344,7 @@ function FormFuel() {
               <Button
                 className="btn btn-warning btn-lg rounded-right w-50 font-weight-bold"
                 onClick={() => sendData("DESTINO")}
-                disabled={lastTipo === "DESTINO"}
+                disabled={isSubmitting || lastTipo === "DESTINO"}
               >
                 DESTINO
               </Button>
