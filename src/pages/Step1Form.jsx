@@ -60,6 +60,7 @@ function Step1Form() {
     '0851 - Vesuvius Rio (Contrato Manutenção Preventiva e Corretiva HVAC)',
     '0852 - TAKODA (Infra QTA P7)',
     '0853 - CRUX (Climatização Refeitório)',
+    '0855 - 2024.04.000006 - COPPEAD (Adequação Galpão de Materiais0)',
     ];
 
   const ccs = ccs1.sort();
