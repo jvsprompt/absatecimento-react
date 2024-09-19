@@ -45,6 +45,10 @@ function FormSupply() {
   const [dateValue, setDateValue] = useState(new Date()); // Estado para a data selecionada
   const [isSubmitting, setIsSubmitting] = useState(false); // Estado para prevenir envios múltiplos
 
+  const handleDateChange = (newDate) => {
+    setDateValue(newDate);
+  };
+
   useEffect(() => {
     setInitialDataLength(data.length);
   }, [data]);
@@ -62,32 +66,35 @@ function FormSupply() {
       );
       const response = await axios.get(urlItem.urlb);
       console.log("get vehicles response =>", response);
-  
+
       // Função para normalizar as datas para o formato ISO antes de criar o objeto Date
       const parseDate = (dateString) => {
         const [day, month, yearAndTime] = dateString.split("/");
         const [year, time] = yearAndTime.split(" ");
         return `${year}-${month}-${day}T${time || "00:00:00"}`;
       };
-  
+
       // Ordena todos os dados pela coluna "Carimbo de data/hora" em ordem decrescente
       const sortedData = response.data.sort((a, b) => {
         const dateA = new Date(parseDate(a["Carimbo de data/hora"]));
         const dateB = new Date(parseDate(b["Carimbo de data/hora"]));
         return dateB - dateA;
       });
-  
+
       // Adicionando logs para verificar as datas depois da ordenação
-      console.log("Data after sorting:", sortedData.map(item => item["Carimbo de data/hora"]));
-  
+      console.log(
+        "Data after sorting:",
+        sortedData.map((item) => item["Carimbo de data/hora"])
+      );
+
       // Pega os 3 itens mais recentes
       const last3Data = sortedData.slice(0, 3);
-  
+
       setData(last3Data);
       setTableData(last3Data);
       console.log("vehicles data =>", last3Data);
       setLoading(false);
-  
+
       if (last3Data.length > 0) {
         const mostRecentLocal = last3Data[0].LOCAL;
         const secondMostRecentLocal = last3Data[1]?.LOCAL || "";
@@ -103,8 +110,6 @@ function FormSupply() {
       setLoading(false);
     }
   };
-  
-  
 
   const initializeStates = () => {
     const found = URL_Return.find(
@@ -130,16 +135,16 @@ function FormSupply() {
   const sendData = (tipoValue) => {
     if (isSubmitting) return; // Impede múltiplos envios simultâneos
     setIsSubmitting(true); // Define como 'enviando'
-  
+
     let urlItem;
-  
+
     for (let i = 0; i < URL_Return.length; i++) {
       if (URL_Return[i]["veiculo/placa"] === placa) {
         urlItem = URL_Return[i];
         break;
       }
     }
-  
+
     if (urlItem) {
       const URIB = urlItem.urib;
       const LOCAL = urlItem.obs;
@@ -150,7 +155,7 @@ function FormSupply() {
       const DATA = urlItem.data;
       const COMBUSTIVEL = urlItem.combustivel;
       const VALOR = urlItem.local;
-  
+
       if (
         tipoValue &&
         kmValue &&
@@ -166,29 +171,37 @@ function FormSupply() {
           setIsSubmitting(false); // Reativa o botão de envio
           return;
         }
-  
+
         const last8Digits = placa.substring(placa.length - 8);
-  
+
         // Verificar se o KM é maior ou igual ao mais recente na tabela
-        if (tableData.length > 0) {
-          const mostRecentKm = parseInt(tableData[0].KM);
-          if (parseInt(kmValue) < mostRecentKm) {
-            setErrorMessage(
-              "O valor de KM não pode ser menor que o valor mais recente."
-            );
-            setShowErrorModal(true);
-            setIsSubmitting(false); // Reativa o botão de envio
-            return;
-          }
-        }
-  
+        // if (tableData.length > 0) {
+        //   const mostRecentKm = parseInt(tableData[0].KM);
+        //   if (parseInt(kmValue) < mostRecentKm) {
+        //     setErrorMessage(
+        //       "O valor de KM não pode ser menor que o valor mais recente."
+        //     );
+        //     setShowErrorModal(true);
+        //     setIsSubmitting(false); // Reativa o botão de envio
+        //     return;
+        //   }
+        // }
+
         // Formatar a data como DAY/MM/YYYY
-        const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
-          dataAtual.getMonth() + 1
-        )
+        // const formattedDate = `${diaDoMes.toString().padStart(2, "0")}/${(
+        //   dataAtual.getMonth() + 1
+        // )
+        //   .toString()
+        //   .padStart(2, "0")}/${anoAtual}`;
+
+        // Formatar a data selecionada pelo usuário como "DD/MM/YYYY"
+        const formattedDate = `${dateValue
+          .getDate()
           .toString()
-          .padStart(2, "0")}/${anoAtual}`;
-  
+          .padStart(2, "0")}/${(dateValue.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}/${dateValue.getFullYear()}`;
+
         const dataToPost = new FormData();
         dataToPost.append(LOCAL, localValue || "");
         dataToPost.append(TIPO, tipoValue);
@@ -198,7 +211,7 @@ function FormSupply() {
         dataToPost.append(DATA, formattedDate);
         dataToPost.append(COMBUSTIVEL, combustivelValue);
         dataToPost.append(VALOR, valorValue);
-  
+
         const newEntry = {
           "Carimbo de data/hora": new Date().toLocaleString(),
           TIPO: tipoValue,
@@ -210,15 +223,15 @@ function FormSupply() {
           COMBUSTÍVEL: combustivelValue,
           VALOR: valorValue,
         };
-  
+
         setData([newEntry, ...data]);
         setTableData([newEntry, ...tableData]);
         setLastTipo(tipoValue);
-  
+
         submitFormv2(URIB, dataToPost);
-  
+
         restoreDefaultValues();
-  
+
         if (navigator.onLine) {
           setModalLocked(true);
           setDataUpdated(true);
@@ -229,7 +242,7 @@ function FormSupply() {
           setShowErrorModal(true);
           setIsSubmitting(false); // Reativa o botão de envio
         }
-  
+
         setIsSubmitting(false); // Reativa o botão de envio após envio bem-sucedido
       } else {
         setErrorMessage("POR FAVOR, PREENCHA TODOS OS CAMPOS ANTES DE ENVIAR.");
@@ -238,7 +251,6 @@ function FormSupply() {
       }
     }
   };
-  
 
   const diasDaSemana = [
     "DOMINGO",
@@ -348,7 +360,7 @@ function FormSupply() {
               <InputDate
                 name="DATA"
                 value={dateValue}
-                change={setDateValue}
+                change={handleDateChange}
                 localStore={false} // Para salvar no localStorage se necessário
                 classN="input-date-class" // Adicione a classe desejada aqui
               />

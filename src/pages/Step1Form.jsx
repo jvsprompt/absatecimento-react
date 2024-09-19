@@ -60,7 +60,8 @@ function Step1Form() {
     '0851 - Vesuvius Rio (Contrato Manutenção Preventiva e Corretiva HVAC)',
     '0852 - TAKODA (Infra QTA P7)',
     '0853 - CRUX (Climatização Refeitório)',
-    '0855 - 2024.04.000006 - COPPEAD (Adequação Galpão de Materiais0)',
+    '0855 - COPPEAD (Adequação Galpão de Materiais)',
+    // '9999 - TESTE',
     ];
 
   const ccs = ccs1.sort();
@@ -99,7 +100,7 @@ function Step1Form() {
           />
       }
       <Button
-        className='test button-step1'
+        className='test py-3'
         variant='primary'
         active
         type='submit'

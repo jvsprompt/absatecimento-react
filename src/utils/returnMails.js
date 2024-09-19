@@ -57,6 +57,13 @@ const returnMails = (cc4) => {
         ...commonMails,
       ];
 
+      // case "9999":
+      //   return [
+      //     "grupomonteirotec@gmail.com",
+      //     "jeanvincentvicente@gmail.com",
+      //   ];
+  
+
     default:
       return [
         "coordenador@monteiroinstalacoes.com.br",
