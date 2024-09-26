@@ -1,22 +1,32 @@
+// Bibliotecas Externas
 import React, { useEffect, useState, useContext } from "react";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
+// Componentes
 import EquipModal from "../components/EquipModal";
-
-import submitForm from "../utils/submitForm";
-
-import { ENTRY_HMON as entry, HMON_URI } from "../config/strings";
-import getMateriais from "../utils/getMateriais";
-import returnMails from "../utils/returnMails";
+import { useModal } from "../components/ModalProvider";
+import StandardMessages from "../components/StandardMessages";
 import Loading from "../components/Loading";
 
+// Utilitários
+import submitForm from "../utils/submitForm";
+import getMateriais from "../utils/getMateriais";
+import returnMails from "../utils/returnMails";
+
+// Configurações
+import { ENTRY_HMON as entry, HMON_URI } from "../config/strings";
+
+// Contexto
 import AppContext from "../context/AppContext";
 
+// Imagens
 import logo from "../assets/images/logo/logo.png"; // Importando a imagem do logo
 
 function FormHMON() {
   const { materialList, setMaterialList } = useContext(AppContext);
+  const { openModal } = useModal();
+  const [solicitante, setSolicitante] = useState('');
 
   const cc5 = localStorage.getItem("cc4");
   const cc4 = cc5.slice(0, 4);
@@ -30,10 +40,11 @@ function FormHMON() {
       unidade: "UN",
     },
   ]);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const loadMateriaisModal = async () => {
-    await setIsLoading(true);
+    setIsLoading(true);
     const materiaisF = await getMateriais(type4);
     setMateriaisValue(materiaisF);
     setIsLoading(false);
@@ -48,20 +59,19 @@ function FormHMON() {
     console.log("sm [ OK! ]", await data);
     return data;
   };
-
+  
   const sendMail = async (smNN) => {
-    const newList = materialList.map((d) => {
-      return {
-        tag: d.tag,
-        description: d.name,
-        quantity: d.quantidade,
-        un: d.unidade,
-        obs: d.obs,
-        cc: '["monteiro@monteiroinstalacoes.com.br", "logistica@monteiroinstalacoes.com.br"]',
-      };
-    });
-    console.log("new list =>", newList);
-
+    const solicitante = localStorage.getItem('solicitante');
+    
+    const newList = materialList.map((d) => ({
+      tag: d.tag,
+      description: d.name,
+      quantity: d.quantidade,
+      un: d.unidade,
+      obs: `${d.obs} - ${solicitante}`,
+      cc: '["monteiro@monteiroinstalacoes.com.br", "logistica@monteiroinstalacoes.com.br"]',
+    }));
+  
     await axios.post("http://rradar.com.br:7000/custom/sendmail", {
       type: type4,
       cost: cc4,
@@ -70,112 +80,173 @@ function FormHMON() {
       products: newList,
     });
   };
+  
 
   const sendData = async () => {
-    if (
-      materialList === [] ||
-      !materialList ||
-      materialList === "" ||
-      materialList.length === 0
-    ) {
-      console.log("A solicitação não pode estar vazia!");
-      return alert("A solicitação não pode estar vazia!");
+
+    // Verifica a conectividade antes de qualquer operação
+    if (!navigator.onLine) {
+      openModal("alert", {
+        show: true,
+        message: (
+          <StandardMessages 
+            messageType={9} // Mensagem de erro de conexão
+          />
+        ),
+      });
+      return; // Interrompe a execução se não houver conexão
     }
 
-    const url = HMON_URI;
-    let smNumb = await getSmNumber();
-
-    for (let i = 0; i < materialList.length; i++) {
-      const dataToPost = new FormData();
-      dataToPost.append(
-        entry.cliente,
-        `${cc4}-SM-${type4.slice(0, 3)}-${smNumb}`
-      );
-      dataToPost.append(entry.codigo, materialList[i].tag);
-      dataToPost.append(entry.material, materialList[i].name);
-      dataToPost.append(entry.setor, "HMON");
-      dataToPost.append(entry.unid, materialList[i].unidade);
-      dataToPost.append(entry.qtd, materialList[i].quantidade);
-      dataToPost.append(entry.obs, materialList[i].obs);
-      dataToPost.append(entry.status, "0. SOLICITADO");
-      dataToPost.append("entry.1608830690", type4);
-      dataToPost.append("entry.178058800", cc4);
-
-      console.log(materialList[i].name);
-      console.log(`post ${i} <=> data => ${materialList[i]}`);
-      console.log(materialList[i]);
-
-      submitForm(url, dataToPost);
+        // Verifica se a lista de materiais está vazia
+        if (!(solicitante) || solicitante.length === 0) {
+          openModal("alert", {
+            show: true,
+            message: (
+              <StandardMessages 
+                messageType={10} // Mensagem que diz que a lista está vazia 
+              />
+            ),
+          });
+          return;
+        }
+  
+    // Verifica se a lista de materiais está vazia
+    if (!Array.isArray(materialList) || materialList.length === 0) {
+      openModal("alert", {
+        show: true,
+        message: (
+          <StandardMessages 
+            messageType={1} // Mensagem que diz que a lista está vazia 
+          />
+        ),
+      });
+      return;
     }
+  
+    // Abre o modal de confirmação
+    openModal("confirm", {
+      show: true,
+      message: <StandardMessages messageType={5} />, // Mensagem de confirmação
+      handleConfirm: async () => {
+        const url = HMON_URI;
+        let smNumb = await getSmNumber();
+  
+        // Faz o loop para enviar os materiais
+        for (let i = 0; i < materialList.length; i++) {
+          const dataToPost = new FormData();
+          dataToPost.append(
+            entry.cliente,
+            `${cc4}-SM-${type4.slice(0, 3)}-${smNumb}`
+          );
+          dataToPost.append(entry.codigo, materialList[i].tag);
+          dataToPost.append(entry.material, materialList[i].name);
+          dataToPost.append(entry.setor, "HMON");
+          dataToPost.append(entry.unid, materialList[i].unidade);
+          dataToPost.append(entry.qtd, materialList[i].quantidade);
+          dataToPost.append(entry.obs, materialList[i].obs);
+          dataToPost.append(entry.status, "0. SOLICITADO");
+          dataToPost.append("entry.1608830690", type4);
+          dataToPost.append("entry.178058800", cc4);
+  
+          // Log para depuração
+          console.log(`Enviando material: ${materialList[i].name}`);
+  
+          // Submete o formulário
+          submitForm(url, dataToPost);
+        }
+  
+        // Envia o e-mail
+        await sendMail(smNumb);
+  
+        // Limpa a lista
+        clearAllMaterials();
+  
+        // Exibe mensagem de sucesso após enviar todos os materiais
+        openModal("alert", {
+          show: true,
+          message: (
+            <StandardMessages 
+              messageType={2} // Mensagem de sucesso de envio
+            />
+          )
+        });
+  
+        // Redireciona após um breve atraso
+        setTimeout(() => {
+          document.location.href = "/";
+        }, 2000); // Tempo para o usuário ver o modal antes do redirecionamento
+      },
+    });
+  };
+  
+  
 
-    await sendMail(smNumb);
-    document.location.href = "/";
+  const clearAllMaterialsButton = () => {
 
-    if (navigator.onLine) {
-      return alert("ENVIADO COM SUCESSO!");
-    } else {
-      return alert(
-        "NÃO FOI POSSÍVEL ENVIAR, VERIFIQUE SUA CONEXÃO COM A INTERNET!"
-      );
-    }
+        // Verifica se a lista de materiais está vazia
+        if (!Array.isArray(materialList) || materialList.length === 0) {
+          openModal("alert", {
+            show: true,
+            message: (
+              <StandardMessages 
+                messageType={1} // Mensagem que diz que a lista está vazia 
+              />
+            ),
+          });
+          return; // Não abre o modal de confirmação se a lista estiver vazia
+        }
+        
+    openModal("confirm", {
+      show: true,
+      message: <StandardMessages messageType={3} />,
+      handleConfirm: () => {
+        clearAllMaterials();
+      },
+    });
   };
 
   const clearAllMaterials = () => {
     setMaterialList([]);
-    localStorage.removeItem("materialList"); // Remove os dados salvos no localStorage
-  };
-
-  const clearAllMaterialsButton = () => {
-    const confirmation = window.confirm(
-      "Tem certeza de que deseja limpar todos os itens da lista?"
-    );
-    if (confirmation) {
-      setMaterialList([]);
-      localStorage.removeItem("materialList"); // Remove os dados salvos no localStorage
-    }
-  };
-
-  const removeMaterial = (tagg) => {
-    setMaterialList(materialList.filter((info) => info.tag !== tagg));
+    localStorage.removeItem("materialList");
   };
 
   const addMaterialQuantity = (itemId) => {
     setMaterialList((prevList) => {
       const index = prevList.findIndex((info) => info.id === itemId);
-  
+
       if (index !== -1) {
         const updatedItem = {
           ...prevList[index],
           quantidade: Number(prevList[index].quantidade) + 1,
         };
-  
+
         const updatedList = [
           ...prevList.slice(0, index),
           updatedItem,
           ...prevList.slice(index + 1),
         ];
-  
+
         // Atualiza o localStorage com a nova lista e a quantidade atualizada
-        const storedItems = JSON.parse(localStorage.getItem('materiais')) || [];
+        const storedItems = JSON.parse(localStorage.getItem("materiais")) || [];
         const itemInStorageIndex = storedItems.findIndex(
           (storedItem) => storedItem.id === itemId
         );
-  
+
         if (itemInStorageIndex !== -1) {
           storedItems[itemInStorageIndex] = updatedItem; // Atualiza a quantidade no localStorage
         } else {
           storedItems.push(updatedItem); // Adiciona o item ao localStorage caso não exista
         }
-  
-        localStorage.setItem('materiais', JSON.stringify(storedItems));
-  
+
+        localStorage.setItem("materiais", JSON.stringify(storedItems));
+
         return updatedList;
       }
-  
+
       return prevList;
     });
   };
-  
+
   const removeMaterialQuantity = (itemId) => {
     setMaterialList((prevList) => {
       const index = prevList.findIndex((info) => info.id === itemId);
@@ -185,23 +256,35 @@ function FormHMON() {
   
         // Checa se a quantidade é menor ou igual a 1
         if (item.quantidade <= 1) {
-          if (window.confirm("Tem certeza de que deseja remover este item?")) {
-            // Remove o item do localStorage
-            const storedItems = JSON.parse(localStorage.getItem('materiais')) || [];
-            const updatedStoredItems = storedItems.filter((storedItem) => storedItem.id !== itemId);
+          openModal("confirm", {
+            show: true,
+            message: <StandardMessages messageType={3} />,
+            handleConfirm: () => {
+              // Remove o item do localStorage
+              const storedItems = JSON.parse(localStorage.getItem("materiais")) || [];
+              const updatedStoredItems = storedItems.filter(
+                (storedItem) => storedItem.id !== itemId
+              );
   
-            // Atualiza o localStorage
-            if (updatedStoredItems.length === 0) {
-              localStorage.removeItem('materialList'); // Limpa o localStorage se não houver mais itens
-            } else {
-              localStorage.setItem('materialList', JSON.stringify(updatedStoredItems));
-            }
+              // Atualiza o localStorage
+              if (updatedStoredItems.length === 0) {
+                localStorage.removeItem("materialList"); // Limpa o localStorage se não houver mais itens
+              } else {
+                localStorage.setItem(
+                  "materialList",
+                  JSON.stringify(updatedStoredItems)
+                );
+              }
   
-            // Remove o item da lista
-            const updatedList = [...prevList.slice(0, index), ...prevList.slice(index + 1)];
-            
-            return updatedList.length === 0 ? [] : updatedList;
-          }
+              // Remove o item da lista
+              const updatedList = [
+                ...prevList.slice(0, index),
+                ...prevList.slice(index + 1),
+              ];
+  
+              setMaterialList(updatedList.length === 0 ? [] : updatedList);
+            },
+          });
         } else {
           // Atualiza a quantidade do item
           return [
@@ -216,10 +299,10 @@ function FormHMON() {
     });
   };
   
-
+  
   const renderTable = () => {
     if (materialList.length !== 0) {
-      const table = materialList.map((item) => (
+      return materialList.map((item) => (
         <tr key={item.id}>
           <td className="small">{item.tag}</td>
           <td className="small">{item.name}</td>
@@ -244,15 +327,13 @@ function FormHMON() {
           </td>
         </tr>
       ));
-      return table;
     }
 
-    const message = (
+    return (
       <tr>
         <td colSpan="4">Não há nenhum item na lista</td>
       </tr>
     );
-    return message;
   };
 
   useEffect(() => {
@@ -294,74 +375,48 @@ function FormHMON() {
     }
   }, []);
 
+  // Carregar o valor salvo do localStorage ao carregar o componente
+  useEffect(() => {
+    const savedSolicitante = localStorage.getItem('solicitante');
+    if (savedSolicitante) {
+      setSolicitante(savedSolicitante);
+    }
+  }, []);
+
+  // Função para salvar no localStorage sempre que o valor mudar
+  const handleSolicitanteChange = (e) => {
+    setSolicitante(e.target.value);
+    localStorage.setItem('solicitante', e.target.value);
+  };
+
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="text-center"> 
-    {/* style={{ backgroundColor: '#1F1F1F', color: '#1F1F1F' }} */}
+    <div className="form-group form-control-lg text-center">
       <nav className="navbar navbar-dark bg-dark fixed-top d-flex justify-content-between align-items-center px-3">
         <div className="container-fluid">
-          {/* Botão Voltar dentro da Navbar */}
           <Button
-            variant="dark" // Botão estilo secundário
-            active
+            variant="dark"
             type="button"
-            className="btn btn-dark me-2" // Margem à direita para espaçamento
+            className="btn btn-dark me-2"
             onClick={(e) => {
               e.preventDefault();
-              const confirmation = window.confirm(
-                "Deseja realmente voltar para o Menu?"
-              );
-
-              if (confirmation) {
-                window.location.href = "/"; // Redireciona para a tela inicial se o usuário confirmar
-              }
+              openModal("confirm", {
+                show: true,
+                message: <StandardMessages messageType={4} />,
+                handleConfirm: () => {
+                  window.location.href = "/";
+                },
+              });
             }}
           >
-            {/* Ícone adicionado usando o Bootstrap */}
             <i className="bi bi-house-fill"></i>
           </Button>
-          {/* Navbar Brand */}
           <img
             src={logo}
             alt="Logo"
             style={{ height: "30px" }}
-            // onClick={() => navigate("/menu_gestor")}
           />
-
-          {/* Toggle para mobile */}
-          {/* <button */}
-          {/* className="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    > */}
-          {/* <span className="navbar-toggler-icon"></span> */}
-          {/* </button> */}
-
-          {/* Links da Navbar */}
-          <div className="collapse navbar-collapse" id="navbarNav">
-            {/* <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about">
-                  Sobre
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contact">
-                  Contato
-                </a>
-              </li>
-            </ul> */}
-          </div>
         </div>
       </nav>
       <br />
@@ -375,57 +430,57 @@ function FormHMON() {
         htmlFor="material"
         className="block table-responsive-sm table-material"
       >
-                <p />
-                <p />
-                <p />
-        <span className="text-center">{`${cc4}-SM-${type4}`}</span>
-        <p />
+        <div className="text-center mt-5 mb-3">
+          <span>{`${cc4}-SM-${type4}`}</span>
+        </div>
         <table className="table table-striped table-dark w-100">
           <thead className="small">
             <tr>
               <td>TAG</td>
               <td>DESCRIÇÃO</td>
               <td>QUANTIDADE</td>
-              <td><i class="bi bi-pencil-square"></i></td>
+              <td>
+                <i className="bi bi-pencil-square"></i>
+              </td>
             </tr>
           </thead>
           <tbody>{renderTable()}</tbody>
         </table>
       </label>
-     <div className="d-flex flex-column align-items-center">
-     <Button
-       variant="outline-warning"
-       className="w-50 mt-4 mb-4"
-       onClick={() => setModalShow(true)}
-     >
-       <i className="bi bi-database-fill-add"></i> Selecionar Item
-     </Button>
-     <Button
-       variant="danger"
-       className="w-50 mb-5"
-       onClick={clearAllMaterialsButton}
-     >
-      <i className="bi bi-trash3-fill"></i>  Limpar Tudo  
-     </Button>
-     <Button
-       variant="primary"
-      //  active
-       type="submit"
-       value="Submit"
-       className="w-100 py-3 mb-3"
-       onClick={(e) => {
-         e.preventDefault();
-         const confirmation = window.confirm("Deseja realmente enviar os dados ou quer revisar?");
-         if (confirmation) {
-           sendData();
-           clearAllMaterials();
-         }
-       }}
-     >
-       <i className="bi bi-send-fill"></i> Enviar
-     </Button>
-   </div>
-   </div>
+      <div className="d-flex flex-column align-items-center">
+        <Button
+          variant="outline-warning"
+          className="w-50 mt-4 mb-4"
+          onClick={() => setModalShow(true)}
+        >
+          <i className="bi bi-database-fill-add"></i> Selecionar Item
+        </Button>
+        <Button
+          variant="danger"
+          className="w-50 mb-4"
+          onClick={clearAllMaterialsButton}
+        >
+          <i className="bi bi-trash3-fill"></i>   Limpar Tudo  
+        </Button>
+        <input
+        type="text"
+        className="form-control w-50 mb-5 text-center"
+        placeholder="Seu Nome Completo"
+        value={solicitante}
+        onChange={handleSolicitanteChange}
+        style={{ textTransform: 'uppercase' }}
+      />
+        <Button
+          variant="primary"
+          type="button"
+          className="w-100 py-3 mb-3"
+          onClick={sendData} // Chama sendData diretamente
+          >
+          <i className="bi bi-send-fill"></i> {/* Ícone de enviar */}
+           Enviar SM     
+        </Button>
+      </div>
+    </div>
   );
 }
 

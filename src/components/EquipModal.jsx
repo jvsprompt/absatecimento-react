@@ -2,6 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import InputNumberKm from "../components/InputNumberKm";
+
+import { useModal } from "../components/ModalProvider";
+import StandardMessages from "../components/StandardMessages";
 
 import AppContext from "../context/AppContext";
 
@@ -10,7 +14,8 @@ import "../css/EquipModal.css";
 function EquipModal(props) {
   const { materialList, setMaterialList } = useContext(AppContext);
   const table = props.table;
-
+  const { openModal } = useModal();
+  
   const [selectedItem, setSelectedItem] = useState({
     id: "",
     tag: "",
@@ -76,58 +81,81 @@ function EquipModal(props) {
     });
   };
 
-  const validateData = () => {
-    if (!quantidade || quantidade === "" || quantidade === "0") {
-      alert("Campo de quantidade deve ser preenchido!");
-      return false;
-    }
 
-    if (!selectedItem.name || selectedItem.name === "") {
-      alert("Campo de Descrição deve ser preenchido!");
-      return false;
-    }
-    return true;
-  };
 
   const pushMaterial = () => {
     const validate = validateData();
   
     if (!validate) {
-      return;
+      return; // Não prossegue se a validação falhar
     }
   
-    const type4 = localStorage.getItem("type4"); // Obtém o type4 do localStorage ou de onde estiver disponível
-    
+    const type4 = localStorage.getItem("type4");
+  
     const newItem = {
-      id: Date.now(), // Usando timestamp para garantir ID único
+      id: Date.now(),
       name: selectedItem.name,
       quantidade: quantidade || '0',
       tag: selectedItem.tag,
       unidade: selectedItem.unidade,
       obs: obsValue || '',
-      type4: type4 // Adiciona o type4 aos dados
+      type4: type4
     };
   
     if (selectedItem.tag === '99999') {
-      // Permite múltiplas adições para a tag '99999'
       setMaterialList(prevList => [...prevList, newItem]);
       restoreDefaultValues();
       return;
     }
   
-    // Verificar se o item com a mesma TAG já está na lista
     const tagExists = materialList.some(
       (item) => item.tag === selectedItem.tag
     );
   
     if (tagExists) {
-      alert("Este item já foi adicionado!");
+      openModal("alert", {
+        show: true,
+        message: (
+          <StandardMessages 
+            messageType={6} // Mensagem que diz que a tag já existe
+          />
+        ),
+      });
       return;
     }
   
     setMaterialList(prevList => [...prevList, newItem]);
     restoreDefaultValues();
   };
+  
+  const validateData = () => {
+    if (!quantidade || quantidade === "" || quantidade === "0") {
+      openModal("alert", {
+        show: true,
+        message: (
+          <StandardMessages 
+            messageType={7} // Mensagem que diz que o campo de quantidade deve ser preenchido
+          />
+        ),
+      });
+      return false;
+    }
+  
+    if (!selectedItem.name || selectedItem.name === "") {
+      openModal("alert", {
+        show: true,
+        message: (
+          <StandardMessages 
+            messageType={8} // Mensagem que diz que o campo de descrição deve ser preenchido
+          />
+        ),
+      });
+      return false;
+    }
+  
+    return true;
+  };
+  
   
 
   useEffect(() => {
@@ -173,14 +201,24 @@ function EquipModal(props) {
             <Form.Control type="text" placeholder=" " value={tag} readOnly />
           </Form.Group>
           <Form.Group className="mb-3 tag-input modal-input">
-            <Form.Label>QUANTIDADE</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              value={quantidade}
-              onChange={(e) => setQuantidade(e.target.value)}
-            />
-          </Form.Group>
+  <Form.Label>QUANTIDADE</Form.Label>
+  <Form.Control
+    type="number" // Muda o tipo para 'number'
+    placeholder=""
+    value={quantidade}
+    onChange={(e) => {
+      const value = e.target.value;
+      // Verifica se o valor é um número maior que 0
+      if (value === "" || (parseFloat(value) > 0)) {
+        setQuantidade(value);
+      }
+    }}
+    min="0" // Define o valor mínimo como 0
+    step="any" // Permite decimais
+    style={{ appearance: 'none', margin: 0 }} // Remove as setas do input
+  />
+</Form.Group>
+
           <Form.Group className="mb-3 tag-input modal-input">
             <Form.Label>UNIDADE</Form.Label>
             <Form.Control
@@ -240,7 +278,7 @@ function EquipModal(props) {
           />
           {" Continuar Incluindo"}
         </label>
-        <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+        <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center mt-3 ">
         <Button
           className="mb-2 mb-sm-0 me-sm-2 w-100 w-sm-auto"
           onClick={() => {

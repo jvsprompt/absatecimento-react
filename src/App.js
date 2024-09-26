@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppProvider from './context/AppProvider';
+import { ModalProvider } from './components/ModalProvider'; // Importando o ModalProvider
 
 import Home from './pages/Home';
 import FormAcademia from './pages/FormAcademia';
@@ -29,30 +30,32 @@ import './css/Equipaments.css';
 function App() {
   return (
     <AppProvider>
+      <ModalProvider> {/* Envolvendo o Router com o ModalProvider */}
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Step1Form />} />
-          <Route exact path="/form/HMON" element={<FormHMON />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/form/academia" element={<FormAcademia />} />
-          <Route exact path="/form" element={<FormHMON />} />
-          {/* <Route exact path="/form/igua" element={<Form />} /> */}
-          {/* <Route exact path="/form/coppead" element={<Form />} /> */}
-          <Route exact path="/equipamentos" element={<Equipaments />} />
-          <Route exact path="/abastecimento" element={<FuelRegistration />} />
-          <Route exact path="/oseffort" element={<OsEffort />} />
-          <Route exact path="/material-lista" element={<MaterialsList />} />
-          <Route exact path="/rota/:placa" element={<KmRegistration />} />
-          <Route exact path="/abastecimento/:placa" element={<SupplyRegistration />} />
-          <Route exact path="controlador" element={<CalcControlador />} />
-          <Route exact path="/motorista" element={<SelectMotorista />} />
-          {/* <Route exact path="/novo-veiculo" element={<NovoVeiculo />} /> */}
-          <Route exact path="/menu_usuario/:placa" element={<MenuUser />} /> {/* Novo rota */}
-          <Route exact path="/menu_gestor" element={<MenuGestor />} /> {/* Novo rota */}
-          <Route exact path="/manutencao" element={<MaintenanceRegistration />} /> {/* Novo rota */}
-          <Route exact path="/documentos" element={<DocRegistration />} /> {/* Novo rota */}
-        </Routes>
+          <Routes>
+            <Route exact path="/" element={<Step1Form />} />
+            <Route exact path="/form/HMON" element={<FormHMON />} />
+            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/form/academia" element={<FormAcademia />} />
+            <Route exact path="/form" element={<FormHMON />} />
+            {/* <Route exact path="/form/igua" element={<Form />} /> */}
+            {/* <Route exact path="/form/coppead" element={<Form />} /> */}
+            <Route exact path="/equipamentos" element={<Equipaments />} />
+            <Route exact path="/abastecimento" element={<FuelRegistration />} />
+            <Route exact path="/oseffort" element={<OsEffort />} />
+            <Route exact path="/material-lista" element={<MaterialsList />} />
+            <Route exact path="/rota/:placa" element={<KmRegistration />} />
+            <Route exact path="/abastecimento/:placa" element={<SupplyRegistration />} />
+            <Route exact path="controlador" element={<CalcControlador />} />
+            <Route exact path="/motorista" element={<SelectMotorista />} />
+            {/* <Route exact path="/novo-veiculo" element={<NovoVeiculo />} /> */}
+            <Route exact path="/menu_usuario/:placa" element={<MenuUser />} /> {/* Novo rota */}
+            <Route exact path="/menu_gestor" element={<MenuGestor />} /> {/* Novo rota */}
+            <Route exact path="/manutencao" element={<MaintenanceRegistration />} /> {/* Novo rota */}
+            <Route exact path="/documentos" element={<DocRegistration />} /> {/* Novo rota */}
+          </Routes>
       </BrowserRouter>
+      </ModalProvider> {/* Encerrando o ModalProvider */}
     </AppProvider>
   );
 }
