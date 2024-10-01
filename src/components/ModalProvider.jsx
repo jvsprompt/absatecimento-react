@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import ConfirmModal from "./ConfirmModal";
 import AlertModal from "./AlertModal";
+import Alert from "./Alert";
 
 const ModalContext = createContext();
 
@@ -35,6 +36,14 @@ export const ModalProvider = ({ children }) => {
           )}
           {modal.modalType === "alert" && (
             <AlertModal
+              show={modal.show}
+              title={modal.props.title} // Passando o título
+              message={modal.props.message} // Passando a mensagem
+              handleClose={closeModal}
+            />
+          )}
+          {modal.modalType === "alertB" && (
+            <Alert
               show={modal.show}
               title={modal.props.title} // Passando o título
               message={modal.props.message} // Passando a mensagem

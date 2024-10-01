@@ -162,7 +162,7 @@ function FormHMON() {
         clearAllMaterials();
   
         // Exibe mensagem de sucesso após enviar todos os materiais
-        openModal("alert", {
+        openModal("alertB", {
           show: true,
           message: (
             <StandardMessages 
