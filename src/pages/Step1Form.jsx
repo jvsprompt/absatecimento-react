@@ -61,6 +61,7 @@ function Step1Form() {
     '0852 - TAKODA (Infra QTA P7)',
     '0853 - CRUX (Climatização Refeitório)',
     '0855 - COPPEAD (Adequação Galpão de Materiais)',
+    '0857 - COPPEAD (CONTRATO MANUTENÇÃO GMG/QTA)',
     // '9999 - TESTE',
     ];
 
