@@ -2,6 +2,7 @@ const returnMails = (cc4) => {
   const commonMails = [
     "monteiro@monteiroinstalacoes.com.br",
     "logistica@monteiroinstalacoes.com.br",
+    "operacional@monteiroinstalacoes.com.br",
   ];
 
   switch (cc4) {
